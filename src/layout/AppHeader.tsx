@@ -42,7 +42,7 @@ const AppHeader = () => {
   }, []);
 
   return (
-    <header className='sticky top-0 flex w-full bg-white/80 backdrop-blur-xl border-b border-gray-100 z-[990] dark:border-slate-800 dark:bg-gray-900/80 transition-colors duration-300'>
+    <header className='app-header sticky top-0 flex w-full bg-white/80 backdrop-blur-xl border-b border-gray-100 z-[990] dark:border-slate-800 dark:bg-gray-900/80 transition-colors duration-300'>
       <div className='flex flex-col items-center justify-between grow lg:flex-row px-4 lg:px-6 mx-auto w-full max-w-screen-2xl'>
         <div className='flex items-center justify-between w-full gap-2 py-3 lg:justify-normal lg:w-auto lg:py-4'>
           <button

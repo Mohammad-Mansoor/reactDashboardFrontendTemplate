@@ -10,27 +10,36 @@ import Login from "./pages/AuthPages/Login";
 import FilterTestPage from "./pages/FilterTestPage";
 import PremiumTableDemo from "./pages/PremiumTableDemo";
 import { PermissionsProvider } from "./context/PermissionsContext";
+import { ViewTransitionManager } from "./components/Navigation/ViewTransitionManager";
+import ItemListPage from "./pages/Demo/ItemListPage";
+import ItemDetailPage from "./pages/Demo/ItemDetailPage";
 
 export default function App() {
   return (
     <PermissionsProvider>
       <Router>
         <ScrollToTop />
-        <Routes>
-          <Route element={<ProtectedRoute />}>
-            <Route element={<AppLayout />}>
-              <Route index element={<Home />} />
-              <Route path="/components" element={<ComponentsPage />} />
-              <Route path="/filter-test" element={<FilterTestPage />} />
-              <Route path="/table-demo" element={<PremiumTableDemo />} />
-            </Route>
-          </Route>
-          <Route element={<PublicRoute />}>
-            <Route path="/signin" element={<Login />} />
-            <Route path="/auth/login" element={<Login />} />
-          </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <ViewTransitionManager>
+          {(location) => (
+            <Routes location={location}>
+              <Route element={<ProtectedRoute />}>
+                <Route element={<AppLayout />}>
+                  <Route index element={<Home />} />
+                  <Route path="/components" element={<ComponentsPage />} />
+                  <Route path="/filter-test" element={<FilterTestPage />} />
+                  <Route path="/table-demo" element={<PremiumTableDemo />} />
+                  <Route path="/demo/items" element={<ItemListPage />} />
+                  <Route path="/demo/items/:id" element={<ItemDetailPage />} />
+                </Route>
+              </Route>
+              <Route element={<PublicRoute />}>
+                <Route path="/signin" element={<Login />} />
+                <Route path="/auth/login" element={<Login />} />
+              </Route>
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          )}
+        </ViewTransitionManager>
       </Router>
     </PermissionsProvider>
   );

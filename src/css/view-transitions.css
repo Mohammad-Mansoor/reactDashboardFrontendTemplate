@@ -1,0 +1,76 @@
+/* View Transitions Global Styles */
+
+/* 1. Base root transitions */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.4s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Slide + Fade effect for the root content */
+::view-transition-old(root) {
+  animation: 0.3s cubic-bezier(0.4, 0, 1, 1) both fade-out,
+    0.4s cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+}
+
+::view-transition-new(root) {
+  animation: 0.3s cubic-bezier(0, 0, 0.2, 1) 0.1s both fade-in,
+    0.4s cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+}
+
+/* 2. Keyframes for root transitions */
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+
+@keyframes fade-out {
+  to { opacity: 0; }
+}
+
+@keyframes slide-from-right {
+  from { transform: translateX(30px); }
+}
+
+@keyframes slide-to-left {
+  to { transform: translateX(-30px); }
+}
+
+/* 3. Handling Fixed Elements (Navbar, Sidebar) */
+/* We give them their own transition names so they stay fixed and don't slide with the root */
+.app-header {
+  view-transition-name: app-header;
+}
+
+.app-sidebar {
+  view-transition-name: app-sidebar;
+}
+
+/* Ensure fixed elements don't animate opacity unless desired */
+::view-transition-old(app-header),
+::view-transition-new(app-header),
+::view-transition-old(app-sidebar),
+::view-transition-new(app-sidebar) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* 4. Shared Element Transitions Utility */
+/* You can apply these classes to elements manually if needed */
+.transition-card {
+  view-transition-name: var(--transition-name);
+}
+
+/* 5. Scale Transition (Optional class) */
+.view-transition-scale::view-transition-old(root) {
+  animation: fade-out 0.3s, scale-down 0.4s;
+}
+.view-transition-scale::view-transition-new(root) {
+  animation: fade-in 0.3s, scale-up 0.4s;
+}
+
+@keyframes scale-down {
+  to { transform: scale(0.95); }
+}
+@keyframes scale-up {
+  from { transform: scale(1.05); }
+}

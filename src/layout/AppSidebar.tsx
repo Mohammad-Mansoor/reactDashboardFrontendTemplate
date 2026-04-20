@@ -32,6 +32,11 @@ const AppSidebar = () => {
       name: "Table Premium",
       path: "/table-demo",
     },
+    {
+      icon: <GridIcon />,
+      name: "Transitions Demo",
+      path: "/demo/items",
+    },
   ];
 
   const othersItems = [
@@ -239,7 +244,7 @@ const AppSidebar = () => {
   };
   return (
     <aside
-      className={`fixed mt-[72px] lg:mt-0 flex flex-col top-0 px-4 start-0 bg-white dark:bg-gray-900 dark:border-slate-800 text-slate-800 dark:text-slate-200 h-screen transition-all duration-300 ease-in-out z-[888] border-e border-slate-200 shadow-sm
+      className={`app-sidebar fixed mt-[72px] lg:mt-0 flex flex-col top-0 px-4 start-0 bg-white dark:bg-gray-900 dark:border-slate-800 text-slate-800 dark:text-slate-200 h-screen transition-all duration-300 ease-in-out z-[888] border-e border-slate-200 shadow-sm
         ${isExpanded || isMobileOpen ? "w-[250px]" : "w-[90px]"}
         ${isMobileOpen
           ? "translate-x-0"
