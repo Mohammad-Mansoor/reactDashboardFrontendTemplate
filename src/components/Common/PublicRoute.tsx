@@ -14,7 +14,7 @@ const PublicRoute = () => {
     const validateToken = async () => {
       if (accessToken) {
         try {
-          await agent.get("/platform-users/me/roles");
+          await agent.get("/auth/me");
           setIsTokenValid(true);
         } catch (error) {
           setIsTokenValid(false);

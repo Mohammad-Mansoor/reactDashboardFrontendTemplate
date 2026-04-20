@@ -116,28 +116,24 @@ export const DateRangePicker = ({
           </Button>
         </AriaGroup>
         <AriaPopover
-          placement="bottom right"
+          placement="bottom"
           offset={8}
+          containerPadding={12}
+          isNonModal={true}
           className={({ isEntering, isExiting }) => {
-            let classes =
-              "will-change-transform shadow-lg rounded-lg overflow-hidden";
-
-            if (isEntering) {
-              classes += " duration-150 ease-out animate-in fade-in";
-            }
-
-            if (isExiting) {
-              classes += " duration-100 ease-in animate-out fade-out";
-            }
-
-            return classes;
+             // 🌌 THE MAGIC: Intelligent Viewport-Aware Popover
+             let classes = "z-[9999] transition-all duration-300 pointer-events-auto bg-white/40 backdrop-blur-md rounded-2xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.4)]";
+             
+             if (isEntering) classes += " animate-in zoom-in-95 fade-in duration-200";
+             if (isExiting) classes += " animate-out zoom-out-95 fade-out duration-150";
+             return classes;
           }}
         >
-          <AriaDialog className="flex bg-white">
+          <AriaDialog className="outline-none">
             {({ close }) => (
-              <div className="flex w-full max-w-200">
-                <div className="hidden w-48 flex-col gap-1 border-r border-gray-200 p-3 lg:flex">
-                  {Object.values(presets).map((preset) => (
+               <div className="relative flex flex-col md:flex-row w-[calc(100vw-24px)] md:w-full md:max-w-3xl bg-white dark:bg-[#0c1221] border border-slate-200 dark:border-white/5 rounded-2xl max-h-[min(88vh,600px)] overflow-y-auto scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-white/10 transition-all">
+                  <div className="hidden w-48 flex-col gap-1 border-r border-gray-200 dark:border-white/5 p-3 lg:flex bg-slate-50/50 dark:bg-white/2">
+                    {Object.values(presets).map((preset) => (
                     <RangePresetButton
                       key={preset.label}
                       value={preset.value}
@@ -161,19 +157,19 @@ export const DateRangePicker = ({
                       lastYear: presets.lastYear,
                     }}
                   />
-                  <div className="flex flex-col gap-3 border-t dark:border-gray-700 border-gray-200 p-4 sm:flex-row sm:items-center sm:justify-between">
-                    <div className="flex items-center gap-3">
-                      <DateInput
+                   <div className="flex flex-col gap-3 border-t dark:border-white/5 border-gray-200 p-4 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="flex items-center justify-center sm:justify-start gap-2">
+                       <DateInput
                         slot="start"
-                        className="w-32 border border-gray-300 rounded-md px-3 py-2 text-sm"
+                        className="w-28 sm:w-32 border border-gray-300 dark:border-white/10 dark:bg-white/5 dark:text-white rounded-md px-3 py-2 text-sm"
                       />
-                      <div className="text-gray-400">–</div>
+                      <div className="text-gray-400 font-bold">–</div>
                       <DateInput
                         slot="end"
-                        className="w-32 border border-gray-300 rounded-md px-3 py-2 text-sm"
+                        className="w-28 sm:w-32 border border-gray-300 dark:border-white/10 dark:bg-white/5 dark:text-white rounded-md px-3 py-2 text-sm"
                       />
                     </div>
-                    <div className="flex gap-3">
+                    <div className="flex flex-wrap items-center justify-center sm:justify-end gap-2">
                       <Button
                         size="md"
                         variant="tertiary"
@@ -211,7 +207,7 @@ export const DateRangePicker = ({
                   </div>
                 </div>
               </div>
-            )}
+                )}
           </AriaDialog>
         </AriaPopover>
       </AriaDateRangePicker>

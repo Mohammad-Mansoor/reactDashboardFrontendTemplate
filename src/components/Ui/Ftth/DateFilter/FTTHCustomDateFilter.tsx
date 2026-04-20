@@ -10,8 +10,12 @@ import {
 import {
   DateRangePicker as AriaDateRangePicker,
   Dialog as AriaDialog,
+  Popover as AriaPopover,
+  Group as AriaGroup,
+  Button as AriaButton,
   useLocale,
 } from "react-aria-components";
+import { ArrowUpDown } from "lucide-react";
 import { Button } from "./button";
 import { RangeCalendar } from "./range-calendar";
 import { DateInput } from "./date-input";
@@ -106,7 +110,29 @@ export const FTTHCustomDateFilter = ({ onApply, onClose }) => {
       value={value}
       onChange={setValue}
     >
-      <AriaDialog className="flex z-[9999] flex-col lg:flex-row w-full max-w-4xl bg-white/80 dark:bg-[#0c1221]/80 backdrop-blur-xl rounded-[24px] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] border border-slate-100 dark:border-white/5 overflow-hidden relative">
+      <AriaGroup className="inline-flex">
+        <AriaButton className="w-full flex items-center justify-between px-4 py-2 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl hover:border-primary1 transition-all outline-none">
+          <span className="text-xs font-bold text-slate-700 dark:text-white/80">
+            {value ? `${value.start.toString()} - ${value.end.toString()}` : "Select Range"}
+          </span>
+          <ArrowUpDown size={14} className="text-slate-400" />
+        </AriaButton>
+      </AriaGroup>
+
+      <AriaPopover
+        placement="bottom"
+        offset={8}
+        containerPadding={12}
+        isNonModal={true}
+        className={({ isEntering, isExiting }) => {
+          let classes = "z-[10001] transition-all duration-300 pointer-events-auto bg-white/40 backdrop-blur-md rounded-2xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.4)]";
+          if (isEntering) classes += " animate-in zoom-in-95 fade-in duration-200";
+          if (isExiting) classes += " animate-out zoom-out-95 fade-out duration-150";
+          return classes;
+        }}
+      >
+        <AriaDialog className="outline-none">
+          <div className="relative flex flex-col lg:flex-row w-full md:max-w-4xl bg-white dark:bg-[#0c1221] shadow-2xl border border-slate-200 dark:border-white/5 rounded-[24px] max-h-[min(88vh,600px)] overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-white/10 transition-all">
         <div
           className={`hidden w-52 flex-col gap-1.5 p-5 ${isRTL ? "border-l text-right" : "border-r text-left"} bg-slate-50/50 dark:bg-white/2 border-slate-100 dark:border-white/5 lg:flex`}
         >
@@ -180,7 +206,9 @@ export const FTTHCustomDateFilter = ({ onApply, onClose }) => {
             </div>
           </div>
         </div>
-      </AriaDialog>
-    </AriaDateRangePicker>
+      </div>
+    </AriaDialog>
+  </AriaPopover>
+</AriaDateRangePicker>
   );
 };

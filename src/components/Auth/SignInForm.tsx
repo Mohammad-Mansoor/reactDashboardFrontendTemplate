@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Mail,
@@ -121,18 +122,23 @@ const Features = () => {
 };
 
 export default function SignInForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: { email: "", password: "" },
+  });
+
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const { loading, error } = useSelector((state: RootState) => state.auth);
 
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const resultAction = await dispatch(login({ username: email, password }));
+  const onSubmit = async (data: any) => {
+    const resultAction = await dispatch(login({ email: data.email, password: data.password }));
     if (login.fulfilled.match(resultAction)) navigate("/");
   };
 
@@ -234,14 +240,13 @@ export default function SignInForm() {
               )}
             </AnimatePresence>
 
-            <form onSubmit={handleSubmit} className="space-y-4.5">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4.5">
               <InputElement
                 label="Email Address"
                 placeholder="Enter your email"
                 type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                {...register("email", { required: "Email is required" })}
+                error={errors.email?.message as string}
                 leftIcon={<Mail size={16} />}
                 className="bg-white/50 dark:bg-white/5 border-slate-200 dark:border-white/10 text-slate-800 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/20"
               />
@@ -250,9 +255,8 @@ export default function SignInForm() {
                 <PasswordInput
                   label="Password"
                   placeholder="Enter your password"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  {...register("password", { required: "Password is required" })}
+                  error={errors.password?.message as string}
                   leftIcon={<Lock size={16} />}
                   className="bg-white/50 dark:bg-white/5 border-slate-200 dark:border-white/10 text-slate-800 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/20"
                 />

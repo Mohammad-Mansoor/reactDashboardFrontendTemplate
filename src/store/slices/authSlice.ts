@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import agent from "../../agent";
 
 interface LoginCredentials {
-  username: string;
+  email: string;
   password: string;
 }
 

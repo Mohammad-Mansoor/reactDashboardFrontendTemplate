@@ -59,7 +59,7 @@ const LayoutContent = () => {
 
   return (
     <div className="min-h-screen w-full flex flex-col lg:flex-row overflow-x-hidden m-0 p-0">
-      <RouteLoader show={isRouteLoading} />
+      {/* <RouteLoader show={isRouteLoading} /> */}
       <NetworkErrorModal
         isOpen={showNetworkModal}
         onClose={handleCloseNetworkModal}

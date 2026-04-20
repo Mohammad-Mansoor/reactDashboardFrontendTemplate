@@ -139,7 +139,7 @@ export default function FTTHPremiumDataTable<T extends { id: string }>({
           
           <div className="flex items-center gap-1.5 lg:hidden">
              <Button 
-                bg="bg-slate-100" 
+                bg="bg-[#000]" 
                 className="!w-10 !p-0 border border-slate-200 dark:border-white/10 !rounded-md !h-9 text-slate-800 dark:text-white"
                 icon={<ColumnsIcon size={16} />}
                 onClick={() => setIsColumnDropdownOpen(!isColumnDropdownOpen)}
@@ -235,7 +235,7 @@ export default function FTTHPremiumDataTable<T extends { id: string }>({
 
             {/* Mobile View Toggle Buttons */}
             <Button 
-                bg="bg-slate-100"
+                bg="bg-[#000]"
                 className="lg:hidden !h-10 text-slate-600 dark:text-white !rounded-md !px-4 border border-slate-200 dark:border-white/10"
                 icon={<Download size={16} />}
                 label={<span className="text-[10px] font-black uppercase tracking-widest">Export</span>}

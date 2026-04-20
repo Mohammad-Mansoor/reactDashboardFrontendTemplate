@@ -76,39 +76,37 @@ const FTTHAdvanceFilterModal: React.FC<FTTHAdvanceFilterModalProps> = ({
   const { t } = useTranslation();
   const [filterValues, setFilterValues] = useState<Record<string, any>>({});
 
-  // Sync initial values only when the modal opens
+  // Sync initial values
   useEffect(() => {
-    if (isOpen) {
-      const defaults: Record<string, any> = {};
-      filterConfig.forEach((config) => {
-        if (initialValues && initialValues[config.key] !== undefined) {
-          defaults[config.key] = initialValues[config.key];
-        } else {
-          switch (config.type) {
-            case "checkbox":
-            case "dropdown":
-              defaults[config.key] = config.multiSelect ? [] : null;
-              break;
-            case "range":
-              defaults[config.key] = { min: config.min ?? 0, max: config.max ?? 100 };
-              break;
-            case "date":
-              defaults[config.key] = "";
-              break;
-            case "date-range":
-              defaults[config.key] = { start: "", end: "" };
-              break;
-            case "toggle":
-              defaults[config.key] = false;
-              break;
-            default:
-              defaults[config.key] = "";
-          }
+    if (!isOpen) return;
+
+    const defaults: Record<string, any> = {};
+    filterConfig.forEach((config) => {
+      if (initialValues[config.key] !== undefined) {
+        defaults[config.key] = initialValues[config.key];
+      } else {
+        switch (config.type) {
+          case "checkbox":
+          case "dropdown":
+            defaults[config.key] = config.multiSelect ? [] : null;
+            break;
+          case "range":
+            defaults[config.key] = { min: config.min ?? 0, max: config.max ?? 100 };
+            break;
+          case "date":
+            defaults[config.key] = "";
+            break;
+          case "date-range":
+            defaults[config.key] = { start: "", end: "" };
+            break;
+          case "toggle":
+            defaults[config.key] = false;
+            break;
         }
-      });
-      setFilterValues(defaults);
-    }
-  }, [isOpen]); // Only sync when the modal actually triggers the open state
+      }
+    });
+    setFilterValues(defaults);
+  }, [isOpen, filterConfig, initialValues]);
 
   const handleValueChange = useCallback((key: string, value: any) => {
     setFilterValues((prev) => ({ ...prev, [key]: value }));
