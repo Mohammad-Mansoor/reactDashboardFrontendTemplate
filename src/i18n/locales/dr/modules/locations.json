@@ -1,0 +1,93 @@
+{
+  "locations": {
+    "countries": {
+      "title": "مدیریت کشورها",
+      "create": "ایجاد کشور",
+      "edit": "ویرایش کشور",
+      "details": "جزئیات کشور",
+      "search_placeholder": "جستجوی کشورها...",
+      "placeholder_en": "مثلا: Afghanistan",
+      "placeholder_ps": "افغانستان",
+      "placeholder_dr": "افغانستان",
+      "placeholder_code": "مثلا: AF",
+      "placeholder_mobile": "مثلا: 93",
+      "placeholder_flag": "ایموجی یا یو آر ال",
+      "delete_confirmation_title": "حذف کشور",
+      "delete_confirmation_message": "آیا مطمئن هستید که می‌خواهید کشور \"{{name}}\" را حذف کنید؟ این عملیات قابل بازگشت نیست.",
+      "delete_success_title": "کشور با موفقیت حذف شد",
+      "delete_success_message": "کشور با موفقیت حذف شد.",
+      "create_success_title": "کشور با موفقیت ایجاد شد",
+      "create_success_message": "کشور با موفقیت ایجاد شده است.",
+      "update_success_title": "کشور با موفقیت به‌روزرسانی شد",
+      "update_success_message": "کشور با موفقیت به‌روزرسانی شده است.",
+      "create_error_title": "خطا در ایجاد کشور",
+      "update_error_title": "خطا در به‌روزرسانی کشور",
+      "delete_error_title": "خطا در حذف کشور",
+      "table": {
+        "name": "نام کشور",
+        "code": "کد کشور",
+        "mobile_code": "کد موبایل",
+        "flag": "پرچم"
+      }
+    },
+    "provinces": {
+      "title": "مدیریت ولایات",
+      "create": "ایجاد ولایت",
+      "edit": "ویرایش ولایت",
+      "details": "جزئیات ولایت",
+      "search_placeholder": "جستجوی ولایات...",
+      "placeholder_en": "مثلا: Kabul",
+      "placeholder_ps": "کابل",
+      "placeholder_dr": "کابل",
+      "delete_confirmation_title": "حذف ولایت",
+      "delete_confirmation_message": "آیا مطمئن هستید که می‌خواهید ولایت \"{{name}}\" را حذف کنید؟ این عملیات قابل بازگشت نیست.",
+      "delete_success_title": "ولایت با موفقیت حذف شد",
+      "delete_success_message": "ولایت با موفقیت حذف شد.",
+      "create_success_title": "ولایت با موفقیت ایجاد شد",
+      "create_success_message": "ولایت با موفقیت ایجاد شده است.",
+      "update_success_title": "ولایت با موفقیت به‌روزرسانی شد",
+      "update_success_message": "ولایت با موفقیت به‌روزرسانی شده است.",
+      "create_error_title": "خطا در ایجاد ولایت",
+      "update_error_title": "خطا در به‌روزرسانی ولایت",
+      "delete_error_title": "خطا در حذف ولایت",
+      "table": {
+        "name": "نام ولایت",
+        "country": "کشور"
+      }
+    },
+    "districts": {
+      "title": "مدیریت ولسوالی‌ها",
+      "create": "ایجاد ولسوالی",
+      "edit": "ویرایش ولسوالی",
+      "details": "جزئیات ولسوالی",
+      "search_placeholder": "جستجوی ولسوالی‌ها...",
+      "placeholder_en": "مثلا: PD1",
+      "placeholder_ps": "۱ حوزه",
+      "placeholder_dr": "۱ حوزه",
+      "delete_confirmation_title": "حذف ولسوالی",
+      "delete_confirmation_message": "آیا مطمئن هستید که می‌خواهید ولسوالی \"{{name}}\" را حذف کنید؟ این عملیات قابل بازگشت نیست.",
+      "delete_success_title": "ولسوالی با موفقیت حذف شد",
+      "delete_success_message": "ولسوالی با موفقیت حذف شد.",
+      "create_success_title": "ولسوالی با موفقیت ایجاد شد",
+      "create_success_message": "ولسوالی با موفقیت ایجاد شده است.",
+      "update_success_title": "ولسوالی با موفقیت به‌روزرسانی شد",
+      "update_success_message": "ولسوالی با موفقیت به‌روزرسانی شده است.",
+      "create_error_title": "خطا در ایجاد ولسوالی",
+      "update_error_title": "خطا در به‌روزرسانی ولسوالی",
+      "delete_error_title": "خطا در حذف ولسوالی",
+      "table": {
+        "name": "نام ولسوالی",
+        "province": "ولایت"
+      }
+    },
+    "common": {
+      "name_en": "نام (انگلیسی)",
+      "name_ps": "نام (پشتو)",
+      "name_dr": "نام (دری)",
+      "actions": "عملیات",
+      "save": "ذخیره",
+      "cancel": "لغو",
+      "search_placeholder": "جستجو..."
+    }
+  }
+}

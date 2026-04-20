@@ -1,0 +1,19 @@
+{
+  "sidebar": {
+    "others": "سایر",
+    "ecommerce": "ای‌کامرس",
+    "form_elements": "اجزای فرم",
+    "blank_page": "صفحه خالی",
+    "error_404": "خطای 404",
+    "sign_in": "ورود",
+    "menu": "منو",
+    "main_menu": "منوی اصلی"
+  },
+  "form": {
+    "select_users": "کاربران را انتخاب کنید...",
+    "select_single_user": "یک کاربر را انتخاب کنید",
+    "select_users_async": "کاربران را به‌صورت همزمان انتخاب کنید...",
+    "select_users_async_multi": "انتخاب همزمان کاربران...",
+    "input_error": "این یک پیام خطا است"
+  }
+}

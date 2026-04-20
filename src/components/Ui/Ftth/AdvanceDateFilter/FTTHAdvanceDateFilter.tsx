@@ -106,7 +106,7 @@ const FTTHAdvanceFilterModal: React.FC<FTTHAdvanceFilterModalProps> = ({
       }
     });
     setFilterValues(defaults);
-  }, [isOpen, filterConfig, initialValues]);
+  }, [isOpen]); // Only initialize when modal opens
 
   const handleValueChange = useCallback((key: string, value: any) => {
     setFilterValues((prev) => ({ ...prev, [key]: value }));

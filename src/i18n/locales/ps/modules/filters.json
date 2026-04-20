@@ -1,0 +1,26 @@
+{
+  "dateFilter": {
+    "today": "نن",
+    "yesterday": "پرون",
+    "thisWeek": "دې اونۍ",
+    "lastWeek": "تېره اونۍ",
+    "thisMonth": "دې میاشت",
+    "lastMonth": "تېره میاشت",
+    "thisYear": "دې کال",
+    "lastYear": "تېر کال",
+    "allTime": "ټول وخت",
+    "cancel": "لغوه کړئ",
+    "apply": "پلي کړئ"
+  },
+  "advanceFilter": {
+    "title": "پرمخ فلټر",
+    "resetAll": "ټول بیاکول",
+    "cancel": "لغوه کړئ",
+    "applyFilters": "فلټرونه پلي کړئ",
+    "min": "لږ",
+    "max": "ډیر",
+    "selectOption": "یوoption وټاکئ",
+    "selectOptions": "optionونه وټاکئ",
+    "selected": "ټاکل شوی"
+  }
+}

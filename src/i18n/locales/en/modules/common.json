@@ -1,0 +1,27 @@
+{
+  "common": {
+    "dashboard": "Dashboard",
+    "calendar": "Calendar",
+    "forms": "Forms",
+    "pages": "Pages",
+    "authentication": "Authentication",
+    "settings": "Settings",
+    "profile": "Profile",
+    "logout": "Logout",
+    "search": "Search...",
+    "notifications": "Notifications",
+    "edit_profile": "Edit Profile",
+    "account_settings": "Account Settings",
+    "support": "Support",
+    "logout_all": "Logout all",
+    "logout_other": "Logout other sessions",
+    "required": "is required",
+    "no_data": "No data available",
+    "pagination": {
+      "showing": "Showing",
+      "to": "to",
+      "of": "of",
+      "results": "results"
+    }
+  }
+}

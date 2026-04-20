@@ -1,0 +1,101 @@
+{
+  "notification": {
+    "title": "Notification",
+    "view_all": "View All Notifications",
+    "requests_permission": " requests permission to change",
+    "project": "Project",
+    "minutes_ago": "{{count}} min ago",
+    "hours_ago": "{{count}} hr ago"
+  },
+  "locations": {
+    "countries": {
+      "title": "Country Management",
+      "create": "Create Country",
+      "edit": "Edit Country",
+      "details": "Country Details",
+      "search_placeholder": "Search countries...",
+      "placeholder_en": "e.g. Afghanistan",
+      "placeholder_ps": "افغانستان",
+      "placeholder_dr": "افغانستان",
+      "placeholder_code": "e.g. AF",
+      "placeholder_mobile": "e.g. 93",
+      "placeholder_flag": "Emoji or URL",
+      "delete_confirmation_title": "Delete Country",
+      "delete_confirmation_message": "Are you sure you want to delete country \"{{name}}\"? This action cannot be undone.",
+      "delete_success_title": "Country Deleted Successfully",
+      "delete_success_message": "The country has been deleted successfully.",
+      "create_success_title": "Country Created Successfully",
+      "create_success_message": "The country has been created successfully.",
+      "update_success_title": "Country Updated Successfully",
+      "update_success_message": "The country has been updated successfully.",
+      "create_error_title": "Error Creating Country",
+      "update_error_title": "Error Updating Country",
+      "delete_error_title": "Error Deleting Country",
+      "table": {
+        "name": "Country Name",
+        "code": "Country Code",
+        "mobile_code": "Mobile Code",
+        "flag": "Flag"
+      }
+    },
+    "provinces": {
+      "title": "Province Management",
+      "create": "Create Province",
+      "edit": "Edit Province",
+      "details": "Province Details",
+      "search_placeholder": "Search provinces...",
+      "placeholder_en": "e.g. Kabul",
+      "placeholder_ps": "کابل",
+      "placeholder_dr": "کابل",
+      "delete_confirmation_title": "Delete Province",
+      "delete_confirmation_message": "Are you sure you want to delete province \"{{name}}\"? This action cannot be undone.",
+      "delete_success_title": "Province Deleted Successfully",
+      "delete_success_message": "The province has been deleted successfully.",
+      "create_success_title": "Province Created Successfully",
+      "create_success_message": "The province has been created successfully.",
+      "update_success_title": "Province Updated Successfully",
+      "update_success_message": "The province has been updated successfully.",
+      "create_error_title": "Error Creating Province",
+      "update_error_title": "Error Updating Province",
+      "delete_error_title": "Error Deleting Province",
+      "table": {
+        "name": "Province Name",
+        "country": "Country"
+      }
+    },
+    "districts": {
+      "title": "District Management",
+      "create": "Create District",
+      "edit": "Edit District",
+      "details": "District Details",
+      "search_placeholder": "Search districts...",
+      "placeholder_en": "e.g. PD1",
+      "placeholder_ps": "۱ حوزه",
+      "placeholder_dr": "۱ حوزه",
+      "delete_confirmation_title": "Delete District",
+      "delete_confirmation_message": "Are you sure you want to delete district \"{{name}}\"? This action cannot be undone.",
+      "delete_success_title": "District Deleted Successfully",
+      "delete_success_message": "The district has been deleted successfully.",
+      "create_success_title": "District Created Successfully",
+      "create_success_message": "The district has been created successfully.",
+      "update_success_title": "District Updated Successfully",
+      "update_success_message": "The district has been updated successfully.",
+      "create_error_title": "Error Creating District",
+      "update_error_title": "Error Updating District",
+      "delete_error_title": "Error Deleting District",
+      "table": {
+        "name": "District Name",
+        "province": "Province"
+      }
+    },
+    "common": {
+      "name_en": "Name (English)",
+      "name_ps": "Name (Pashto)",
+      "name_dr": "Name (Dari)",
+      "actions": "Actions",
+      "save": "Save",
+      "cancel": "Cancel",
+      "search_placeholder": "Search..."
+    }
+  }
+}

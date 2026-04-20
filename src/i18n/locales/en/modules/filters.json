@@ -1,0 +1,26 @@
+{
+  "dateFilter": {
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "thisWeek": "This week",
+    "lastWeek": "Last week",
+    "thisMonth": "This month",
+    "lastMonth": "Last month",
+    "thisYear": "This year",
+    "lastYear": "Last year",
+    "allTime": "All time",
+    "cancel": "Cancel",
+    "apply": "Apply"
+  },
+  "advanceFilter": {
+    "title": "Advanced Filter",
+    "resetAll": "Reset All",
+    "cancel": "Cancel",
+    "applyFilters": "Apply Filters",
+    "min": "Min",
+    "max": "Max",
+    "selectOption": "Select option",
+    "selectOptions": "Select options",
+    "selected": "selected"
+  }
+}

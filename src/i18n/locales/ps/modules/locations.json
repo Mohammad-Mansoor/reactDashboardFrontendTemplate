@@ -1,0 +1,93 @@
+{
+  "locations": {
+    "countries": {
+      "title": "د هیوادونو مدیریت",
+      "create": "هیواد جوړ کړئ",
+      "edit": "هیواد ایډیټ کړئ",
+      "details": "د هیواد توضیحات",
+      "search_placeholder": "هیوادونه لټول...",
+      "placeholder_en": "مثلا: Afghanistan",
+      "placeholder_ps": "افغانستان",
+      "placeholder_dr": "افغانستان",
+      "placeholder_code": "مثلا: AF",
+      "placeholder_mobile": "مثلا: 93",
+      "placeholder_flag": "ایموجي یا یو آر ایل",
+      "delete_confirmation_title": "هیواد ړنګ کړئ",
+      "delete_confirmation_message": "ایا تاسو ډاډه یئ چې غواړئ هیواد \"{{name}}\" ړنګ کړئ؟ دا عملیات بېرته نه ستونل کیږي.",
+      "delete_success_title": "هیواد په بریالیتوب سره ړنګ شو",
+      "delete_success_message": "هیواد په بریالیتوب سره ړنګ شو.",
+      "create_success_title": "هیواد په بریالیتوب سره جوړ شو",
+      "create_success_message": "هیواد په بریالیتوب سره رامینځته شو.",
+      "update_success_title": "هیواد په بریالیتوب سره اپډیټ شو",
+      "update_success_message": "هیواد په بریالیتوب سره اپډیټ شو.",
+      "create_error_title": "د هیواد په جوړولو کې خطا",
+      "update_error_title": "د هیواد په اپډیټ کې خطا",
+      "delete_error_title": "د هیواد په ړنګولو کې خطا",
+      "table": {
+        "name": "د هیواد نوم",
+        "code": "د هیواد کوډ",
+        "mobile_code": "موبایل کوډ",
+        "flag": "بیرغ"
+      }
+    },
+    "provinces": {
+      "title": "د ولایتونو مدیریت",
+      "create": "ولایت جوړ کړئ",
+      "edit": "ولایت ایډیټ کړئ",
+      "details": "د ولایت توضیحات",
+      "search_placeholder": "ولایتونه لټول...",
+      "placeholder_en": "مثلا: Kabul",
+      "placeholder_ps": "کابل",
+      "placeholder_dr": "کابل",
+      "delete_confirmation_title": "ولایت ړنګ کړئ",
+      "delete_confirmation_message": "ایا تاسو ډاډه یئ چې غواړئ ولایت \"{{name}}\" ړنګ کړئ؟ دا عملیات بېرته نه ستونل کیږي.",
+      "delete_success_title": "ولایت په بریالیتوب سره ړنګ شو",
+      "delete_success_message": "ولایت په بریالیتوب سره ړنګ شو.",
+      "create_success_title": "ولایت په بریالیتوب سره جوړ شو",
+      "create_success_message": "ولایت په بریالیتوب سره رامینځته شو.",
+      "update_success_title": "ولایت په بریالیتوب سره اپډیټ شو",
+      "update_success_message": "ولایت په بریالیتوب سره اپډیټ شو.",
+      "create_error_title": "د ولایت په جوړولو کې خطا",
+      "update_error_title": "د ولایت په اپډیټ کې خطا",
+      "delete_error_title": "د ولایت په ړنګولو کې خطا",
+      "table": {
+        "name": "د ولایت نوم",
+        "country": "هیواد"
+      }
+    },
+    "districts": {
+      "title": "د ولسوالیو مدیریت",
+      "create": "ولسوالی جوړ کړئ",
+      "edit": "ولسوالی ایډیټ کړئ",
+      "details": "د ولسوالۍ توضیحات",
+      "search_placeholder": "ولسوالۍ لټول...",
+      "placeholder_en": "مثلا: PD1",
+      "placeholder_ps": "۱ حوزه",
+      "placeholder_dr": "۱ حوزه",
+      "delete_confirmation_title": "ولسوالی ړنګ کړئ",
+      "delete_confirmation_message": "ایا تاسو ډاډه یئ چې غواړئ ولسوالی \"{{name}}\" ړنګ کړئ؟ دا عملیات بېرته نه ستونل کیږي.",
+      "delete_success_title": "ولسوالی په بریالیتوب سره ړنګ شو",
+      "delete_success_message": "ولسوالی په بریالیتوب سره ړنګ شو.",
+      "create_success_title": "ولسوالی په بریالیتوب سره جوړ شو",
+      "create_success_message": "ولسوالی په بریالیتوب سره رامینځته شو.",
+      "update_success_title": "ولسوالی په بریالیتوب سره اپډیټ شو",
+      "update_success_message": "ولسوالی په بریالیتوب سره اپډیټ شو.",
+      "create_error_title": "د ولسوالۍ په جوړولو کې خطا",
+      "update_error_title": "د ولسوالۍ په اپډیټ کې خطا",
+      "delete_error_title": "د ولسوالۍ په ړنګولو کې خطا",
+      "table": {
+        "name": "د ولسوالۍ نوم",
+        "province": "ولایت"
+      }
+    },
+    "common": {
+      "name_en": "نوم (انګلیسي)",
+      "name_ps": "نوم (پښتو)",
+      "name_dr": "نوم (دري)",
+      "actions": "عملیات",
+      "save": "ساتل",
+      "cancel": "لغوه کړئ",
+      "search_placeholder": "لټون..."
+    }
+  }
+}

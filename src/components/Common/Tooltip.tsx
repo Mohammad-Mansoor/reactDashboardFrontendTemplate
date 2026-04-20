@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
  * Tooltip Component
  * Uses Portals to prevent clipping and ARIA roles for accessibility.
  */
-const Tooltip = ({ children, text, position = "right", disabled = false }) => {
+const Tooltip = ({ children, text, position = "right", disabled = false, className = "" }) => {
   const [show, setShow] = useState(false);
   const [coords, setCoords] = useState({ top: 0, left: 0 });
   const triggerRef = useRef(null);
@@ -28,7 +28,7 @@ const Tooltip = ({ children, text, position = "right", disabled = false }) => {
   return (
     <div
       ref={triggerRef}
-      className="inline-flex items-center w-full"
+      className={`flex items-center w-full ${className}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={() => setShow(false)}
       onFocus={handleMouseEnter}

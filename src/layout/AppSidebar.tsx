@@ -1,325 +1,271 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { useCallback, useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import {
-  ChevronDownIcon,
-  GridIcon,
-  HorizontaLDots,
-  PlugInIcon,
-  BoxCubeIcon,
-} from "../icons";
+import React, { useEffect, useMemo, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { 
+  X, 
+  Menu,
+  ChevronRight,
+  MoreHorizontal,
+  LayoutGrid,
+  Settings,
+  User,
+  Headset,
+  LogOut,
+  ArrowLeft,
+  ChevronLeft,
+  ShieldCheck,
+  History
+} from "lucide-react";
+
 import { useSidebar } from "../context/SidebarContext";
-import Tooltip from "../components/Common/Tooltip";
+import { usePermissions } from "../context/PermissionsContext";
+import { MENU_CONFIG } from "../constants/menuConfig";
+import { filterMenuItems, getActiveParentIds } from "../utils/sidebarUtils";
+import SidebarGroup from "./Sidebar/SidebarGroup";
+import { AppDispatch } from "../store/store";
+import { logoutUser, logoutAll, logoutOther } from "../store/slices/authSlice";
+import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 
-const AppSidebar = () => {
-  const { t } = useTranslation();
-  const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
-
-  const navItems = [
-    {
-      icon: <GridIcon />,
-      name: t("common.dashboard"),
-      subItems: [{ name: t("sidebar.ecommerce"), path: "/", pro: false }],
-    },
-    {
-      icon: <BoxCubeIcon />,
-      name: "UI Components",
-      path: "/components",
-    },
-    {
-      icon: <GridIcon />,
-      name: "Table Premium",
-      path: "/table-demo",
-    },
-    {
-      icon: <GridIcon />,
-      name: "Transitions Demo",
-      path: "/demo/items",
-    },
-  ];
-
-  const othersItems = [
-    {
-      icon: <PlugInIcon />,
-      name: t("common.authentication"),
-      subItems: [{ name: t("sidebar.sign_in"), path: "/signin", pro: false }],
-    },
-  ];
-
+const AppSidebar: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
+  const { t } = useTranslation();
+  
+  const { 
+    isExpanded, 
+    isMobileOpen, 
+    isHovered, 
+    setIsHovered, 
+    toggleMobileSidebar,
+    setOpenItemIds,
+    openItemIds
+  } = useSidebar();
+  
+  const { permissions } = usePermissions();
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
-  const [openSubmenu, setOpenSubmenu] = useState(null);
-  const [subMenuHeight, setSubMenuHeight] = useState({});
-  const subMenuRefs = useRef({});
+  // 1. Filter items based on RBAC
+  const filteredNavItems = useMemo(() => {
+    return filterMenuItems(MENU_CONFIG, permissions);
+  }, [permissions]);
 
-  const isActive = useCallback(
-    (path) => location.pathname === path,
-    [location.pathname],
-  );
-
+  // 2. Auto-expand parents on route change
   useEffect(() => {
-    let submenuMatched = false;
-    ["main", "others"].forEach((menuType) => {
-      const items = menuType === "main" ? navItems : othersItems;
-      items.forEach((nav, index) => {
-        if (nav.subItems) {
-          nav.subItems.forEach((subItem) => {
-            if (isActive(subItem.path)) {
-              setOpenSubmenu({
-                type: menuType,
-                index,
-              });
-              submenuMatched = true;
-            }
-          });
-        }
-      });
-    });
-
-    if (!submenuMatched) {
-      setOpenSubmenu(null);
+    const parentIds = getActiveParentIds(filteredNavItems, location.pathname);
+    if (parentIds.length > 0) {
+      setOpenItemIds(Array.from(new Set([...openItemIds, ...parentIds])));
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location, isActive]);
+  }, [location.pathname, filteredNavItems]);
 
-  useEffect(() => {
-    if (openSubmenu !== null) {
-      const key = `${openSubmenu.type}-${openSubmenu.index}`;
-      if (subMenuRefs.current[key]) {
-        setSubMenuHeight((prevHeights) => ({
-          ...prevHeights,
-          [key]: subMenuRefs.current[key]?.scrollHeight || 0,
-        }));
-      }
-    }
-  }, [openSubmenu]);
+  const isActuallyExpanded = isExpanded || isHovered || isMobileOpen;
 
-  const handleSubmenuToggle = (index, menuType) => {
-    setOpenSubmenu((prevOpenSubmenu) => {
-      if (
-        prevOpenSubmenu &&
-        prevOpenSubmenu.type === menuType &&
-        prevOpenSubmenu.index === index
-      ) {
-        return null;
-      }
-      return { type: menuType, index };
-    });
+  const handleLogout = async () => {
+    await dispatch(logoutUser());
+    navigate("/signin");
   };
 
-  const renderMenuItems = (items, menuType) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const { i18n } = useTranslation();
-    const rtlLangs = ["fa", "ps", "dr"];
-    const isRtl = rtlLangs.includes(i18n.language);
-    const tooltipPosition = isRtl ? "left" : "right";
-
-    return (
-      <ul className="flex flex-col gap-4">
-        {items.map((nav, index) => (
-          <li key={nav.name}>
-            <Tooltip
-              text={nav.name}
-              disabled={isExpanded || isMobileOpen}
-              position={tooltipPosition}
-            >
-              {nav.subItems ? (
-                <button
-                  onClick={() => handleSubmenuToggle(index, menuType)}
-                  className={`menu-item group ${openSubmenu?.type === menuType &&
-                      openSubmenu?.index === index
-                      ? "menu-item-active"
-                      : "menu-item-inactive"
-                    } cursor-pointer ${!isExpanded && !isHovered
-                      ? "lg:justify-center"
-                      : "lg:justify-start"
-                    }`}
-                >
-                  <span
-                    className={`menu-item-icon-size  ${openSubmenu?.type === menuType &&
-                        openSubmenu?.index === index
-                        ? "menu-item-icon-active"
-                        : "menu-item-icon-inactive"
-                      }`}
-                  >
-                    {nav.icon}
-                  </span>
-                  {(isExpanded || isMobileOpen) && (
-                    <span className="menu-item-text">{nav.name}</span>
-                  )}
-                  {(isExpanded || isMobileOpen) && (
-                    <ChevronDownIcon
-                      className={`ms-auto w-5 h-5 transition-transform duration-200 ${openSubmenu?.type === menuType &&
-                          openSubmenu?.index === index
-                          ? "rotate-180 text-brand-500"
-                          : ""
-                        }`}
-                    />
-                  )}
-                </button>
-              ) : (
-                nav.path && (
-                  <Link
-                    to={nav.path}
-                    className={`menu-item group ${isActive(nav.path)
-                        ? "menu-item-active"
-                        : "menu-item-inactive"
-                      }`}
-                  >
-                    <span
-                      className={`menu-item-icon-size ${isActive(nav.path)
-                          ? "menu-item-icon-active"
-                          : "menu-item-icon-inactive"
-                        }`}
-                    >
-                      {nav.icon}
-                    </span>
-                    {(isExpanded || isMobileOpen) && (
-                      <span className="menu-item-text">{nav.name}</span>
-                    )}
-                  </Link>
-                )
-              )}
-            </Tooltip>
-
-            {/* SUB-MENU: Keep this OUTSIDE the Tooltip wrapper */}
-            {nav.subItems && (isExpanded || isMobileOpen) && (
-              <div
-                ref={(el) => {
-                  subMenuRefs.current[`${menuType}-${index}`] = el;
-                }}
-                className="overflow-hidden transition-all duration-300"
-                style={{
-                  height:
-                    openSubmenu?.type === menuType &&
-                      openSubmenu?.index === index
-                      ? `${subMenuHeight[`${menuType}-${index}`]}px`
-                      : "0px",
-                }}
-              >
-                <ul className="mt-2 space-y-1 ms-9">
-                  {nav.subItems.map((subItem) => (
-                    <li key={subItem.name}>
-                      <Link
-                        to={subItem.path}
-                        className={`menu-dropdown-item ${isActive(subItem.path)
-                            ? "menu-dropdown-item-active"
-                            : "menu-dropdown-item-inactive"
-                          }`}
-                      >
-                        {subItem.name}
-                        <span className="flex items-center gap-1 ms-auto">
-                          {subItem.new && (
-                            <span
-                              className={`ms-auto ${isActive(subItem.path)
-                                  ? "menu-dropdown-badge-active"
-                                  : "menu-dropdown-badge-inactive"
-                                } menu-dropdown-badge`}
-                            >
-                              new
-                            </span>
-                          )}
-                          {subItem.pro && (
-                            <span
-                              className={`ms-auto ${isActive(subItem.path)
-                                  ? "menu-dropdown-badge-active"
-                                  : "menu-dropdown-badge-inactive"
-                                } menu-dropdown-badge`}
-                            >
-                              pro
-                            </span>
-                          )}
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </li>
-        ))}
-      </ul>
-    );
+  const menuVariants = {
+    initial: { x: -20, opacity: 0 },
+    animate: { x: 0, opacity: 1 },
+    exit: { x: 20, opacity: 0 }
   };
+
+  const userMenuVariants = {
+    initial: { y: 20, opacity: 0 },
+    animate: { y: 0, opacity: 1 },
+    exit: { y: 20, opacity: 0 }
+  };
+
   return (
-    <aside
-      className={`app-sidebar fixed mt-[72px] lg:mt-0 flex flex-col top-0 px-4 start-0 bg-white dark:bg-gray-900 dark:border-slate-800 text-slate-800 dark:text-slate-200 h-screen transition-all duration-300 ease-in-out z-[888] border-e border-slate-200 shadow-sm
-        ${isExpanded || isMobileOpen ? "w-[250px]" : "w-[90px]"}
-        ${isMobileOpen
-          ? "translate-x-0"
-          : "ltr:-translate-x-full rtl:translate-x-full"
-        }
-        lg:translate-x-0 ltr:lg:translate-x-0 rtl:lg:translate-x-0`}
-      onMouseEnter={() => !isExpanded && setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <div
-        className={`py-1 flex ${!isExpanded && !isHovered ? "lg:justify-center" : "justify-center"
-          }`}
+    <>
+      <AnimatePresence>
+        {isMobileOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={toggleMobileSidebar}
+            className="fixed inset-0 z-[887] bg-slate-900/60 backdrop-blur-sm lg:hidden transition-all duration-500"
+          />
+        )}
+      </AnimatePresence>
+
+      <aside
+        id="app-sidebar"
+        className={`app-sidebar fixed flex flex-col top-0 start-0 h-screen transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] z-[888] overflow-x-hidden
+          bg-white dark:bg-[#070b14] border-e border-slate-200 dark:border-white/5 shadow-[20px_0_40px_-20px_rgba(0,0,0,0.05)]
+          ${isActuallyExpanded ? "w-[240px]" : "w-[72px]"}
+          ${isMobileOpen ? "translate-x-0" : "max-lg:ltr:-translate-x-full max-lg:rtl:translate-x-full lg:translate-x-0"}`}
+        onMouseEnter={() => !isExpanded && setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
-        <Link to="/">
-          {isExpanded || isMobileOpen ? (
-            <>
-              <img
-                className="dark:hidden"
-                src="/images/logo/Qalam-logo.png"
-                alt="Logo"
-                width={150}
-                height={40}
-              />
-              <img
-                className="hidden dark:block"
-                src="/images/logo/Qalam-logo.png"
-                alt="Logo"
-                width={150}
-                height={40}
-              />
-            </>
-          ) : (
-            <img
-              src="/images/logo/Qalam-logo.png"
-              alt="Logo"
-              width={32}
-              height={32}
-            />
-          )}
-        </Link>
-      </div>
-      <div className="flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar">
-        <nav className="mb-6">
-          <div className="flex flex-col gap-4">
-            <div>
-              <h2
-                className={`mb-4 text-xs uppercase flex leading-[20px] text-gray-400 ${!isExpanded ? "lg:justify-center" : "justify-start"
-                  }`}
-              >
-                {isExpanded || isMobileOpen ? (
-                  t("sidebar.menu")
-                ) : (
-                  <HorizontaLDots className="size-6" />
-                )}
-              </h2>
-              {renderMenuItems(navItems, "main")}
+        {/* Sidebar Header / Logo */}
+        <div className="h-[72px] flex items-center px-6 border-b border-dashed border-slate-100 dark:border-white/5 mb-4 shrink-0 overflow-hidden">
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className={`w-9 h-9 rounded-xl bg-gradient-to-br from-primary1 to-primary2 flex items-center justify-center shadow-lg shadow-primary1/20 transition-transform duration-500 group-hover:rotate-12 shrink-0`}>
+               <LayoutGrid className="text-white" size={20} />
             </div>
-            <div className="">
-              <h2
-                className={`mb-4 text-xs uppercase flex leading-[20px] text-gray-400 ${!isExpanded ? "lg:justify-center" : "justify-start"
-                  }`}
+            {isActuallyExpanded && (
+              <motion.div
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="flex flex-col whitespace-nowrap"
               >
-                {isExpanded || isMobileOpen ? (
-                  t("sidebar.others", "Others")
-                ) : (
-                  <HorizontaLDots />
+                <span className="text-base font-black tracking-tight text-slate-900 dark:text-white uppercase leading-tight">Qalam</span>
+                <span className="text-[9px] font-bold text-primary1 uppercase tracking-[0.2em] leading-tight">Healthcare</span>
+              </motion.div>
+            )}
+          </Link>
+        </div>
+
+        {/* Dynamic Content Area: Nav OR User Menu */}
+        <div className="flex-1 overflow-y-auto no-scrollbar py-2 relative overflow-x-hidden">
+          <AnimatePresence mode="wait">
+            {!isUserMenuOpen ? (
+              <motion.div
+                key="nav"
+                variants={menuVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                transition={{ duration: 0.2 }}
+                className="w-full"
+              >
+                <div className={`px-6 mb-4 flex items-center ${!isActuallyExpanded ? "justify-center" : "justify-between"}`}>
+                  {isActuallyExpanded ? (
+                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-white/20">Menu</span>
+                  ) : (
+                    <MoreHorizontal className="text-slate-300 dark:text-white/10" size={20} />
+                  )}
+                </div>
+                <nav className="">
+                  <SidebarGroup items={filteredNavItems} />
+                </nav>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="user-menu"
+                variants={userMenuVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                transition={{ duration: 0.2 }}
+                className="w-full px-4"
+              >
+                {/* Back Button */}
+                <button 
+                  onClick={() => setIsUserMenuOpen(false)}
+                  className="flex items-center gap-2 w-full px-3 py-2 text-primary1 hover:bg-primary1/10 rounded-lg transition-colors mb-6 group"
+                >
+                  <ChevronLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
+                  <span className="text-xs font-black uppercase tracking-widest">Back to Menu</span>
+                </button>
+
+                <div className="space-y-1">
+                  <span className="px-3 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-white/20 block mb-3">Account</span>
+                  
+                  <UserMenuItem 
+                    icon={<User size={18} />} 
+                    label={t("common.edit_profile")} 
+                    onClick={() => { navigate("/profile"); setIsUserMenuOpen(false); }} 
+                    expanded={isActuallyExpanded}
+                  />
+                  <UserMenuItem 
+                    icon={<Settings size={18} />} 
+                    label={t("common.account_settings")} 
+                    onClick={() => { navigate("/settings/account/security"); setIsUserMenuOpen(false); }} 
+                    expanded={isActuallyExpanded}
+                  />
+                  <UserMenuItem 
+                    icon={<Headset size={18} />} 
+                    label={t("common.support")} 
+                    onClick={() => setIsUserMenuOpen(false)} 
+                    expanded={isActuallyExpanded}
+                  />
+                  
+                  <div className="pt-4 mt-4 border-t border-slate-100 dark:border-white/5">
+                    <UserMenuItem 
+                      icon={<LogOut size={18} />} 
+                      label={t("common.logout")} 
+                      onClick={handleLogout} 
+                      expanded={isActuallyExpanded}
+                      variant="danger"
+                    />
+                    <UserMenuItem 
+                      icon={<ShieldCheck size={18} />} 
+                      label={t("common.logout_all")} 
+                      onClick={async () => { await dispatch(logoutAll()); navigate("/signin"); }} 
+                      expanded={isActuallyExpanded}
+                      variant="danger"
+                    />
+                    <UserMenuItem 
+                      icon={<History size={18} />} 
+                      label={t("common.logout_other")} 
+                      onClick={async () => { await dispatch(logoutOther()); toast.success("Other sessions logged out"); setIsUserMenuOpen(false); }} 
+                      expanded={isActuallyExpanded}
+                      variant="danger"
+                    />
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* Sidebar Footer - User Profile Preview */}
+        <div className="p-4 mt-auto border-t border-slate-50 dark:border-white/5 bg-slate-50/50 dark:bg-white/2 shrink-0">
+            <div 
+              onClick={() => setIsUserMenuOpen(true)}
+              className={`flex items-center gap-3 cursor-pointer group/footer transition-all ${!isActuallyExpanded ? "justify-center" : "hover:bg-slate-100 dark:hover:bg-white/5 p-1 rounded-xl"}`}
+            >
+                <div className="relative shrink-0">
+                  <div className="w-9 h-9 rounded-full bg-slate-200 dark:bg-white/10 border-2 border-white dark:border-white/5 overflow-hidden shadow-sm transition-transform group-hover/footer:scale-105">
+                      <img src="/images/user/owner.jpg" alt="User" />
+                  </div>
+                  <div className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-white dark:border-[#070b14] rounded-full" />
+                </div>
+                
+                {isActuallyExpanded && (
+                  <div className="flex flex-col flex-1 min-w-0">
+                    <span className="text-sm font-bold text-slate-900 dark:text-white truncate">Musharof</span>
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider truncate">Administrator</span>
+                  </div>
                 )}
-              </h2>
-              {renderMenuItems(othersItems, "others")}
+                
+                {isActuallyExpanded && (
+                  <div className="p-1.5 text-slate-400 group-hover/footer:text-primary1 transition-colors">
+                     <Settings size={16} className={`${isUserMenuOpen ? 'rotate-90' : ''} transition-transform duration-300`} />
+                  </div>
+                )}
             </div>
-          </div>
-        </nav>
-      </div>
-    </aside>
+        </div>
+      </aside>
+    </>
   );
 };
+
+interface UserMenuItemProps {
+  icon: React.ReactNode;
+  label: string;
+  onClick: () => void;
+  expanded: boolean;
+  variant?: "default" | "danger";
+}
+
+const UserMenuItem: React.FC<UserMenuItemProps> = ({ icon, label, onClick, expanded, variant = "default" }) => (
+  <button
+    onClick={onClick}
+    className={`flex items-center gap-3 w-full px-3 py-2.5 rounded-lg transition-all duration-200 group
+      ${variant === "danger" 
+        ? "text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10" 
+        : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-slate-900 dark:hover:text-white"}`}
+  >
+    <div className="shrink-0">{icon}</div>
+    {expanded && <span className="text-sm font-bold truncate">{label}</span>}
+  </button>
+);
 
 export default AppSidebar;

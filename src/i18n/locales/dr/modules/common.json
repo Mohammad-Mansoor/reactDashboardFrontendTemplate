@@ -1,0 +1,25 @@
+{
+  "common": {
+    "calendar": "تقویم",
+    "forms": "فرم‌ها",
+    "pages": "صفحه‌ها",
+    "authentication": "احراز هویت",
+    "dashboard": "داشبورد",
+    "settings": "تنظیمات",
+    "profile": "پروفایل",
+    "logout": "خروج",
+    "search": "جستجو...",
+    "notifications": "اعلان‌ها",
+    "edit_profile": "ویرایش پروفایل",
+    "account_settings": "تنظیمات حساب",
+    "support": "پشتیبانی",
+    "required": "الزامی است",
+    "no_data": "هیچ داده‌ای در دسترس نیست",
+    "pagination": {
+      "showing": "نمایش",
+      "to": "تا",
+      "of": "از",
+      "results": "نتایج"
+    }
+  }
+}

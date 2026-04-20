@@ -1,0 +1,96 @@
+{
+  "users": {
+    "title": "Users Management",
+    "search_placeholder": "Search by name or email...",
+    "filter": "Filter",
+    "filter_count": "Filter ({{count}})",
+    "date_filter": "Date Filter",
+    "clear": "Clear",
+    "create_user": "Create User",
+    "active_filters": "Active Filters:",
+    "search_label": "Search:",
+    "role_label": "Role:",
+    "status_label": "Status:",
+    "dept_label": "Dept:",
+    "id_label": "ID:",
+    "date_label": "Date:",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "delete_confirmation_title": "Delete User",
+    "delete_confirmation_message": "Are you sure you want to delete user \"{{name}}\"? This action cannot be undone.",
+    "delete_success_title": "User Deleted Successfully",
+    "delete_success_message": "The user has been deleted successfully.",
+    "delete_error_title": "Error Deleting User",
+    "table": {
+      "id": "ID",
+      "full_name": "Full Name",
+      "name": "Name",
+      "email": "Email",
+      "role": "Role",
+      "status": "Status",
+      "department": "Department",
+      "created_at": "Created At",
+      "updated_at": "Updated At",
+      "actions": "Actions"
+    },
+    "actions": {
+      "details": "Details",
+      "view": "View",
+      "edit": "Edit",
+      "edit_user": "Edit User",
+      "delete": "Delete"
+    },
+    "details_subtitle": "Profile and Account details for {{name}}",
+    "first_name_en": "First Name (English)",
+    "first_name_ps": "First Name (Pashto)",
+    "first_name_dr": "First Name (Dari)",
+    "last_name_en": "Last Name (English)",
+    "last_name_ps": "Last Name (Pashto)",
+    "last_name_dr": "Last Name (Dari)",
+    "gender": "Gender",
+    "gender_options": {
+      "male": "Male",
+      "female": "Female",
+      "other": "Other"
+    },
+    "preferred_lang": "Preferred Language",
+    "whatsapp": "WhatsApp Number",
+    "telegram": "Telegram Username",
+    "country": "Country",
+    "province": "Province",
+    "district": "District",
+    "contact_location": "Contact & Location",
+    "account_info": "Account Information",
+    "profile_info": "Profile Information",
+    "validation": {
+      "email_or_phone_required": "Email or Phone is required"
+    },
+    "filters": {
+      "user_role": "User Role",
+      "account_status": "Account Status",
+      "department": "Department",
+      "user_id_range": "User ID Range"
+    },
+    "roles": {
+      "admin": "Admin",
+      "manager": "Manager",
+      "user": "User",
+      "guest": "Guest",
+      "super_admin": "Super Admin"
+    },
+    "statuses": {
+      "active": "Active",
+      "inactive": "Inactive",
+      "pending": "Pending",
+      "suspended": "Suspended"
+    },
+    "departments": {
+      "engineering": "Engineering",
+      "marketing": "Marketing",
+      "sales": "Sales",
+      "hr": "Human Resources",
+      "finance": "Finance",
+      "operations": "Operations"
+    }
+  }
+}

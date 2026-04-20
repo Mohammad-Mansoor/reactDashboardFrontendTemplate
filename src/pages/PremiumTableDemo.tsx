@@ -123,7 +123,22 @@ export default function PremiumTableDemo() {
       }
     }
   ], []);
-  console.log("active filters ❤️❤️❤️", activeFilters)
+  const checkHasValue = (value: any) => {
+    if (value === null || value === undefined) return false;
+    if (typeof value === "string") return value.trim() !== "";
+    if (typeof value === "number") return true;
+    if (Array.isArray(value)) return value.length > 0;
+    if (typeof value === "object") {
+      return Object.values(value).some((v) => v !== null && v !== "" && v !== undefined);
+    }
+    return !!value;
+  };
+
+  const hasAnyActiveFilter = useMemo(() => {
+    return Object.values(activeFilters).some(checkHasValue);
+  }, [activeFilters]);
+
+  console.log("active filters ❤️❤️❤️", activeFilters);
 
   // Logic to filter and slice data for demo purposes (mimicking backend)
   const filteredData = useMemo(() => {
@@ -215,7 +230,7 @@ export default function PremiumTableDemo() {
 
         {/* 🔵 ACTIVE FILTER CHIPS (The Magic) */}
         <AnimatePresence>
-          {Object.keys(activeFilters).length > 0 && (
+          {hasAnyActiveFilter && (
             <motion.div 
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -224,15 +239,7 @@ export default function PremiumTableDemo() {
             >
               <span className="text-[10px] font-black text-slate-400 dark:text-white/20 uppercase tracking-[0.2em] mr-2">Active Filters:</span>
               {Object.entries(activeFilters).map(([key, value]) => {
-                // Determine if this filter has a real value (Senior UX rule: don't show empty filters)
-                let hasValue = false;
-                if (typeof value === 'string' && value !== "") hasValue = true;
-                if (typeof value === 'number') hasValue = true;
-                if (typeof value === 'object' && value !== null) {
-                   if (value.value || value.start || value.end || value.min || value.label) hasValue = true;
-                }
-                
-                if (!hasValue) return null;
+                if (!checkHasValue(value)) return null;
                 
                 let chipLabel = "";
                 // Mapping labels based on the specific keys in our Table Demo
@@ -316,6 +323,7 @@ export default function PremiumTableDemo() {
           isOpen={isFilterOpen}
           onClose={() => setIsFilterOpen(false)}
           filterConfig={filterConfigs}
+          initialValues={activeFilters}
           onApply={(vals) => {
             console.log("PARENT onApply received:", vals);
             setActiveFilters(vals);

@@ -1,0 +1,96 @@
+{
+  "users": {
+    "title": "مدیریت کاربران",
+    "search_placeholder": "بر اساس نام یا ایمیل جستجو کنید...",
+    "filter": "فیلتر",
+    "filter_count": "فیلتر ({{count}})",
+    "date_filter": "فیلتر تاریخ",
+    "clear": "پاک کردن",
+    "create_user": "ایجاد کاربر",
+    "active_filters": "فیلترهای فعال:",
+    "search_label": "جستجو:",
+    "role_label": "نقش:",
+    "status_label": "وضعیت:",
+    "dept_label": "دپارتمان:",
+    "id_label": "شناسه:",
+    "date_label": "تاریخ:",
+    "delete": "حذف",
+    "cancel": "لغو",
+    "delete_confirmation_title": "حذف کاربر",
+    "delete_confirmation_message": "آیا مطمئن هستید که می‌خواهید کاربر \"{{name}}\" را حذف کنید؟ این عملیات قابل بازگشت نیست.",
+    "delete_success_title": "کاربر با موفقیت حذف شد",
+    "delete_success_message": "کاربر با موفقیت حذف شد.",
+    "delete_error_title": "خطا در حذف کاربر",
+    "table": {
+      "id": "شناسه",
+      "full_name": "نام کامل",
+      "name": "نام",
+      "email": "ایمیل",
+      "role": "نقش",
+      "status": "وضعیت",
+      "department": "دپارتمان",
+      "created_at": "تاریخ ایجاد",
+      "updated_at": "تاریخ به‌روزرسانی",
+      "actions": "عملیات"
+    },
+    "actions": {
+      "details": "جزئیات",
+      "view": "مشاهده",
+      "edit": "ویرایش",
+      "edit_user": "ویرایش کاربر",
+      "delete": "حذف"
+    },
+    "details_subtitle": "جزئیات پروفایل و حساب برای {{name}}",
+    "first_name_en": "نام (انگلیسی)",
+    "first_name_ps": "نام (پشتو)",
+    "first_name_dr": "نام (دری)",
+    "last_name_en": "تخلص (انگلیسی)",
+    "last_name_ps": "تخلص (پشتو)",
+    "last_name_dr": "تخلص (دری)",
+    "gender": "جنسیت",
+    "gender_options": {
+      "male": "مرد",
+      "female": "زن",
+      "other": "سایر"
+    },
+    "preferred_lang": "زبان مورد علاقه",
+    "whatsapp": "شماره واتساپ",
+    "telegram": "نام کاربری تلگرام",
+    "country": "کشور",
+    "province": "ولایت",
+    "district": "ولسوالی/ناحیه",
+    "contact_location": "تماس و موقعیت",
+    "account_info": "اطلاعات حساب",
+    "profile_info": "اطلاعات پروفایل",
+    "validation": {
+      "email_or_phone_required": "ایمیل یا شماره تلفن الزامی است"
+    },
+    "filters": {
+      "user_role": "نقش کاربر",
+      "account_status": "وضعیت حساب",
+      "department": "دپارتمان",
+      "user_id_range": "محدوده شناسه کاربر"
+    },
+    "roles": {
+      "admin": "مدیر",
+      "manager": "مدیرعامل",
+      "user": "کاربر",
+      "guest": "میهمان",
+      "super_admin": "مدیر ارشد"
+    },
+    "statuses": {
+      "active": "فعال",
+      "inactive": "غیرفعال",
+      "pending": "در انتظار",
+      "suspended": "تعلیق شده"
+    },
+    "departments": {
+      "engineering": "فنی",
+      "marketing": "بازاریابی",
+      "sales": "فروش",
+      "hr": "منابع انسانی",
+      "finance": "مالی",
+      "operations": "عملیات"
+    }
+  }
+}

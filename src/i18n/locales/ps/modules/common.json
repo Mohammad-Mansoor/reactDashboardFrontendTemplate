@@ -1,0 +1,25 @@
+{
+  "common": {
+    "calendar": "کلیندر",
+    "forms": "فورمونه",
+    "pages": "پاڼې",
+    "authentication": "تصدیق",
+    "dashboard": "ډشبورډ",
+    "settings": "ترتیبات",
+    "profile": "پروفایل",
+    "logout": "وتل",
+    "search": "لټون...",
+    "notifications": "خبرتیاوې",
+    "edit_profile": "پروفایل ایډیټ کړئ",
+    "account_settings": "د حساب ترتیبات",
+    "support": "ملاتړ",
+    "required": "اړین دی",
+    "no_data": "هیڅ ډاټا شتون نلري",
+    "pagination": {
+      "showing": "ښودل",
+      "to": "تر",
+      "of": "څخه",
+      "results": "پایلې"
+    }
+  }
+}

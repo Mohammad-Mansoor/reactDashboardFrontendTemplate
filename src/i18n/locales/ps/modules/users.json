@@ -1,0 +1,96 @@
+{
+  "users": {
+    "title": "د کاروونکو مدیریت",
+    "search_placeholder": "د نوم یا ایمیل له مخې لټون کړئ...",
+    "filter": "فلټر",
+    "filter_count": "فلټر ({{count}})",
+    "date_filter": "نیټه فلټر",
+    "clear": "پاک کړئ",
+    "create_user": "کاروونکی جوړ کړئ",
+    "active_filters": "فعال فلټرونه:",
+    "search_label": "لټون:",
+    "role_label": "رول:",
+    "status_label": "حالت:",
+    "dept_label": "څانګه:",
+    "id_label": "ID:",
+    "date_label": "نیټه:",
+    "delete": "ړنګول",
+    "cancel": "لغوه کړئ",
+    "delete_confirmation_title": "کاروونکی ړنګ کړئ",
+    "delete_confirmation_message": "ایا تاسو ډاډه یئ چې غواړئ کاروونکی \"{{name}}\" ړنګ کړئ؟ دا عملیات بېرته نه ستونل کیږي.",
+    "delete_success_title": "کاروونکی په بریالیتوب سره ړنګ شو",
+    "delete_success_message": "کاروونکی په بریالیتوب سره ړنګ شو.",
+    "delete_error_title": "د کاروونکی په ړنګولو کې خطا",
+    "table": {
+      "id": "ID",
+      "full_name": "بشپړ نوم",
+      "name": "نوم",
+      "email": "ایمیل",
+      "role": "رول",
+      "status": "حالت",
+      "department": "څانګه",
+      "created_at": "د جوړېدو نیټه",
+      "updated_at": "د اپډیټ نیټه",
+      "actions": "عملیات"
+    },
+    "actions": {
+      "details": "تفصیلات",
+      "view": "وګورئ",
+      "edit": "ایډیټ کړئ",
+      "edit_user": "کاروونکی ایډیټ کړئ",
+      "delete": "ړنګول"
+    },
+    "details_subtitle": "د {{name}} لپاره د پروفایل او حساب تفصیلات",
+    "first_name_en": "نوم (انګلیسي)",
+    "first_name_ps": "نوم (پښتو)",
+    "first_name_dr": "نوم (دري)",
+    "last_name_en": "تخلص (انګلیسي)",
+    "last_name_ps": "تخلص (پښتو)",
+    "last_name_dr": "تخلص (دري)",
+    "gender": "جنسیت",
+    "gender_options": {
+      "male": "نارینه",
+      "female": "ښځینه",
+      "other": "نور"
+    },
+    "preferred_lang": "غوره شوې ژبه",
+    "whatsapp": "د واټساپ شمیره",
+    "telegram": "د ټیلیګرام کارن نوم",
+    "country": "هیواد",
+    "province": "ولایت",
+    "district": "ولسوالۍ/ناحیه",
+    "contact_location": "اړیکه او ځای",
+    "account_info": "د حساب معلومات",
+    "profile_info": "د پروفایل معلومات",
+    "validation": {
+      "email_or_phone_required": "ایمیل یا تلیفون شمیره اړینه ده"
+    },
+    "filters": {
+      "user_role": "د کاروونکی رول",
+      "account_status": "د حساب حالت",
+      "department": "څانګه",
+      "user_id_range": "د کاروونکی ID حد"
+    },
+    "roles": {
+      "admin": "ادمین",
+      "manager": "منیجر",
+      "user": "کاروونکی",
+      "guest": "میهمان",
+      "super_admin": "سوپر ادمین"
+    },
+    "statuses": {
+      "active": "فعال",
+      "inactive": "نافعال",
+      "pending": "په تمه کې",
+      "suspended": "وځنډل شوی"
+    },
+    "departments": {
+      "engineering": "انجینرۍ",
+      "marketing": "مارکېټینګ",
+      "sales": "پلورل",
+      "hr": "انسانی سرچینې",
+      "finance": "مالی",
+      "operations": "عملیات"
+    }
+  }
+}

@@ -74,7 +74,7 @@ const LayoutContent = () => {
       {/* Main Content Area */}
       <div
         className={`flex-1 flex flex-col min-h-screen min-w-0 transition-all duration-300 ease-in-out bg-white dark:bg-gray-900 m-0 p-0 ${
-          isExpanded ? "lg:ms-[250px]" : "lg:ms-[90px]"
+          isExpanded ? "lg:ms-[240px]" : "lg:ms-[72px]"
         } ms-0`}
       >
         <AppHeader />

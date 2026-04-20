@@ -1,0 +1,19 @@
+{
+  "sidebar": {
+    "others": "نور",
+    "ecommerce": "ای‌کامرس",
+    "form_elements": "د فورم برخې",
+    "blank_page": "تش مخ",
+    "error_404": "۴۰۴ خطا",
+    "sign_in": "ننوتل",
+    "menu": "مینو",
+    "main_menu": "اصلي مینو"
+  },
+  "form": {
+    "select_users": "کاربرونکي وټاکئ...",
+    "select_single_user": "یو کاروونکی وټاکئ",
+    "select_users_async": "کاروونکي په هممهاله ډول وټاکئ...",
+    "select_users_async_multi": "هممهاله د کاروونکو ټاکنه...",
+    "input_error": "دا د خطا پیغام دی"
+  }
+}

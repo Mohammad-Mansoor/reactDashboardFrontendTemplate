@@ -13,6 +13,7 @@ import { PermissionsProvider } from "./context/PermissionsContext";
 import { ViewTransitionManager } from "./components/Navigation/ViewTransitionManager";
 import ItemListPage from "./pages/Demo/ItemListPage";
 import ItemDetailPage from "./pages/Demo/ItemDetailPage";
+import ModulePlaceholder from "./pages/OtherPage/ModulePlaceholder";
 
 export default function App() {
   return (
@@ -30,6 +31,15 @@ export default function App() {
                   <Route path="/table-demo" element={<PremiumTableDemo />} />
                   <Route path="/demo/items" element={<ItemListPage />} />
                   <Route path="/demo/items/:id" element={<ItemDetailPage />} />
+                  
+                  {/* Sidebar Placeholders */}
+                  <Route path="/users/patients" element={<ModulePlaceholder />} />
+                  <Route path="/users/roles" element={<ModulePlaceholder />} />
+                  <Route path="/settings/account/security" element={<ModulePlaceholder />} />
+                  <Route path="/settings/account/sessions" element={<ModulePlaceholder />} />
+                  <Route path="/settings/general" element={<ModulePlaceholder />} />
+                  <Route path="/reports" element={<ModulePlaceholder />} />
+                  <Route path="/docs" element={<ModulePlaceholder />} />
                 </Route>
               </Route>
               <Route element={<PublicRoute />}>

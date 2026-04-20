@@ -1,0 +1,26 @@
+{
+  "dateFilter": {
+    "today": "امروز",
+    "yesterday": "دیروز",
+    "thisWeek": "این هفته",
+    "lastWeek": "هفته گذشته",
+    "thisMonth": "این ماه",
+    "lastMonth": "ماه گذشته",
+    "thisYear": "امسال",
+    "lastYear": "سال گذشته",
+    "allTime": "تمام زمان",
+    "cancel": "لغو",
+    "apply": "اعمال"
+  },
+  "advanceFilter": {
+    "title": "فیلتر پیشرفته",
+    "resetAll": "بازنشانی همه",
+    "cancel": "لغو",
+    "applyFilters": "اعمال فیلترها",
+    "min": "حداقل",
+    "max": "حداکثر",
+    "selectOption": "یک گزینه انتخاب کنید",
+    "selectOptions": "گزینه‌ها را انتخاب کنید",
+    "selected": "انتخاب شده"
+  }
+}

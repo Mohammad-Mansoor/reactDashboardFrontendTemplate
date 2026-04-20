@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import { useSidebar } from "../context/SidebarContext";
 import { ThemeToggleButton } from "../components/Common/ThemeToggleButton";
 import NotificationDropdown from "../components/Header/NotificationDropdown";
-import UserDropdown from "../components/Header/UserDropdown";
 import LanguageSwitcher from "../components/Header/LanguageSwitcher";
 import { useTranslation } from "react-i18next";
 
@@ -146,7 +145,6 @@ const AppHeader = () => {
             <ThemeToggleButton />
             <NotificationDropdown />
           </div>
-          <UserDropdown />
         </div>
       </div>
     </header>

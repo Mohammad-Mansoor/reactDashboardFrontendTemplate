@@ -1,0 +1,12 @@
+{
+  "sidebar": {
+    "menu": "MENU",
+    "main_menu": "Main Menu",
+    "others": "Others",
+    "ecommerce": "Ecommerce",
+    "form_elements": "Form Elements",
+    "blank_page": "Blank Page",
+    "error_404": "404 Error",
+    "sign_in": "Sign In"
+  }
+}
