@@ -16,12 +16,10 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ToastContainer } from "react-toastify";
 import { SocketProvider } from "./socket_io/socketProvider";
 import SocketTest from "./socketTest";
-
-const token = "";
-createRoot(document.getElementById("root")).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={store}>
-      <SocketProvider token={token}>
+      <SocketProvider>
         <SocketTest />
         <QueryClientProvider client={queryClient}>
           <ThemeProvider>
