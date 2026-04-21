@@ -166,7 +166,7 @@ export default function FilterTestPage() {
       <div className="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
           <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-600 dark:text-blue-400">
+            <div className="w-10 h-10 rounded-xl bg-blue-light-600/10 flex items-center justify-center text-blue-light-600 dark:text-blue-light-400">
               <Users size={24} />
             </div>
             <h1 className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight">{t("patients.directory")}</h1>
@@ -194,7 +194,7 @@ export default function FilterTestPage() {
                   <SlidersHorizontal size={18} />
                   <span className="text-sm font-bold uppercase tracking-widest px-1">{t("actions.filters")}</span>
                   {Object.keys(filters).length > 0 && (
-                    <span className="w-5 h-5 bg-blue-600 text-white rounded-full flex items-center justify-center text-[10px] font-bold">
+                    <span className="w-5 h-5 bg-blue-light-600 text-white rounded-full flex items-center justify-center text-[10px] font-bold">
                        {Object.keys(filters).length}
                     </span>
                   )}
@@ -228,7 +228,7 @@ export default function FilterTestPage() {
                 <motion.div 
                   key={key} 
                   layout
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-50 dark:bg-blue-600/10 border border-blue-100 dark:border-blue-500/20 text-blue-700 dark:text-blue-400"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-light-50 dark:bg-blue-light-600/10 border border-blue-light-100 dark:border-blue-light-500/20 text-blue-light-700 dark:text-blue-light-400"
                 >
                   <span className="text-[11px] font-black uppercase tracking-widest">{label}</span>
                   <button onClick={() => removeFilter(key)} className="hover:text-red-500 transition-colors cursor-pointer">
@@ -333,7 +333,7 @@ export default function FilterTestPage() {
                   <div className="flex flex-col items-center">
                     <AlertCircle size={40} className="text-slate-200 dark:text-white/5 mb-4" />
                     <p className="text-slate-500 dark:text-white/30 font-bold uppercase tracking-widest">{t("patients.no_results")}</p>
-                    <button onClick={() => setFilters({})} className="mt-4 text-blue-600 font-black uppercase tracking-widest hover:underline italic cursor-pointer">{t("patients.clear_filters")}</button>
+                    <button onClick={() => setFilters({})} className="mt-4 text-blue-light-600 font-black uppercase tracking-widest hover:underline italic cursor-pointer">{t("patients.clear_filters")}</button>
                   </div>
                 </td>
               </tr>

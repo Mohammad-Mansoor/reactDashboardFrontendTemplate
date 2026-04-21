@@ -53,7 +53,7 @@ const ConfirmationModal = ({
                 overflow-hidden
               "
             >
-              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent opacity-60" />
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-primary1 to-transparent opacity-60" />
               {/* Optional Lottie Animation */}
 
               <div className="flex justify-center mb-4 sm:mb-6">

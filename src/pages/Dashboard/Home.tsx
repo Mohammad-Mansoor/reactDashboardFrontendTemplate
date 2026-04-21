@@ -25,10 +25,10 @@ export default function Home() {
 
   return (
     <>
-    <div className="border border-red-500 py-4 rounded-md flex items-center justify-center gap-4">
-      <button onClick={()=>seterrorOpen(true)} className="rounded-md border border-blue-500 px-4 py-2 hover:bg-blue-500 transition-all duration-300 hover:text-white">{t("dashboard.test_buttons.error")}</button>
-      <button onClick={()=>setOpen(true)} className="rounded-md border border-blue-500 px-4 py-2 hover:bg-blue-500 transition-all duration-300 hover:text-white">{t("dashboard.test_buttons.success")}</button>
-      <button onClick={()=>setConfirmationOpen(true)} className="rounded-md border border-blue-500 px-4 py-2 hover:bg-blue-500 transition-all duration-300 hover:text-white">{t("dashboard.test_buttons.confirmation")}</button>
+    <div className="py-4 flex items-center justify-center gap-4">
+      <button onClick={()=>seterrorOpen(true)} className="text-[11px] font-black uppercase tracking-widest rounded-md border border-blue-light-600 px-4 py-2 hover:bg-blue-light-600 transition-all duration-300 hover:text-white dark:text-white">{t("dashboard.test_buttons.error")}</button>
+      <button onClick={()=>setOpen(true)} className="text-[11px] font-black uppercase tracking-widest rounded-md border border-blue-light-600 px-4 py-2 hover:bg-blue-light-600 transition-all duration-300 hover:text-white dark:text-white">{t("dashboard.test_buttons.success")}</button>
+      <button onClick={()=>setConfirmationOpen(true)} className="text-[11px] font-black uppercase tracking-widest rounded-md border border-blue-light-600 px-4 py-2 hover:bg-blue-light-600 transition-all duration-300 hover:text-white dark:text-white">{t("dashboard.test_buttons.confirmation")}</button>
        <SuccessModal
         isOpen={open}
         onClose={() => setOpen(false)}

@@ -37,11 +37,11 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ item, depth = 0 }) => {
           style={{ paddingInlineStart: `${depthPadding}px` }}
           className={`flex items-center w-full py-3 transition-all duration-300 gap-3 relative
             ${isActive 
-              ? "bg-primary1/10 text-primary1 dark:bg-primary1/10 shadow-[inset_4px_0_0_0_#1c958a] rtl:shadow-[inset_-4px_0_0_0_#1c958a]" 
+              ? "bg-brand-50 text-blue-light-600 dark:bg-blue-light-500/10 shadow-none" 
               : "text-slate-500 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-white/5"}
             ${!isActuallyExpanded ? "justify-center px-0 text-center" : "pe-4"}`}
         >
-          <div className={`flex items-center justify-center transition-all duration-300 ${isActive ? "scale-110 text-primary1" : "group-hover/item:text-slate-900 dark:group-hover/item:text-white"}`}>
+          <div className={`flex items-center justify-center transition-all duration-300 ${isActive ? "scale-110 text-blue-light-600 dark:text-blue-light-400" : "group-hover/item:text-slate-900 dark:group-hover/item:text-white"}`}>
             {item.icon}
           </div>
           
@@ -54,7 +54,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ item, depth = 0 }) => {
               <motion.div
                 animate={{ rotate: isOpen ? 180 : 0 }}
                 transition={{ duration: 0.3 }}
-                className={`text-slate-400 ${isActive ? "text-primary1" : ""}`}
+                className={`text-slate-400 ${isActive ? "text-blue-light-600 dark:text-blue-light-400" : ""}`}
               >
                 <ChevronDown size={16} strokeWidth={3} />
               </motion.div>
@@ -68,11 +68,11 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ item, depth = 0 }) => {
           style={{ paddingInlineStart: `${depthPadding}px` }}
           className={`flex items-center w-full py-3 transition-all duration-300 gap-3 relative
             ${isLeafSelected 
-              ? "bg-primary1/10 text-primary1 dark:bg-primary1/10 shadow-[inset_4px_0_0_0_#1c958a] rtl:shadow-[inset_-4px_0_0_0_#1c958a]" 
+              ? "bg-brand-50 text-blue-light-600 dark:bg-blue-light-500/10 shadow-none" 
               : "text-slate-500 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-white/5"}
             ${!isActuallyExpanded ? "justify-center px-0 text-center" : "pe-4"}`}
         >
-          <div className={`flex items-center justify-center transition-all duration-300 ${isLeafSelected ? "scale-110 text-primary1" : "group-hover/item:text-slate-900 dark:group-hover/item:text-white"}`}>
+          <div className={`flex items-center justify-center transition-all duration-300 ${isLeafSelected ? "scale-110 text-blue-light-600 dark:text-blue-light-400" : "group-hover/item:text-slate-900 dark:group-hover/item:text-white"}`}>
             {item.icon || <div className="w-5 h-5 rounded-full border-2 border-current opacity-20" />}
           </div>
 
@@ -85,7 +85,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ item, depth = 0 }) => {
               {item.badge && (
                 <span className={`shrink-0 px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-widest border
                   ${item.badge.variant === 'new' ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' : 
-                    item.badge.variant === 'pro' ? 'bg-primary1/10 text-primary1 border-primary1/20' : 'bg-amber-500/10 text-amber-500 border-amber-500/20'}`}>
+                    item.badge.variant === 'pro' ? 'bg-blue-light-500/10 text-blue-light-600 border-blue-light-500/20' : 'bg-amber-500/10 text-amber-500 border-amber-500/20'}`}>
                   {t(item.badge.text)}
                 </span>
               )}

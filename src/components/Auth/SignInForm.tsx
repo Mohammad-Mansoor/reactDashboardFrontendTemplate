@@ -33,12 +33,12 @@ import ThemeTogglerTwo from "../Common/ThemeTogglerTwo";
 
 /* ─── Floating Background Icons ──────────────────────────────────────────── */
 const BG_ICONS = [
-  { Icon: Activity,    top: "10%",  left: "5%",   delay: 0,    size: 22, color: "text-blue-500/20 dark:text-blue-500/10" },
+  { Icon: Activity,    top: "10%",  left: "5%",   delay: 0,    size: 22, color: "text-blue-light-500/20 dark:text-blue-light-500/10" },
   { Icon: Heart,       top: "15%",  right: "10%", delay: 0.5,  size: 28, color: "text-red-500/20 dark:text-red-500/10" },
-  { Icon: Stethoscope, bottom: "20%", left: "10%", delay: 1,    size: 26, color: "text-emerald-500/20 dark:text-emerald-500/10" },
+  { Icon: Stethoscope, bottom: "20%", left: "10%", delay: 1,    size: 26, color: "text-success-500/20 dark:text-success-500/10" },
   { Icon: ClipboardList, bottom: "15%", right: "8%", delay: 1.5, size: 24, color: "text-orange-500/20 dark:text-orange-500/10" },
-  { Icon: Shield,      top: "40%",  left: "2%",   delay: 2,    size: 20, color: "text-indigo-500/20 dark:text-indigo-500/10" },
-  { Icon: Users,       top: "45%",  right: "2%",  delay: 2.5,  size: 22, color: "text-sky-500/20 dark:text-sky-500/10" },
+  { Icon: Shield,      top: "40%",  left: "2%",   delay: 2,    size: 20, color: "text-blue-light-500/20 dark:text-blue-light-500/10" },
+  { Icon: Users,       top: "45%",  right: "2%",  delay: 2.5,  size: 22, color: "text-blue-light-500/20 dark:text-blue-light-500/10" },
 ];
 
 function FloatingIcons() {
@@ -93,9 +93,9 @@ const SocialButton = ({ children, onClick }: { children: React.ReactNode; onClic
 const Features = () => {
   const { t } = useTranslation();
   const items = [
-    { icon: <Users className="text-blue-500" />, title: t("auth.login.features.patient_mgmt"), desc: t("auth.login.features.patient_mgmt_desc") },
+    { icon: <Users className="text-blue-light-500" />, title: t("auth.login.features.patient_mgmt"), desc: t("auth.login.features.patient_mgmt_desc") },
     { icon: <Calendar className="text-orange-500" />, title: t("auth.login.features.smart_scheduling"), desc: t("auth.login.features.smart_scheduling_desc") },
-    { icon: <ClipboardList className="text-emerald-500" />, title: t("auth.login.features.digital_records"), desc: t("auth.login.features.digital_records_desc") },
+    { icon: <ClipboardList className="text-success-500" />, title: t("auth.login.features.digital_records"), desc: t("auth.login.features.digital_records_desc") },
   ];
 
   return (
@@ -108,7 +108,7 @@ const Features = () => {
            transition={{ delay: 0.5 + i * 0.1 }}
            className="flex items-center gap-3 p-3.5 rounded-lg bg-white/60 dark:bg-white/5 border border-white/80 dark:border-white/10 shadow-sm dark:shadow-none backdrop-blur-md"
         >
-          <div className="w-9 h-9 rounded-md bg-blue-50/50 dark:bg-white/10 flex items-center justify-center shrink-0">
+          <div className="w-9 h-9 rounded-md bg-brand-50/50 dark:bg-white/10 flex items-center justify-center shrink-0">
             {item.icon}
           </div>
           <div>
@@ -162,7 +162,7 @@ export default function SignInForm() {
             transition={{ duration: 0.6 }}
             className="flex items-center gap-2.5 mb-6"
           >
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-orange-500 flex items-center justify-center shadow-lg shadow-blue-500/20">
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-light-600 to-orange-500 flex items-center justify-center shadow-lg shadow-blue-light-500/20">
               <Heart className="text-white" size={20} fill="white" />
             </div>
             <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">HealthCare+</h1>
@@ -175,7 +175,7 @@ export default function SignInForm() {
           >
             <h2 className="text-4xl font-extrabold text-slate-900 dark:text-white leading-tight">
               {t("auth.login.modern_healthcare")}<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">{t("auth.login.management")}</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-light-600 to-indigo-600">{t("auth.login.management")}</span>
             </h2>
             <p className="text-slate-600 dark:text-white/60 text-base mt-4 max-w-sm">
               {t("auth.login.tagline")}
@@ -196,8 +196,8 @@ export default function SignInForm() {
             
             {/* Form Header */}
             <div className="text-center mb-6">
-              <div className="hidden lg:flex w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-blue-500/10 dark:to-orange-500/10 items-center justify-center mx-auto mb-5 border border-white dark:border-white/10 transition-colors">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-orange-500 flex items-center justify-center shadow-md">
+              <div className="hidden lg:flex w-14 h-14 rounded-xl bg-gradient-to-br from-blue-light-50 to-orange-50 dark:from-blue-light-500/10 dark:to-orange-500/10 items-center justify-center mx-auto mb-5 border border-white dark:border-white/10 transition-colors">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-light-600 to-orange-500 flex items-center justify-center shadow-md">
                   <Heart className="text-white" size={20} fill="white" />
                 </div>
               </div>
@@ -261,7 +261,7 @@ export default function SignInForm() {
                 isLoading={loading}
                 width="w-full"
                 height="h-11"
-                className="!rounded-lg border-none bg-gradient-to-r from-blue-600 to-orange-500 hover:brightness-110 shadow-lg shadow-blue-500/20 active:scale-[0.98] mt-1"
+                className="!rounded-lg border-none bg-gradient-to-r from-blue-light-600 to-orange-500 hover:brightness-110 shadow-lg shadow-orange-500/20 active:scale-[0.98] mt-1"
                 label={
                   <div className="flex items-center justify-center gap-1.5">
                     <span className="text-sm font-bold">{t("auth.login.submit")}</span>

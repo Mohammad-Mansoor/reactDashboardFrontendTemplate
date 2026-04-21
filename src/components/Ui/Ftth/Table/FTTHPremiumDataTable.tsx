@@ -148,7 +148,7 @@ export default function FTTHPremiumDataTable<T extends { id: string }>({
              />
              <Button 
                 bg="bg-primary1"
-                className="!h-9 bg-primary1 text-white shadow-lg shadow-primary1/20 !rounded-md !px-3"
+                className="!h-9 bg-primary1 text-white shadow-lg shadow-orange-500/20 !rounded-md !px-3"
                 onClick={onAddClick}
                 icon={<Plus size={18} />}
              />
@@ -246,7 +246,7 @@ export default function FTTHPremiumDataTable<T extends { id: string }>({
 
             <Button 
               bg="bg-primary1"
-              className="hidden lg:flex !rounded-md !h-10 bg-primary1 text-white shadow-[0_4px_14px_0_rgba(28,149,138,0.39)] hover:shadow-[0_6px_20px_rgba(28,149,138,0.23)] px-6 active:scale-95 transition-all"
+              className="hidden lg:flex !rounded-md !h-10 bg-primary1 text-white shadow-[0_4px_14px_0_rgba(251,101,20,0.39)] hover:shadow-[0_6px_20px_rgba(251,101,20,0.23)] px-6 active:scale-95 transition-all"
               onClick={onAddClick}
               icon={<Plus size={18} />}
               label={<span className="text-[10px] font-black uppercase tracking-widest">{primaryActionLabel}</span>}
@@ -308,7 +308,7 @@ export default function FTTHPremiumDataTable<T extends { id: string }>({
                     transition={{ delay: idx * 0.05 }}
                     className={`
                       group transition-all duration-300 cursor-pointer
-                      ${selectedIds.includes(row.id) ? 'bg-primary1/5 shadow-[inset_4px_0_0_0_#1c958a]' : 'hover:bg-slate-50/50 dark:hover:bg-white/2'}
+                      ${selectedIds.includes(row.id) ? 'bg-orange-500/5 shadow-[inset_4px_0_0_0_#fb6514]' : 'hover:bg-slate-50/50 dark:hover:bg-white/2'}
                     `}
                     onClick={(e) => {
                       if ((e.target as HTMLElement).closest('button') || (e.target as HTMLElement).closest('input')) return;
@@ -425,7 +425,7 @@ export default function FTTHPremiumDataTable<T extends { id: string }>({
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.05 }}
-                  className={`p-5 flex flex-col gap-4 ${selectedIds.includes(row.id) ? 'bg-primary1/5 shadow-[inset_4px_0_0_0_#1c958a]' : 'active:bg-slate-50'}`}
+                  className={`p-5 flex flex-col gap-4 ${selectedIds.includes(row.id) ? 'bg-orange-500/5 shadow-[inset_4px_0_0_0_#fb6514]' : 'active:bg-slate-50'}`}
                   onClick={() => handleSelectRow(row.id, !selectedIds.includes(row.id))}
                 >
                   <div className="flex items-start justify-between gap-3">

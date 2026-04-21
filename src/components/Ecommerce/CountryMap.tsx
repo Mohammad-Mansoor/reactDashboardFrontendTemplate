@@ -21,22 +21,22 @@ const AfghanistanProvincesMap = ({ mapColor }) => {
       selectedRegions={["AF"]}
       regionStyle={{
         initial: {
-          fill: mapColor || "#20988E",
+          fill: mapColor || "#0ba5ec",
           fillOpacity: 0,
           stroke: "none",
         },
         hover: {
           fillOpacity: 0.7,
           cursor: "pointer",
-          fill: "#20988E",
+          fill: "#0ba5ec",
         },
         selected: {
-          fill: "#20988E",
+          fill: "#0ba5ec",
         },
       }}
       regionLabelStyle={{
         initial: {
-          fill: "#20988E",
+          fill: "#0ba5ec",
           fontWeight: 500,
           fontSize: "13px",
           stroke: "none",
@@ -56,7 +56,7 @@ const AfghanistanProvincesMap = ({ mapColor }) => {
           latLng: [37.1287, 70.5780],
           name: "Badakhshan",
           style: {
-            fill: "#20988E",
+            fill: "#0ba5ec",
             stroke: "white",
             strokeWidth: 1,
           },
@@ -82,7 +82,7 @@ const AfghanistanProvincesMap = ({ mapColor }) => {
       ]}
       markerStyle={{
         initial: {
-          fill: "#20988E",
+          fill: "#0ba5ec",
           r: 4,
         },
       }}

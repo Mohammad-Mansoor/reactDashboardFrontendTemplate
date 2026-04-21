@@ -98,10 +98,9 @@ export default function Avatar({
             ${badgePositions[badge.position || "bottom-right"]}
           `}
           style={{
-            backgroundColor: badge.color || "#22c55e", // default green
-            boxShadow: `0 0 0 ${badgeSize.ring}px ${
-              badge.color || "#22c55e"
-            }33`, // subtle ring effect
+            ["--badge-color" as any]: badge.color || "var(--color-success-500)",
+            backgroundColor: "var(--badge-color)",
+            boxShadow: `0 0 0 ${badgeSize.ring}px color-mix(in srgb, var(--badge-color), transparent 80%)`,
           }}
         >
           {badge.content || ""}
