@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { FaAngleDown, FaAngleUp, FaCheck } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 interface LimitSelectProps {
   value: number;
@@ -18,6 +19,7 @@ export default function LimitSelect({
   className = "",
   label = "",
 }: LimitSelectProps) {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -135,7 +137,7 @@ export default function LimitSelect({
                   }
                 `}
               >
-                <span>{option} / page</span>
+                <span>{option} / {t("pagination.page_suffix", "page")}</span>
 
                 {value === option && (
                   <FaCheck className="text-primary2 text-xs" />

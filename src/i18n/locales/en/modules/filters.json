@@ -9,18 +9,34 @@
     "thisYear": "This year",
     "lastYear": "Last year",
     "allTime": "All time",
+    "select_date": "Select date",
+    "select_range": "Select Range",
+    "clear_range": "Clear Range",
     "cancel": "Cancel",
-    "apply": "Apply"
+    "apply": "Apply",
+    "select_placeholder": "Select..."
   },
-  "advanceFilter": {
-    "title": "Advanced Filter",
-    "resetAll": "Reset All",
+  "filters": {
+    "title": "Advanced Filters",
+    "reset": "Reset",
     "cancel": "Cancel",
-    "applyFilters": "Apply Filters",
+    "apply": "Apply Filters",
     "min": "Min",
     "max": "Max",
-    "selectOption": "Select option",
-    "selectOptions": "Select options",
+    "from": "From",
+    "to": "To",
+    "enable_label": "Enable {{name}}",
+    "today": "Today",
+    "last_7_days": "Last 7 Days",
+    "last_month": "Last Month",
+    "age_range": "Age Range",
+    "admission_range": "Admission Period",
+    "period": "Period",
+    "custom_range_info": "Select a custom range for admission",
+    "vip_info": "Toggle to show only VIP patients",
+    "custom_range_active": "Custom Range Active",
+    "select_option": "Select an option",
+    "select_options": "Select options",
     "selected": "selected"
   }
 }

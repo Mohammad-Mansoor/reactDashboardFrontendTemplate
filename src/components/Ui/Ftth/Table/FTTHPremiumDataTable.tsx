@@ -11,6 +11,7 @@ import {
   Columns as ColumnsIcon,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 // Ftth Components
 import Button from "../Button";
@@ -80,6 +81,7 @@ export default function FTTHPremiumDataTable<T extends { id: string }>({
   onLimitChange,
   onSelectionChange
 }: FTTHPremiumDataTableProps<T>) {
+  const { t } = useTranslation();
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [sortConfig, setSortConfig] = useState<{ key: string, direction: 'asc' | 'desc' | null }>({ key: '', direction: null });
   const [isColumnDropdownOpen, setIsColumnDropdownOpen] = useState(false);
@@ -156,7 +158,7 @@ export default function FTTHPremiumDataTable<T extends { id: string }>({
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div className="relative group w-full lg:max-w-md">
              <SearchInputElement 
-               placeholder="Search registry..." 
+               placeholder={t("actions.search")} 
                onChange={(e) => onSearchChange?.(e.target.value)}
                className="!rounded-md border-slate-200 focus:border-primary1 transition-all !h-10 text-xs w-full bg-slate-50 dark:bg-slate-900 border-solid"
              />
@@ -168,7 +170,7 @@ export default function FTTHPremiumDataTable<T extends { id: string }>({
                   bg="bg-slate-500" 
                   className="border border-slate-200 dark:border-white/10 !rounded-md !h-10 text-slate-700 dark:text-white hover:bg-slate-600 dark:hover:bg-white/5 shadow-sm"
                   icon={<ColumnsIcon size={16} />}
-                  label={<span className="text-[10px] font-black uppercase tracking-widest px-1">Configure</span>}
+                  label={<span className="text-[10px] font-black uppercase tracking-widest px-1">{t("actions.configure")}</span>}
                   onClick={() => setIsColumnDropdownOpen(!isColumnDropdownOpen)}
               />
               <AnimatePresence>
@@ -181,7 +183,7 @@ export default function FTTHPremiumDataTable<T extends { id: string }>({
                               exit={{ opacity: 0, scale: 0.95, y: 5 }}
                               className="absolute right-0 top-full mt-2 w-56 bg-white dark:bg-[#141b2d] border border-slate-200 dark:border-white/10 rounded-lg shadow-[0_20px_50px_-12px_rgba(0,0,0,0.3)] z-[70] p-2"
                           >
-                              <div className="mb-2 px-3 py-1 text-[9px] font-black text-slate-400 dark:text-white/20 uppercase tracking-[0.2em] border-b border-slate-50 dark:border-white/5">Display Columns</div>
+                              <div className="mb-2 px-3 py-1 text-[9px] font-black text-slate-400 dark:text-white/20 uppercase tracking-[0.2em] border-b border-slate-50 dark:border-white/5">{t("columns.display")}</div>
                               <div className="max-h-64 overflow-y-auto space-y-1">
                                   {columns.map(col => (
                                       <label key={col.key} className="flex items-center gap-3 px-3 py-2 hover:bg-slate-50 dark:hover:bg-white/5 rounded-md cursor-pointer transition-colors">
@@ -205,7 +207,7 @@ export default function FTTHPremiumDataTable<T extends { id: string }>({
                   bg="bg-slate-500" 
                   className="border border-slate-200 dark:border-white/10 !rounded-md !h-10 text-slate-700 dark:text-white hover:bg-slate-600 dark:hover:bg-white/5 shadow-sm"
                   icon={<Download size={16} />}
-                  label={<span className="text-[10px] font-black uppercase tracking-widest px-1">Export</span>}
+                  label={<span className="text-[10px] font-black uppercase tracking-widest px-1">{t("actions.export")}</span>}
                   onClick={() => setIsExportDropdownOpen(!isExportDropdownOpen)}
               />
               <AnimatePresence>
@@ -218,14 +220,14 @@ export default function FTTHPremiumDataTable<T extends { id: string }>({
                               exit={{ opacity: 0, scale: 0.95, y: 5 }}
                               className="absolute right-0 top-full mt-2 w-48 bg-white dark:bg-[#141b2d] border border-slate-200 dark:border-white/10 rounded-lg shadow-[0_20px_50px_-12px_rgba(0,0,0,0.3)] z-[70] p-1"
                           >
-                               <button onClick={() => { onExport?.('pdf'); setIsExportDropdownOpen(false); }} className="w-full flex items-center gap-3 px-3 py-2 text-[11px] font-bold text-slate-600 dark:text-white/60 hover:bg-slate-50 dark:hover:bg-white/5 rounded-md transition-colors uppercase tracking-widest text-left">
-                                   <span className="w-1.5 h-1.5 rounded-full bg-red-400" /> PDF Document
+                               <button onClick={() => { onExport?.('pdf'); setIsExportDropdownOpen(false); }} className="w-full flex items-center gap-3 px-3 py-2 text-[11px] font-bold text-slate-600 dark:text-white/60 hover:bg-slate-50 dark:hover:bg-white/5 rounded-md transition-all uppercase tracking-widest text-start">
+                                   <span className="w-1.5 h-1.5 rounded-full bg-red-400" /> {t("export.pdf")}
                                </button>
-                               <button onClick={() => { onExport?.('excel'); setIsExportDropdownOpen(false); }} className="w-full flex items-center gap-3 px-3 py-2 text-[11px] font-bold text-slate-600 dark:text-white/60 hover:bg-slate-50 dark:hover:bg-white/5 rounded-md transition-colors uppercase tracking-widest text-left">
-                                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" /> Excel Sheet
+                               <button onClick={() => { onExport?.('excel'); setIsExportDropdownOpen(false); }} className="w-full flex items-center gap-3 px-3 py-2 text-[11px] font-bold text-slate-600 dark:text-white/60 hover:bg-slate-50 dark:hover:bg-white/5 rounded-md transition-all uppercase tracking-widest text-start">
+                                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" /> {t("export.excel")}
                                </button>
-                               <button onClick={() => { onExport?.('csv'); setIsExportDropdownOpen(false); }} className="w-full flex items-center gap-3 px-3 py-2 text-[11px] font-bold text-slate-600 dark:text-white/60 hover:bg-slate-50 dark:hover:bg-white/5 rounded-md transition-colors uppercase tracking-widest text-left">
-                                   <span className="w-1.5 h-1.5 rounded-full bg-blue-400" /> CSV Files
+                               <button onClick={() => { onExport?.('csv'); setIsExportDropdownOpen(false); }} className="w-full flex items-center gap-3 px-3 py-2 text-[11px] font-bold text-slate-600 dark:text-white/60 hover:bg-slate-50 dark:hover:bg-white/5 rounded-md transition-all uppercase tracking-widest text-start">
+                                   <span className="w-1.5 h-1.5 rounded-full bg-blue-400" /> {t("export.csv")}
                                </button>
                           </motion.div>
                       </>
@@ -238,7 +240,7 @@ export default function FTTHPremiumDataTable<T extends { id: string }>({
                 bg="bg-[#000]"
                 className="lg:hidden !h-10 text-slate-600 dark:text-white !rounded-md !px-4 border border-slate-200 dark:border-white/10"
                 icon={<Download size={16} />}
-                label={<span className="text-[10px] font-black uppercase tracking-widest">Export</span>}
+                label={<span className="text-[10px] font-black uppercase tracking-widest">{t("actions.export")}</span>}
                 onClick={() => setIsExportDropdownOpen(!isExportDropdownOpen)}
             />
 
@@ -287,7 +289,7 @@ export default function FTTHPremiumDataTable<T extends { id: string }>({
                   </div>
                 </th>
               ))}
-              <th className="px-8 py-5 text-right w-36 text-[9px] font-black text-slate-400 dark:text-white/20 uppercase tracking-[0.25em]">Actions</th>
+              <th className="px-8 py-5 text-end w-36 text-[9px] font-black text-slate-400 dark:text-white/20 uppercase tracking-[0.25em]">{t("actions.actions_label")}</th>
             </tr>
           </thead>
           
@@ -356,10 +358,10 @@ export default function FTTHPremiumDataTable<T extends { id: string }>({
                            <Search size={40} />
                         </div>
                         <div className="space-y-1">
-                          <p className="text-[14px] font-black text-slate-400 dark:text-white/20 uppercase tracking-[0.2em]">No results found</p>
-                          <p className="text-xs text-slate-400/60 dark:text-white/10 font-medium">Try adjusting your filters or search terms</p>
+                          <p className="text-[14px] font-black text-slate-400 dark:text-white/20 uppercase tracking-[0.2em]">{t("empty.no_results")}</p>
+                          <p className="text-xs text-slate-400/60 dark:text-white/10 font-medium">{t("empty.try_adjusting")}</p>
                         </div>
-                        <button className="text-[11px] font-black text-primary1 uppercase tracking-widest hover:underline mt-2 italic cursor-pointer">Clear All Filters</button>
+                        <button className="text-[11px] font-black text-primary1 uppercase tracking-widest hover:underline mt-2 italic cursor-pointer">{t("actions.clear_all")}</button>
                     </div>
                   </td>
                 </tr>
@@ -401,15 +403,15 @@ export default function FTTHPremiumDataTable<T extends { id: string }>({
                   <div className="grid grid-cols-3 gap-2 pb-4">
                       <button onClick={() => { onExport?.('pdf'); setIsExportDropdownOpen(false); }} className="flex flex-col items-center gap-1 p-3 bg-red-50 dark:bg-red-500/10 rounded-md border border-red-100 dark:border-red-500/20">
                          <span className="w-2 h-2 rounded-full bg-red-400" />
-                         <span className="text-[10px] font-black text-red-700 dark:text-red-400 uppercase tracking-tighter">PDF</span>
+                         <span className="text-[10px] font-black text-red-700 dark:text-red-400 uppercase tracking-tighter">{t("export.pdf").split(' ')[0]}</span>
                       </button>
                       <button onClick={() => { onExport?.('excel'); setIsExportDropdownOpen(false); }} className="flex flex-col items-center gap-1 p-3 bg-emerald-50 dark:bg-emerald-500/10 rounded-md border border-emerald-100 dark:border-emerald-500/20">
                          <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                         <span className="text-[10px] font-black text-emerald-700 dark:text-emerald-400 uppercase tracking-tighter">Excel</span>
+                         <span className="text-[10px] font-black text-emerald-700 dark:text-emerald-400 uppercase tracking-tighter">{t("export.excel").split(' ')[0]}</span>
                       </button>
                       <button onClick={() => { onExport?.('csv'); setIsExportDropdownOpen(false); }} className="flex flex-col items-center gap-1 p-3 bg-blue-50 dark:bg-blue-500/10 rounded-md border border-blue-100 dark:border-blue-500/20">
                          <span className="w-2 h-2 rounded-full bg-blue-400" />
-                         <span className="text-[10px] font-black text-blue-700 dark:text-blue-400 uppercase tracking-tighter">CSV</span>
+                         <span className="text-[10px] font-black text-blue-700 dark:text-blue-400 uppercase tracking-tighter">{t("export.csv").split(' ')[0]}</span>
                       </button>
                   </div>
               </motion.div>
@@ -478,7 +480,7 @@ export default function FTTHPremiumDataTable<T extends { id: string }>({
         <div className="p-5 md:px-8 md:py-6 flex flex-col lg:flex-row items-center justify-between gap-6 border-t border-slate-50 dark:border-white/5 bg-slate-50/20 dark:bg-white/1">
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 w-full lg:w-auto">
              <div className="flex items-center justify-between md:justify-start gap-4 w-full md:w-auto">
-               <span className="text-[10px] font-black text-slate-400 dark:text-white/20 uppercase tracking-widest whitespace-nowrap">Show Limit:</span>
+               <span className="text-[10px] font-black text-slate-400 dark:text-white/20 uppercase tracking-widest whitespace-nowrap">{t("pagination.limit")}</span>
                <LimitSelect 
                  value={meta.limit} 
                  onChange={(val) => onLimitChange?.(val)}
@@ -487,8 +489,8 @@ export default function FTTHPremiumDataTable<T extends { id: string }>({
              </div>
              <div className="hidden md:block h-4 w-px bg-slate-100 dark:bg-white/10" />
              <p className="text-[11px] font-bold text-slate-500 dark:text-white/40 tracking-tight">
-                Showing <span className="text-slate-900 dark:text-white font-black">{(meta.page - 1) * meta.limit + 1}</span>-
-                <span className="text-slate-900 dark:text-white font-black">{Math.min(meta.page * meta.limit, meta.total)}</span> / 
+                {t("pagination.showing")} <span className="text-slate-900 dark:text-white font-black">{(meta.page - 1) * meta.limit + 1}</span>-
+                <span className="text-slate-900 dark:text-white font-black">{Math.min(meta.page * meta.limit, meta.total)}</span> {t("pagination.of")} 
                 <span className="text-slate-900 dark:text-white font-black">{meta.total}</span>
              </p>
           </div>

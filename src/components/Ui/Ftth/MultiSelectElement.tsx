@@ -3,6 +3,7 @@ import { FaAngleDown } from "react-icons/fa";
 import Lottie from "lottie-react";
 import Spinner from "./spinner";
 import emptyAnimation from "../../lottieFiles/PurpleQuestions.json";
+import { useTranslation } from "react-i18next";
 
 /**
  * MultiSelect Component
@@ -52,6 +53,7 @@ export default function MultiSelect({
   onLoadMore,
   loadMoreLabel = "Load More",
 }: MultiSelectProps) {
+  const { t } = useTranslation();
   const [selectedItems, setSelectedItems] = useState<any[]>(initialSelected);
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
@@ -195,7 +197,7 @@ export default function MultiSelect({
           ))}
           <input
             className="flex-1 outline-none bg-transparent"
-            placeholder={selectedItems.length === 0 ? placeholder : ""}
+            placeholder={selectedItems.length === 0 ? (placeholder === "Select..." ? t("common.select") : placeholder) : ""}
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             disabled={disabled}
@@ -226,7 +228,7 @@ export default function MultiSelect({
             ) : isLoading ? (
               <div className="w-full py-8 flex items-center justify-center"><Spinner size="sm" /></div>
             ) : (
-              <div className="w-full py-8 flex flex-col items-center"><Lottie animationData={emptyAnimation} className="w-12 h-12" /><p className="text-[13px] text-gray-500 mt-2">No more items available</p></div>
+              <div className="w-full py-8 flex flex-col items-center"><Lottie animationData={emptyAnimation} className="w-12 h-12" /><p className="text-[13px] text-gray-500 mt-2">{t("common.no_data")}</p></div>
             )}
 
             {hasMore && !isLoading && (

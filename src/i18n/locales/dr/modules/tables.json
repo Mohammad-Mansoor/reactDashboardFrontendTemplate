@@ -1,0 +1,39 @@
+{
+  "actions": {
+    "add_new": "افزودن جدید",
+    "edit": "ویرایش",
+    "delete": "حذف",
+    "view": "مشاهده",
+    "export": "خروجی",
+    "configure": "تنظیمات",
+    "apply": "اعمال",
+    "reset": "بازنشانی",
+    "cancel": "لغو",
+    "save": "ذخیره",
+    "search": "جستجو در لست...",
+    "clear_all": "پاک کردن تمام فیلترها",
+    "actions_label": "عملیات"
+  },
+  "columns": {
+    "display": "ستون‌های نمایش",
+    "manager": "مدیریت نمایش"
+  },
+  "export": {
+    "title": "ایجاد گزارش",
+    "pdf": "سند PDF",
+    "excel": "صفحه Excel",
+    "csv": "فایل‌های CSV"
+  },
+  "pagination": {
+    "limit": "تعداد نمایش:",
+    "showing": "نمایش",
+    "to": "الی",
+    "of": "از",
+    "page_suffix": "صفحه"
+  },
+  "empty": {
+    "no_results": "نتیجه‌ای یافت نشد",
+    "try_adjusting": "فیلترها یا کلمات جستجوی خود را تنظیم کنید",
+    "no_matches": "بدون مطابقت"
+  }
+}

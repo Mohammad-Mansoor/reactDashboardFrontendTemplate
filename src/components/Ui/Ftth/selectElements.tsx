@@ -3,6 +3,7 @@ import { FaAngleDown } from "react-icons/fa";
 import Spinner from "./spinner";
 import Lottie from "lottie-react";
 import emptyAnimation from "../../lottieFiles/PurpleQuestions.json";
+import { useTranslation } from "react-i18next";
 
 /**
  * SingleSelect Component
@@ -54,6 +55,7 @@ export default function SingleSelect({
   onLoadMore,
   loadMoreLabel = "Load More",
 }: SingleSelectProps) {
+  const { t } = useTranslation();
   const [selectedItem, setSelectedItem] = useState(initialSelected);
   const [filteredOptions, setFilteredOptions] = useState(items);
   const [isOpen, setIsOpen] = useState(false);
@@ -188,7 +190,7 @@ export default function SingleSelect({
           )}
           <input
             className="flex-1 outline-none bg-transparent"
-            placeholder={!selectedItem ? placeholder : ""}
+            placeholder={!selectedItem ? (placeholder === "Select..." ? t("common.select") : placeholder) : ""}
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             disabled={disabled}
@@ -218,7 +220,7 @@ export default function SingleSelect({
             ) : isLoading ? (
               <div className="w-full py-8 flex items-center justify-center"><Spinner size="sm" /></div>
             ) : (
-              <div className="w-full py-8 flex flex-col items-center"><Lottie animationData={emptyAnimation} className="w-12 h-12" /><p className="text-[13px] text-gray-500 mt-2">No items found</p></div>
+              <div className="w-full py-8 flex flex-col items-center"><Lottie animationData={emptyAnimation} className="w-12 h-12" /><p className="text-[13px] text-gray-500 mt-2">{t("common.no_data")}</p></div>
             )}
 
             {hasMore && !isLoading && (

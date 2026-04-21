@@ -1,19 +1,29 @@
 {
   "sidebar": {
-    "others": "نور",
-    "ecommerce": "ای‌کامرس",
-    "form_elements": "د فورم برخې",
-    "blank_page": "تش مخ",
-    "error_404": "۴۰۴ خطا",
-    "sign_in": "ننوتل",
     "menu": "مینو",
-    "main_menu": "اصلي مینو"
-  },
-  "form": {
-    "select_users": "کاربرونکي وټاکئ...",
-    "select_single_user": "یو کاروونکی وټاکئ",
-    "select_users_async": "کاروونکي په هممهاله ډول وټاکئ...",
-    "select_users_async_multi": "هممهاله د کاروونکو ټاکنه...",
-    "input_error": "دا د خطا پیغام دی"
+    "back_to_menu": "بیرته مینو ته",
+    "account": "حساب",
+    "administrator": "د سیسټم مدیر",
+    "user_name": "مشرف",
+    "dashboard": "ډشبورډ",
+    "user_management": "د کاروونکو اداره",
+    "patients": "ناروغان",
+    "roles_permissions": "رولونه او واکونه",
+    "premium_demos": "ځانګړي ډیموګانې",
+    "saas_table": "د SaaS جدول",
+    "view_transitions": "د لید لیږدونه",
+    "ui_components": "د کارن انٹرفیس اجزا",
+    "filter_logic": "د فلټر منطق",
+    "settings": "تنظیمات",
+    "account_settings": "د حساب تنظیمات",
+    "security": "امنیت",
+    "active_sessions": "فعال ناستې",
+    "general_config": "عمومي ترتیب",
+    "reports": "راپورونه",
+    "documentation": "مستندات",
+    "brand": {
+      "name": "قلم",
+      "subtitle": "روغتیایی پاملرنه"
+    }
   }
 }

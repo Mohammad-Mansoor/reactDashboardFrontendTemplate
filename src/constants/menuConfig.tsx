@@ -29,23 +29,23 @@ export interface MenuItem {
 export const MENU_CONFIG: MenuItem[] = [
   {
     id: "dashboard",
-    name: "Dashboard",
+    name: "sidebar.dashboard",
     icon: <LayoutDashboard size={20} />,
     path: "/",
   },
   {
     id: "users",
-    name: "User Management",
+    name: "sidebar.user_management",
     icon: <Users size={20} />,
     children: [
       {
         id: "users-list",
-        name: "Patients",
+        name: "sidebar.patients",
         path: "/users/patients",
       },
       {
         id: "roles",
-        name: "Roles & Permissions",
+        name: "sidebar.roles_permissions",
         path: "/users/roles",
         icon: <ShieldCheck size={18} />,
       }
@@ -53,31 +53,31 @@ export const MENU_CONFIG: MenuItem[] = [
   },
   {
     id: "demos",
-    name: "Premium Demos",
+    name: "sidebar.premium_demos",
     icon: <TableProperties size={20} />,
     children: [
       {
         id: "table-demo",
-        name: "SaaS Table",
+        name: "sidebar.saas_table",
         path: "/table-demo",
-        badge: { text: "PRO", variant: "pro" }
+        badge: { text: "common.pro_badge", variant: "pro" }
       },
       {
         id: "transitions-demo",
-        name: "View Transitions",
+        name: "sidebar.view_transitions",
         path: "/demo/items",
         icon: <ArrowRightLeft size={18} />,
-        badge: { text: "NEW", variant: "new" }
+        badge: { text: "common.new_badge", variant: "new" }
       },
       {
         id: "components",
-        name: "UI Components",
+        name: "sidebar.ui_components",
         path: "/components",
         icon: <LayoutDashboard size={18} />,
       },
       {
         id: "filter-logic",
-        name: "Filter Logic",
+        name: "sidebar.filter_logic",
         path: "/filter-test",
         icon: <BarChart3 size={18} />,
       }
@@ -85,23 +85,23 @@ export const MENU_CONFIG: MenuItem[] = [
   },
   {
     id: "settings",
-    name: "Settings",
+    name: "sidebar.settings",
     icon: <Settings size={20} />,
     children: [
       {
         id: "account",
-        name: "Account Settings",
+        name: "sidebar.account_settings",
         icon: <UserCircle size={18} />,
         children: [
           {
             id: "security",
-            name: "Security",
+            name: "sidebar.security",
             path: "/settings/account/security",
             icon: <Lock size={16} />
           },
           {
             id: "sessions",
-            name: "Active Sessions",
+            name: "sidebar.active_sessions",
             path: "/settings/account/sessions",
             icon: <History size={16} />
           }
@@ -109,21 +109,22 @@ export const MENU_CONFIG: MenuItem[] = [
       },
       {
         id: "general",
-        name: "General Config",
+        name: "sidebar.general_config",
         path: "/settings/general"
       }
     ]
   },
   {
     id: "reports",
-    name: "Reports",
+    name: "sidebar.reports",
     icon: <BarChart3 size={20} />,
     path: "/reports"
   },
   {
     id: "docs",
-    name: "Documentation",
+    name: "sidebar.documentation",
     icon: <FileText size={20} />,
     path: "/docs"
   }
 ];
+

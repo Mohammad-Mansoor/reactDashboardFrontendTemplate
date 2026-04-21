@@ -96,7 +96,7 @@ const AppSidebar: React.FC = () => {
       <aside
         id="app-sidebar"
         className={`app-sidebar fixed flex flex-col top-0 start-0 h-screen transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] z-[888] overflow-x-hidden
-          bg-white dark:bg-[#070b14] border-e border-slate-200 dark:border-white/5 shadow-[20px_0_40px_-20px_rgba(0,0,0,0.05)]
+          bg-white dark:bg-[#070b14] border-e border-slate-200 dark:border-white/5 shadow-[20px_0_40px_-20px_rgba(0,0,0,0.05)] rtl:shadow-[-20px_0_40px_-20px_rgba(0,0,0,0.05)]
           ${isActuallyExpanded ? "w-[240px]" : "w-[72px]"}
           ${isMobileOpen ? "translate-x-0" : "max-lg:ltr:-translate-x-full max-lg:rtl:translate-x-full lg:translate-x-0"}`}
         onMouseEnter={() => !isExpanded && setIsHovered(true)}
@@ -114,8 +114,8 @@ const AppSidebar: React.FC = () => {
                 animate={{ opacity: 1, x: 0 }}
                 className="flex flex-col whitespace-nowrap"
               >
-                <span className="text-base font-black tracking-tight text-slate-900 dark:text-white uppercase leading-tight">Qalam</span>
-                <span className="text-[9px] font-bold text-primary1 uppercase tracking-[0.2em] leading-tight">Healthcare</span>
+                <span className="text-base font-black tracking-tight text-slate-900 dark:text-white uppercase leading-tight">{t("sidebar.brand.name")}</span>
+                <span className="text-[9px] font-bold text-primary1 uppercase tracking-[0.2em] leading-tight">{t("sidebar.brand.subtitle")}</span>
               </motion.div>
             )}
           </Link>
@@ -136,7 +136,7 @@ const AppSidebar: React.FC = () => {
               >
                 <div className={`px-6 mb-4 flex items-center ${!isActuallyExpanded ? "justify-center" : "justify-between"}`}>
                   {isActuallyExpanded ? (
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-white/20">Menu</span>
+                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-white/20">{t("sidebar.menu")}</span>
                   ) : (
                     <MoreHorizontal className="text-slate-300 dark:text-white/10" size={20} />
                   )}
@@ -161,11 +161,11 @@ const AppSidebar: React.FC = () => {
                   className="flex items-center gap-2 w-full px-3 py-2 text-primary1 hover:bg-primary1/10 rounded-lg transition-colors mb-6 group"
                 >
                   <ChevronLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-                  <span className="text-xs font-black uppercase tracking-widest">Back to Menu</span>
+                  <span className="text-xs font-black uppercase tracking-widest">{t("sidebar.back_to_menu")}</span>
                 </button>
 
                 <div className="space-y-1">
-                  <span className="px-3 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-white/20 block mb-3">Account</span>
+                  <span className="px-3 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-white/20 block mb-3">{t("sidebar.account")}</span>
                   
                   <UserMenuItem 
                     icon={<User size={18} />} 
@@ -204,7 +204,7 @@ const AppSidebar: React.FC = () => {
                     <UserMenuItem 
                       icon={<History size={18} />} 
                       label={t("common.logout_other")} 
-                      onClick={async () => { await dispatch(logoutOther()); toast.success("Other sessions logged out"); setIsUserMenuOpen(false); }} 
+                      onClick={async () => { await dispatch(logoutOther()); toast.success(t("common.logout_other_success")); setIsUserMenuOpen(false); }} 
                       expanded={isActuallyExpanded}
                       variant="danger"
                     />
@@ -230,10 +230,11 @@ const AppSidebar: React.FC = () => {
                 
                 {isActuallyExpanded && (
                   <div className="flex flex-col flex-1 min-w-0">
-                    <span className="text-sm font-bold text-slate-900 dark:text-white truncate">Musharof</span>
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider truncate">Administrator</span>
+                    <span className="text-sm font-bold text-slate-900 dark:text-white truncate">{t("sidebar.user_name", "Musharof")}</span>
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider truncate">{t("sidebar.administrator")}</span>
                   </div>
                 )}
+
                 
                 {isActuallyExpanded && (
                   <div className="p-1.5 text-slate-400 group-hover/footer:text-primary1 transition-colors">

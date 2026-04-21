@@ -9,6 +9,7 @@ import { DateRangePicker } from "../components/Ui/Ftth/DateFilter/date-range-pic
 import { SlidersHorizontal, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "../components/Ui/Ftth/Button";
+import { useTranslation } from "react-i18next";
 
 /* ─── Mock Data ──────────────────────────────────────────────────────────── */
 
@@ -43,6 +44,7 @@ const MOCK_ORDERS: Order[] = [
 /* ─── Page Component ─────────────────────────────────────────────────────── */
 
 export default function PremiumTableDemo() {
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -54,31 +56,31 @@ export default function PremiumTableDemo() {
   const [visibleColumns, setVisibleColumns] = useState<string[]>(initialVisibleColumns);
   const [activeFilters, setActiveFilters] = useState<Record<string, any>>({});
 
-  const filterConfigs: FilterConfig[] = [
-    { key: "status", label: "Status", type: "dropdown", options: [
-      { value: "active", label: "Active" },
-      { value: "pending", label: "Pending" },
-      { value: "suspended", label: "Suspended" }
+  const filterConfigs: FilterConfig[] = useMemo(() => [
+    { key: "status", label: t("orders.status"), type: "dropdown", options: [
+      { value: "active", label: t("patients.status.active") },
+      { value: "pending", label: t("patients.status.pending") },
+      { value: "suspended", label: t("patients.status.suspended") }
     ] },
-    { key: "category", label: "Category", type: "dropdown", options: [
-      { value: "Hardware", label: "Hardware" },
-      { value: "Software", label: "Software" },
-      { value: "Subscription", label: "Subscription" },
-      { value: "Logistics", label: "Logistics" }
+    { key: "category", label: t("orders.category"), type: "dropdown", options: [
+      { value: "Hardware", label: t("orders.categories.hardware") },
+      { value: "Software", label: t("orders.categories.software") },
+      { value: "Subscription", label: t("orders.categories.subscription") },
+      { value: "Logistics", label: t("orders.categories.logistics") }
     ] },
-    { key: "dateRange", label: "Created Date", type: "date-range" }
-  ];
+    { key: "dateRange", label: t("filters.title"), type: "date-range" }
+  ], [t]);
 
   const columns: FTTHColumn<Order>[] = useMemo(() => [
     {
       key: "id",
-      header: "Order ID",
+      header: t("orders.order_id"),
       sortable: true,
       render: (val) => <span className="text-primary1 font-black underline underline-offset-4 decoration-primary1/20 cursor-pointer">{val}</span>
     },
     {
       key: "customer",
-      header: "Customer",
+      header: t("orders.customer"),
       sortable: true,
       render: (val) => (
         <div className="flex items-center gap-3">
@@ -92,26 +94,26 @@ export default function PremiumTableDemo() {
     },
     {
       key: "amount",
-      header: "Amount",
+      header: t("orders.amount"),
       sortable: true,
     },
     {
       key: "category",
-      header: "Category",
+      header: t("orders.category"),
       render: (val) => (
          <span className="px-2 py-1 rounded bg-slate-100 dark:bg-white/5 text-[11px] font-bold text-slate-500 dark:text-white/30 tracking-tight">
-            {val}
+            {t(`orders.categories.${val.toLowerCase().replace(' ', '_')}`)}
          </span>
       )
     },
     {
       key: "date",
-      header: "Date",
+      header: t("orders.date"),
       sortable: true,
     },
     {
       key: "status",
-      header: "Status",
+      header: t("orders.status"),
       align: "center",
       render: (val) => {
         const variantMap = {
@@ -119,10 +121,10 @@ export default function PremiumTableDemo() {
           pending: "warning",
           suspended: "error"
         } as const;
-        return <TableBadge label={val} variant={variantMap[val]} />;
+        return <TableBadge label={t(`patients.status.${val}`)} variant={variantMap[val]} />;
       }
     }
-  ], []);
+  ], [t]);
   const checkHasValue = (value: any) => {
     if (value === null || value === undefined) return false;
     if (typeof value === "string") return value.trim() !== "";
@@ -189,8 +191,8 @@ export default function PremiumTableDemo() {
   return (
     <div className="p-6 md:p-12 min-h-screen bg-slate-50 dark:bg-[#070b14] transition-colors duration-500">
       <PageMeta 
-        title="Premium DataTable Demo | FTTH UI" 
-        description="A demonstration of the high-fidelity enterprise data table component."
+        title={t("orders.title_demo")} 
+        description={t("orders.title_demo_desc")}
       />
 
       <div className="max-w-7xl mx-auto">
@@ -198,9 +200,9 @@ export default function PremiumTableDemo() {
             <div>
                <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight flex items-center gap-3 uppercase">
                   <span className="w-1.5 h-8 bg-primary1 rounded-full" />
-                  SaaS Dashboard
+                  {t("orders.title", "SaaS Dashboard")}
                </h1>
-               <p className="text-slate-400 dark:text-white/20 font-bold uppercase tracking-widest text-[11px] mt-2 ml-4">Premium Components Library v2.0</p>
+               <p className="text-slate-400 dark:text-white/20 font-bold uppercase tracking-widest text-[11px] mt-2 ms-4">{t("orders.subtitle", "Premium Components Library v2.0")}</p>
             </div>
             
             <button 
@@ -210,7 +212,7 @@ export default function PremiumTableDemo() {
               }}
               className="px-6 h-10 rounded-xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-[11px] font-black uppercase tracking-widest text-slate-500 dark:text-white/40 hover:text-primary1 transition-all shadow-sm"
             >
-              Simulate Loading
+              {t("orders.simulate_loading")}
             </button>
         </div>
 
@@ -223,7 +225,7 @@ export default function PremiumTableDemo() {
                 bg="bg-primary2"
                 className="w-full sm:w-auto !h-11 sm:!h-10 border border-slate-200 dark:border-white/10 text-slate-500 dark:text-white/40 shadow-none !rounded-md"
                 icon={<SlidersHorizontal size={18} />}
-                label={<span className="text-[11px] font-black uppercase tracking-widest px-2">Advanced Filters</span>}
+                label={<span className="text-[11px] font-black uppercase tracking-widest px-2">{t("orders.advanced_filters")}</span>}
                 onClick={() => setIsFilterOpen(true)}
             />
         </div>
@@ -237,7 +239,7 @@ export default function PremiumTableDemo() {
               exit={{ opacity: 0, y: -10 }}
               className="mb-8 flex flex-wrap gap-2 items-center px-4 py-3 bg-slate-100/30 dark:bg-white/1 rounded-xl border border-dashed border-slate-200 dark:border-white/10"
             >
-              <span className="text-[10px] font-black text-slate-400 dark:text-white/20 uppercase tracking-[0.2em] mr-2">Active Filters:</span>
+              <span className="text-[10px] font-black text-slate-400 dark:text-white/20 uppercase tracking-[0.2em] me-2">{t("patients.active_filters")}</span>
               {Object.entries(activeFilters).map(([key, value]) => {
                 if (!checkHasValue(value)) return null;
                 
@@ -245,14 +247,14 @@ export default function PremiumTableDemo() {
                 // Mapping labels based on the specific keys in our Table Demo
                 if (key === "status") {
                    const statusVal = typeof value === 'object' ? value.label || value.value : value;
-                   chipLabel = `Status: ${statusVal}`;
+                   chipLabel = `${t("orders.status")}: ${t(`patients.status.${statusVal.toLowerCase()}`)}`;
                 } else if (key === "category") {
                    const catVal = typeof value === 'object' ? value.label || value.value : value;
-                   chipLabel = `Category: ${catVal}`;
+                   chipLabel = `${t("orders.category")}: ${t(`orders.categories.${catVal.toLowerCase().replace(' ', '_')}`)}`;
                 } else if (key === "dateRange") {
-                   chipLabel = `Period: ${value.start || '...'} to ${value.end || '...'}`;
+                   chipLabel = `${t("filters.period")}: ${value.start || '...'} ${t("pagination.to")} ${value.end || '...'}`;
                 } else {
-                   chipLabel = `${key}: ${typeof value === 'object' ? value.label || value.value || 'Active' : value}`;
+                   chipLabel = `${key}: ${typeof value === 'object' ? value.label || value.value || t("patients.status.active") : value}`;
                 }
 
                 return (
@@ -283,15 +285,15 @@ export default function PremiumTableDemo() {
                  onClick={() => setActiveFilters({})}
                  className="ml-4 h-8 px-4 text-[11px] font-black text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-full uppercase tracking-widest transition-all cursor-pointer"
                >
-                 Clear All
+                 {t("patients.clear_all")}
               </button>
             </motion.div>
           )}
         </AnimatePresence>
 
         <FTTHPremiumDataTable 
-          title="Recent Orders"
-          subtitle="Manage your transactions and export reports"
+          title={t("orders.recent_orders")}
+          subtitle={t("orders.manage_transactions")}
           columns={columns}
           visibleColumnKeys={visibleColumns}
           onVisibleColumnsChange={setVisibleColumns}
@@ -305,7 +307,7 @@ export default function PremiumTableDemo() {
           onViewClick={(row) => alert(`Viewing ${row.id}`)}
           onEditClick={(row) => alert(`Editing ${row.id}`)}
           onDeleteClick={(row) => alert(`Deleting ${row.id}`)}
-          primaryActionLabel="Create Invoice"
+          primaryActionLabel={t("orders.create_invoice")}
           meta={{
             total: filteredData.length,
             page: page,
@@ -333,8 +335,8 @@ export default function PremiumTableDemo() {
         />
 
         <div className="mt-12 p-8 rounded-[32px] bg-primary1/5 border border-primary1/10 flex flex-col items-center justify-center text-center">
-            <h3 className="text-xl font-bold text-slate-800 dark:text-white/80">Ready for Production</h3>
-            <p className="text-sm text-slate-400 dark:text-white/20 mt-2 max-w-md">This component is built on an 8px grid system, fully responsive, and supports both RTL and Dark Mode natively.</p>
+            <h3 className="text-xl font-bold text-slate-800 dark:text-white/80">{t("orders.ready_for_prod")}</h3>
+            <p className="text-sm text-slate-400 dark:text-white/20 mt-2 max-w-md">{t("orders.ready_desc")}</p>
         </div>
       </div>
     </div>

@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import PageMeta from "../components/Common/PageMeta";
+import { useTranslation } from "react-i18next";
 
 // Ftth Components
 import Button from "../components/Ui/Ftth/Button";
@@ -20,93 +21,86 @@ import FTTHAdvancedFilterModal, { FilterConfig } from "../components/Ui/Ftth/Adv
 import { DateRangePicker } from "../components/Ui/Ftth/DateFilter/date-range-picker";
 import { getLocalTimeZone } from "@internationalized/date";
 
-/* ─── Mock Data ──────────────────────────────────────────────────────────── */
-
-const DEPARTMENTS = [
-  { value: "cardiology", label: "Cardiology" },
-  { value: "neurology", label: "Neurology" },
-  { value: "pediatrics", label: "Pediatrics" },
-  { value: "oncology", label: "Oncology" },
-  { value: "emergency", label: "Emergency" },
-];
-
-const STATUS_OPTIONS = [
-  { value: "active", label: "Active" },
-  { value: "discharged", label: "Discharged" },
-  { value: "pending", label: "Pending" },
-];
-
-const MOCK_PATIENTS = [
-  { id: "P-1001", name: "Alice Johnson", age: 45, gender: "female", department: "cardiology", status: "active", date: "2024-03-10", image: "https://i.pravatar.cc/150?u=alice", isVip: true },
-  { id: "P-1002", name: "Bob Wilson", age: 62, gender: "male", department: "neurology", status: "discharged", date: "2024-03-08", image: "https://i.pravatar.cc/150?u=bob", isVip: false },
-  { id: "P-1003", name: "Charlie Davis", age: 28, gender: "male", department: "pediatrics", status: "active", date: "2024-03-12", image: "https://i.pravatar.cc/150?u=charlie", isVip: true },
-  { id: "P-1004", name: "Diana Prince", age: 34, gender: "female", department: "oncology", status: "pending", date: "2024-03-11", image: "https://i.pravatar.cc/150?u=diana", isVip: false },
-  { id: "P-1005", name: "Edward Norton", age: 52, gender: "male", department: "emergency", status: "active", date: "2024-03-09", image: "https://i.pravatar.cc/150?u=edward", isVip: false },
-  { id: "P-1006", name: "Fiona Gallagher", age: 31, gender: "female", department: "cardiology", status: "active", date: "2024-03-07", image: "https://i.pravatar.cc/150?u=fiona", isVip: true },
-];
-
-/* ─── Filter Configuration ─────────────────────────────────────────────── */
-
-const FILTER_CONFIG: FilterConfig[] = [
-  {
-    key: "status",
-    label: "Patient Status",
-    type: "dropdown",
-    options: STATUS_OPTIONS,
-    placeholder: "Select Status"
-  },
-  {
-    key: "departments",
-    label: "Departments",
-    type: "dropdown",
-    multiSelect: true,
-    options: DEPARTMENTS,
-    placeholder: "Select Departments"
-  },
-  {
-    key: "ageRange",
-    label: "Age Range",
-    type: "range",
-    min: 0,
-    max: 100,
-    unit: "Years"
-  },
-  {
-    key: "gender",
-    label: "Gender",
-    type: "checkbox",
-    options: [
-      { value: "male", label: "Male" },
-      { value: "female", label: "Female" },
-      { value: "other", label: "Other" }
-    ]
-  },
-  {
-    key: "admissionDate",
-    label: "Admission Date",
-    type: "date"
-  },
-  {
-    key: "admissionRange",
-    label: "Admission Period",
-    type: "date-range",
-    info: "Select a custom range for admission"
-  },
-  {
-    key: "isVip",
-    label: "VIP Patient",
-    type: "toggle",
-    info: "Toggle to show only VIP patients"
-  }
-];
-
 /* ─── Page Component ─────────────────────────────────────────────────────── */
 
 export default function FilterTestPage() {
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [filters, setFilters] = useState<Record<string, any>>({});
-  const [searchQuery, setSearchQuery] = useState("");
-  const [externalDateRange, setExternalDateRange] = useState<any>(null);
+  const { t } = useTranslation();
+  
+  const DEPARTMENTS = useMemo(() => [
+    { value: "cardiology", label: t("patients.mock.departments.cardiology") },
+    { value: "neurology", label: t("patients.mock.departments.neurology") },
+    { value: "pediatrics", label: t("patients.mock.departments.pediatrics") },
+    { value: "oncology", label: t("patients.mock.departments.oncology") },
+    { value: "emergency", label: t("patients.mock.departments.emergency") },
+  ], [t]);
+
+  const STATUS_OPTIONS = useMemo(() => [
+    { value: "active", label: t("patients.status.active") },
+    { value: "discharged", label: t("patients.status.discharged") },
+    { value: "pending", label: t("patients.status.pending") },
+  ], [t]);
+
+  const FILTER_CONFIG: FilterConfig[] = useMemo(() => [
+    {
+      key: "status",
+      label: t("patients.status.label"),
+      type: "dropdown",
+      options: STATUS_OPTIONS,
+      placeholder: t("filters.select_option")
+    },
+    {
+      key: "departments",
+      label: t("patients.fields.department"),
+      type: "dropdown",
+      multiSelect: true,
+      options: DEPARTMENTS,
+      placeholder: t("filters.select_options")
+    },
+    {
+      key: "ageRange",
+      label: t("filters.age_range"),
+      type: "range",
+      min: 0,
+      max: 100,
+      unit: t("common.years")
+    },
+    {
+      key: "gender",
+      label: t("patients.fields.gender"),
+      type: "checkbox",
+      options: [
+        { value: "male", label: t("patients.mock.genders.male") },
+        { value: "female", label: t("patients.mock.genders.female") },
+        { value: "other", label: t("patients.mock.genders.other") }
+      ]
+    },
+    {
+      key: "admissionDate",
+      label: t("patients.fields.admission"),
+      type: "date"
+    },
+    {
+      key: "admissionRange",
+      label: t("filters.admission_range"),
+      type: "date-range",
+      info: t("filters.custom_range_info")
+    },
+    {
+      key: "isVip",
+      label: t("patients.vip_patient"),
+      type: "toggle",
+      info: t("filters.vip_info")
+    }
+  ], [t, STATUS_OPTIONS, DEPARTMENTS]);
+
+  const MOCK_PATIENTS = useMemo(() => [
+    { id: "P-1001", name: t("demo.patients.alice", "Alice Johnson"), age: 45, gender: "female", department: "cardiology", status: "active", date: "2024-03-10", image: "https://i.pravatar.cc/150?u=alice", isVip: true },
+    { id: "P-1002", name: t("demo.patients.bob", "Bob Wilson"), age: 62, gender: "male", department: "neurology", status: "discharged", date: "2024-03-08", image: "https://i.pravatar.cc/150?u=bob", isVip: false },
+    { id: "P-1003", name: t("demo.patients.charlie", "Charlie Davis"), age: 28, gender: "male", department: "pediatrics", status: "active", date: "2024-03-12", image: "https://i.pravatar.cc/150?u=charlie", isVip: true },
+    { id: "P-1004", name: t("demo.patients.diana", "Diana Prince"), age: 34, gender: "female", department: "oncology", status: "pending", date: "2024-03-11", image: "https://i.pravatar.cc/150?u=diana", isVip: false },
+    { id: "P-1005", name: t("demo.patients.edward", "Edward Norton"), age: 52, gender: "male", department: "emergency", status: "active", date: "2024-03-09", image: "https://i.pravatar.cc/150?u=edward", isVip: false },
+    { id: "P-1006", name: t("demo.patients.fiona", "Fiona Gallagher"), age: 31, gender: "female", department: "cardiology", status: "active", date: "2024-03-07", image: "https://i.pravatar.cc/150?u=fiona", isVip: true },
+  ], [t]);
 
   const filteredPatients = useMemo(() => {
     return MOCK_PATIENTS.filter(patient => {
@@ -164,8 +158,8 @@ export default function FilterTestPage() {
   return (
     <div className="p-4 sm:p-8 min-h-screen bg-slate-50 dark:bg-[#070b14] transition-colors duration-500">
       <PageMeta 
-        title="Advanced Filter Test | HCMS" 
-        description="A page to test the newly redesigned advanced filter modal with a table view."
+        title={t("patients.directory_test_title")}
+        description={t("patients.directory_test_desc")}
       />
 
       {/* Header Section */}
@@ -175,14 +169,14 @@ export default function FilterTestPage() {
             <div className="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-600 dark:text-blue-400">
               <Users size={24} />
             </div>
-            <h1 className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Patient Directory</h1>
+            <h1 className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight">{t("patients.directory")}</h1>
           </div>
-          <p className="text-slate-500 dark:text-white/40 text-sm font-medium">Manage and monitor patient records with advanced filtering.</p>
+          <p className="text-slate-500 dark:text-white/40 text-sm font-medium">{t("patients.directory_desc")}</p>
         </div>
 
         <div className="flex items-center gap-3">
            <SearchInputElement 
-             placeholder="Search by name..." 
+             placeholder={t("patients.search_placeholder")} 
              containerClassName="w-full md:w-64"
              value={searchQuery}
              onChange={(e) => setSearchQuery(e.target.value)}
@@ -198,7 +192,7 @@ export default function FilterTestPage() {
              label={
                <div className="flex items-center gap-2">
                   <SlidersHorizontal size={18} />
-                  <span className="text-sm font-bold uppercase tracking-widest px-1">Filters</span>
+                  <span className="text-sm font-bold uppercase tracking-widest px-1">{t("actions.filters")}</span>
                   {Object.keys(filters).length > 0 && (
                     <span className="w-5 h-5 bg-blue-600 text-white rounded-full flex items-center justify-center text-[10px] font-bold">
                        {Object.keys(filters).length}
@@ -219,16 +213,16 @@ export default function FilterTestPage() {
             exit={{ opacity: 0, y: -10 }}
             className="mb-8 flex flex-wrap gap-2 items-center"
           >
-            <span className="text-[11px] font-black text-slate-400 dark:text-white/20 uppercase tracking-[0.2em] mr-2">Active Filters:</span>
+            <span className="text-[11px] font-black text-slate-400 dark:text-white/20 uppercase tracking-[0.2em] me-2">{t("patients.active_filters")}</span>
             {Object.entries(filters).map(([key, value]) => {
               if (!value || (Array.isArray(value) && value.length === 0)) return null;
               let label = "";
-              if (key === "status") label = `Status: ${value.label}`;
-              else if (key === "departments") label = `Dep: ${value.length} selected`;
-              else if (key === "ageRange") label = `Age: ${value.min}-${value.max}`;
-              else if (key === "gender") label = `Gender: ${value.join(", ")}`;
-              else if (key === "admissionDate") label = `On: ${value}`;
-              else if (key === "admissionRange") label = `Period: ${value.start || '...'} to ${value.end || '...'}`;
+              if (key === "status") label = `${t("patients.status.label")}: ${value.label}`;
+              else if (key === "departments") label = `${t("patients.fields.department")}: ${value.length} ${t("filters.selected")}`;
+              else if (key === "ageRange") label = `${t("filters.age_range")}: ${value.min}-${value.max}`;
+              else if (key === "gender") label = `${t("patients.fields.gender")}: ${value.map((g: string) => t(`patients.mock.genders.${g}`)).join(", ")}`;
+              else if (key === "admissionDate") label = `${t("patients.fields.admission")}: ${value}`;
+              else if (key === "admissionRange") label = `${t("filters.period")}: ${value.start || '...'} ${t("pagination.to")} ${value.end || '...'}`;
 
               return (
                 <motion.div 
@@ -249,7 +243,7 @@ export default function FilterTestPage() {
                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary1/10 border border-primary1/20 text-primary1"
               >
                 <span className="text-[11px] font-black uppercase tracking-widest">
-                   Custom Range Active
+                   {t("filters.custom_range_active")}
                 </span>
                 <button onClick={() => setExternalDateRange(null)} className="hover:text-red-500 transition-colors cursor-pointer">
                   <X size={12} />
@@ -264,7 +258,7 @@ export default function FilterTestPage() {
               }}
               className="text-[11px] font-black text-red-500 uppercase tracking-widest hover:underline px-2 cursor-pointer"
             >
-              Clear All
+               {t("patients.clear_all")}
             </button>
           </motion.div>
         )}
@@ -272,15 +266,15 @@ export default function FilterTestPage() {
 
       {/* Table Section */}
       <div className="bg-white/80 dark:bg-[#0c1221]/80 backdrop-blur-xl border border-white dark:border-white/10 rounded-[32px] shadow-xl overflow-hidden overflow-x-auto transition-colors">
-        <table className="w-full text-left border-collapse min-w-[800px]">
-          <thead>
+        <table className="w-full text-start">
+           <thead>
             <tr className="border-b border-slate-100 dark:border-white/5">
-              <th className="px-8 py-6 text-[11px] font-black text-slate-400 dark:text-white/20 uppercase tracking-[0.25em]">Patient</th>
-              <th className="px-6 py-6 text-[11px] font-black text-slate-400 dark:text-white/20 uppercase tracking-[0.25em]">Details</th>
-              <th className="px-6 py-6 text-[11px] font-black text-slate-400 dark:text-white/20 uppercase tracking-[0.25em]">Department</th>
-              <th className="px-6 py-6 text-[11px] font-black text-slate-400 dark:text-white/20 uppercase tracking-[0.25em]">Admission</th>
-              <th className="px-6 py-6 text-[11px] font-black text-slate-400 dark:text-white/20 uppercase tracking-[0.25em]">Status</th>
-              <th className="px-6 py-6 text-[11px] font-black text-slate-400 dark:text-white/20 uppercase tracking-[0.25em] text-center">Action</th>
+              <th className="px-8 py-6 text-[11px] font-black text-slate-400 dark:text-white/20 uppercase tracking-[0.25em] text-start">{t("patients.fields.patient")}</th>
+              <th className="px-6 py-6 text-[11px] font-black text-slate-400 dark:text-white/20 uppercase tracking-[0.25em] text-start">{t("patients.fields.details")}</th>
+              <th className="px-6 py-6 text-[11px] font-black text-slate-400 dark:text-white/20 uppercase tracking-[0.25em] text-start">{t("patients.fields.department")}</th>
+              <th className="px-6 py-6 text-[11px] font-black text-slate-400 dark:text-white/20 uppercase tracking-[0.25em] text-start">{t("patients.fields.admission")}</th>
+              <th className="px-6 py-6 text-[11px] font-black text-slate-400 dark:text-white/20 uppercase tracking-[0.25em] text-start">{t("patients.status.label")}</th>
+              <th className="px-6 py-6 text-[11px] font-black text-slate-400 dark:text-white/20 uppercase tracking-[0.25em] text-center">{t("patients.fields.action")}</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -303,15 +297,15 @@ export default function FilterTestPage() {
                     </div>
                   </td>
                   <td className="px-6 py-5">
-                    <div className="text-[13px] font-bold text-slate-600 dark:text-white/70">{patient.age} Yrs</div>
-                    <div className="text-[11px] font-black text-slate-400 dark:text-white/20 uppercase tracking-widest">{patient.gender}</div>
+                    <div className="text-[13px] font-bold text-slate-600 dark:text-white/70">{patient.age} {t("common.years")}</div>
+                    <div className="text-[11px] font-black text-slate-400 dark:text-white/20 uppercase tracking-widest">{t(`patients.mock.genders.${patient.gender}`)}</div>
                   </td>
                   <td className="px-6 py-5">
                     <div className="flex items-center gap-2">
                       <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-white/5 flex items-center justify-center text-slate-400">
                         {patient.department === 'cardiology' ? <Activity size={14} /> : <Stethoscope size={14} />}
                       </div>
-                      <span className="text-[13px] font-bold text-slate-800 dark:text-white/90 capitalize">{patient.department}</span>
+                      <span className="text-[13px] font-bold text-slate-800 dark:text-white/90 capitalize">{t(`patients.mock.departments.${patient.department}`)}</span>
                     </div>
                   </td>
                   <td className="px-6 py-5 text-[13px] font-bold text-slate-600 dark:text-white/60">
@@ -323,7 +317,7 @@ export default function FilterTestPage() {
                         patient.status === 'discharged' ? 'bg-slate-500/10 text-slate-600 dark:text-slate-400' : 
                         'bg-orange-500/10 text-orange-600 dark:text-orange-400'}`}>
                       <div className={`w-1.5 h-1.5 rounded-full ${patient.status === 'active' ? 'bg-emerald-500' : patient.status === 'discharged' ? 'bg-slate-500' : 'bg-orange-500'}`} />
-                      {patient.status}
+                      {t(`patients.status.${patient.status}`)}
                     </span>
                   </td>
                   <td className="px-6 py-5 text-center">
@@ -338,8 +332,8 @@ export default function FilterTestPage() {
                 <td colSpan={6} className="px-8 py-20 text-center">
                   <div className="flex flex-col items-center">
                     <AlertCircle size={40} className="text-slate-200 dark:text-white/5 mb-4" />
-                    <p className="text-slate-500 dark:text-white/30 font-bold uppercase tracking-widest">No patients match your filters</p>
-                    <button onClick={() => setFilters({})} className="mt-4 text-blue-600 font-black uppercase tracking-widest hover:underline italic cursor-pointer">Clear all filters</button>
+                    <p className="text-slate-500 dark:text-white/30 font-bold uppercase tracking-widest">{t("patients.no_results")}</p>
+                    <button onClick={() => setFilters({})} className="mt-4 text-blue-600 font-black uppercase tracking-widest hover:underline italic cursor-pointer">{t("patients.clear_filters")}</button>
                   </div>
                 </td>
               </tr>
@@ -355,7 +349,7 @@ export default function FilterTestPage() {
         filterConfig={FILTER_CONFIG}
         initialValues={filters}
         onApply={(values) => setFilters(values)}
-        title="Advanced Patient Filter"
+        title={t("filters.title")}
       />
     </div>
   );

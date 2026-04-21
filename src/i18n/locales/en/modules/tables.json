@@ -1,0 +1,39 @@
+{
+  "actions": {
+    "add_new": "Add New",
+    "edit": "Edit",
+    "delete": "Delete",
+    "view": "View",
+    "export": "Export",
+    "configure": "Configure",
+    "apply": "Apply",
+    "reset": "Reset",
+    "cancel": "Cancel",
+    "save": "Save",
+    "search": "Search registry...",
+    "clear_all": "Clear All Filters",
+    "actions_label": "Actions"
+  },
+  "columns": {
+    "display": "Display Columns",
+    "manager": "Display Manager"
+  },
+  "export": {
+    "title": "Generate Report",
+    "pdf": "PDF Document",
+    "excel": "Excel Sheet",
+    "csv": "CSV Files"
+  },
+  "pagination": {
+    "limit": "Show Limit:",
+    "showing": "Showing",
+    "to": "to",
+    "of": "of",
+    "page_suffix": "page"
+  },
+  "empty": {
+    "no_results": "No results found",
+    "try_adjusting": "Try adjusting your filters or search terms",
+    "no_matches": "No Matches"
+  }
+}

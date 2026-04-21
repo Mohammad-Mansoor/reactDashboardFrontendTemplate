@@ -1,0 +1,76 @@
+{
+  "patients": {
+    "directory": "فهرست مریضان",
+    "directory_desc": "مدیریت و نظارت بر سوابق مریضان با فیلترهای پیشرفته.",
+    "search_placeholder": "جستجو بر اساس نام...",
+    "active_filters": "فیلترهای فعال:",
+    "clear_all": "پاک کردن همه",
+    "no_results": "هیچ مریضی با فیلترهای شما مطابقت ندارد",
+    "clear_filters": "پاک کردن تمام فیلترها",
+    "vip_patient": "مریض ویژه (VIP)",
+    "details": "جزئیات",
+    "department": "بخش",
+    "admission": "پذیرش",
+    "directory_test_title": "تست فیلتر پیشرفته | HCMS",
+    "directory_test_desc": "صفحه‌ای برای تست مدال فیلتر پیشرفته جدید با نمای جدول.",
+    "status": {
+      "label": "وضعیت",
+      "active": "فعال",
+      "discharged": "مرخص شده",
+      "pending": "در انتظار",
+      "suspended": "تعلیق شده"
+    },
+    "fields": {
+       "patient": "مریض",
+       "details": "جزئیات",
+       "department": "بخش",
+       "admission": "تاریخ پذیرش",
+       "action": "عملیات",
+       "gender": "جنسیت"
+    },
+    "mock": {
+      "departments": {
+        "cardiology": "قلب و عروق",
+        "neurology": "اعصاب",
+        "pediatrics": "اطفال",
+        "oncology": "تومورشناسی",
+        "emergency": "عاجل"
+      },
+      "genders": {
+        "male": "مرد",
+        "female": "زن",
+        "other": "سایر"
+      }
+    }
+  },
+  "orders": {
+    "title": "داشبورد SaaS",
+    "subtitle": "کتابخانه اجزای پریمیم نسخە ۲.۰",
+    "recent_orders": "سفارشات اخیر",
+    "manage_transactions": "معاملات خود را مدیریت کرده و گزارش‌ها را صادر کنید",
+    "create_invoice": "ایجاد فاکتور",
+    "title_demo": "دموی جدول داده‌ها | FTTH UI",
+    "title_demo_desc": "نمایشی از کامپوننت جدول داده‌های سازمانی با وفاداری بالا.",
+    "order_id": "آیدی سفارش",
+    "customer": "مشتری",
+    "amount": "مبلغ",
+    "category": "کتگوری",
+    "date": "تاریخ",
+    "status": "وضعیت",
+    "ready_for_prod": "آماده برای تولید",
+    "ready_desc": "این جزء بر اساس سیستم گرید ۸ پیکسلی ساخته شده، کاملاً واکنش‌گرا است و به طور بومی از حالت‌های راست‌چین (RTL) و تیره (Dark Mode) پشتیبانی می‌کند.",
+    "simulate_loading": "شبیه‌سازی بارگذاری",
+    "advanced_filters": "فیلترهای پیشرفته",
+    "categories": {
+      "hardware": "سخت‌افزار",
+      "software": "نرم‌افزار",
+      "subscription": "اشتراک",
+      "logistics": "لوژستیک",
+      "chemicals": "مواد کیمیاوی",
+      "lab_gear": "تجهیزات لابراتواری",
+      "consulting": "مشوره دهی",
+      "entertainment": "سرگرمی",
+      "electronics": "الکترونیک"
+    }
+  }
+}

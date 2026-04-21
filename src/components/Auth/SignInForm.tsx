@@ -23,14 +23,13 @@ import { AppDispatch, RootState } from "../../store/store";
 import { login } from "../../store/slices/authSlice";
 import Lottie from "lottie-react";
 import doctorAnimation from "../lottieFiles/Doctor.json";
+import { useTranslation } from "react-i18next";
 
 // Components from Ftth
 import { InputElement, PasswordInput } from "../Ui/Ftth/inputs";
 import Checkbox from "../Ui/Ftth/Checkbox";
 import Button from "../Ui/Ftth/Button";
 import ThemeTogglerTwo from "../Common/ThemeTogglerTwo";
-
-
 
 /* ─── Floating Background Icons ──────────────────────────────────────────── */
 const BG_ICONS = [
@@ -92,10 +91,11 @@ const SocialButton = ({ children, onClick }: { children: React.ReactNode; onClic
 
 /* ─── Features List (Left Panel) ─────────────────────────────────────────── */
 const Features = () => {
+  const { t } = useTranslation();
   const items = [
-    { icon: <Users className="text-blue-500" />, title: "Patient Management", desc: "Comprehensive patient records & care" },
-    { icon: <Calendar className="text-orange-500" />, title: "Smart Scheduling", desc: "Automated appointments & reminders" },
-    { icon: <ClipboardList className="text-emerald-500" />, title: "Digital Records", desc: "Secure & accessible health data" },
+    { icon: <Users className="text-blue-500" />, title: t("auth.login.features.patient_mgmt"), desc: t("auth.login.features.patient_mgmt_desc") },
+    { icon: <Calendar className="text-orange-500" />, title: t("auth.login.features.smart_scheduling"), desc: t("auth.login.features.smart_scheduling_desc") },
+    { icon: <ClipboardList className="text-emerald-500" />, title: t("auth.login.features.digital_records"), desc: t("auth.login.features.digital_records_desc") },
   ];
 
   return (
@@ -122,6 +122,7 @@ const Features = () => {
 };
 
 export default function SignInForm() {
+  const { t } = useTranslation();
   const [rememberMe, setRememberMe] = useState(false);
   
   const {
@@ -135,7 +136,6 @@ export default function SignInForm() {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const { loading, error } = useSelector((state: RootState) => state.auth);
-
 
   const onSubmit = async (data: any) => {
     const resultAction = await dispatch(login({ email: data.email, password: data.password }));
@@ -168,33 +168,17 @@ export default function SignInForm() {
             <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">HealthCare+</h1>
           </motion.div>
 
-          {/* Lottie Animation for Desktop */}
-          {/* <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="w-full max-w-[320px] mb-4 -ml-4"
-          >
-            {doctorAnimation ? (
-              <Lottie animationData={doctorAnimation} loop={true} />
-            ) : (
-              <div className="w-full h-[240px] flex items-center justify-center rounded-2xl bg-slate-100/50 dark:bg-white/5 backdrop-blur-sm border border-slate-200/50 dark:border-white/10">
-                <Loader2 className="w-8 h-8 animate-spin text-blue-500/50" />
-              </div>
-            )}
-          </motion.div> */}
-
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
             <h2 className="text-4xl font-extrabold text-slate-900 dark:text-white leading-tight">
-              Modern Healthcare<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Management</span>
+              {t("auth.login.modern_healthcare")}<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">{t("auth.login.management")}</span>
             </h2>
             <p className="text-slate-600 dark:text-white/60 text-base mt-4 max-w-sm">
-              Experience seamless patient care with our advanced healthcare management platform.
+              {t("auth.login.tagline")}
             </p>
           </motion.div>
 
@@ -212,18 +196,13 @@ export default function SignInForm() {
             
             {/* Form Header */}
             <div className="text-center mb-6">
-              {/* Lottie Animation for Mobile (Shows only when Desktop view is hidden) */}
-              {/* <div className="lg:hidden w-32 h-32 mx-auto mb-4 scale-125">
-                {lottieData && <Lottie animationData={lottieData} loop={true} />}
-              </div> */}
-              
               <div className="hidden lg:flex w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-blue-500/10 dark:to-orange-500/10 items-center justify-center mx-auto mb-5 border border-white dark:border-white/10 transition-colors">
                 <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-orange-500 flex items-center justify-center shadow-md">
                   <Heart className="text-white" size={20} fill="white" />
                 </div>
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-1.5">Welcome Back</h3>
-              <p className="text-slate-500 dark:text-white/50 text-xs">Sign in to manage your healthcare</p>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-1.5">{t("auth.login.title")}</h3>
+              <p className="text-slate-500 dark:text-white/50 text-xs">{t("auth.login.subtitle")}</p>
             </div>
 
             {/* Error Message */}
@@ -242,10 +221,10 @@ export default function SignInForm() {
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4.5">
               <InputElement
-                label="Email Address"
-                placeholder="Enter your email"
+                label={t("auth.login.email_label")}
+                placeholder={t("auth.login.email_placeholder")}
                 type="email"
-                {...register("email", { required: "Email is required" })}
+                {...register("email", { required: t("auth.errors.email_required") })}
                 error={errors.email?.message as string}
                 leftIcon={<Mail size={16} />}
                 className="bg-white/50 dark:bg-white/5 border-slate-200 dark:border-white/10 text-slate-800 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/20"
@@ -253,9 +232,9 @@ export default function SignInForm() {
 
               <div className="space-y-1">
                 <PasswordInput
-                  label="Password"
-                  placeholder="Enter your password"
-                  {...register("password", { required: "Password is required" })}
+                  label={t("auth.login.password_label")}
+                  placeholder={t("auth.login.password_placeholder")}
+                  {...register("password", { required: t("auth.errors.password_required") })}
                   error={errors.password?.message as string}
                   leftIcon={<Lock size={16} />}
                   className="bg-white/50 dark:bg-white/5 border-slate-200 dark:border-white/10 text-slate-800 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/20"
@@ -270,10 +249,10 @@ export default function SignInForm() {
                     color="primary1"
                     size="sm"
                   />
-                  <span className="text-xs text-slate-600 dark:text-white/70 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Remember me</span>
+                  <span className="text-xs text-slate-600 dark:text-white/70 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">{t("auth.login.remember_me")}</span>
                 </label>
-                <Link to="/forgot-password" title="Forgot Password" className="text-xs text-orange-600 dark:text-orange-400 hover:text-orange-500 transition-colors font-semibold">
-                  Forgot password?
+                <Link to="/forgot-password" title={t("auth.login.forgot_password")} className="text-xs text-orange-600 dark:text-orange-400 hover:text-orange-500 transition-colors font-semibold">
+                  {t("auth.login.forgot_password")}
                 </Link>
               </div>
 
@@ -285,7 +264,7 @@ export default function SignInForm() {
                 className="!rounded-lg border-none bg-gradient-to-r from-blue-600 to-orange-500 hover:brightness-110 shadow-lg shadow-blue-500/20 active:scale-[0.98] mt-1"
                 label={
                   <div className="flex items-center justify-center gap-1.5">
-                    <span className="text-sm font-bold">Sign In</span>
+                    <span className="text-sm font-bold">{t("auth.login.submit")}</span>
                     <ArrowRight size={18} />
                   </div>
                 }
@@ -293,7 +272,7 @@ export default function SignInForm() {
 
               <div className="relative my-6 flex items-center">
                 <div className="flex-grow border-t border-slate-200 dark:border-white/10"></div>
-                <span className="px-3 text-[10px] text-slate-400 dark:text-white/30 font-bold uppercase tracking-wider">or continue with</span>
+                <span className="px-3 text-[10px] text-slate-400 dark:text-white/30 font-bold uppercase tracking-wider">{t("auth.login.or_continue")}</span>
                 <div className="flex-grow border-t border-slate-200 dark:border-white/10"></div>
               </div>
 
@@ -304,9 +283,9 @@ export default function SignInForm() {
               </div>
 
               <p className="text-center text-xs text-slate-500 dark:text-white/50 pt-3">
-                Don't have an account?{" "}
+                {t("auth.login.no_account")}{" "}
                 <Link to="/signup" className="text-orange-600 dark:text-orange-400 font-bold hover:underline">
-                  Sign up now
+                  {t("auth.login.signup_link")}
                 </Link>
               </p>
             </form>
@@ -314,7 +293,7 @@ export default function SignInForm() {
 
           <div className="mt-6 flex items-center justify-center gap-1.5 text-slate-400 dark:text-white/20">
              <Shield size={12} />
-             <span className="text-[10px] font-bold uppercase tracking-[0.15em]">End-to-end encryption</span>
+             <span className="text-[10px] font-bold uppercase tracking-[0.15em]">{t("auth.login.encryption_notice")}</span>
           </div>
         </motion.div>
       </div>
@@ -325,3 +304,4 @@ export default function SignInForm() {
     </div>
   );
 }
+

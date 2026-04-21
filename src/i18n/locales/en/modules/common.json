@@ -9,19 +9,26 @@
     "profile": "Profile",
     "logout": "Logout",
     "search": "Search...",
+    "select": "Select...",
     "notifications": "Notifications",
     "edit_profile": "Edit Profile",
     "account_settings": "Account Settings",
     "support": "Support",
+    "toggle_sidebar": "Toggle Sidebar",
     "logout_all": "Logout all",
     "logout_other": "Logout other sessions",
+    "logout_other_success": "Other sessions logged out",
     "required": "is required",
     "no_data": "No data available",
+    "years": "Years",
     "pagination": {
       "showing": "Showing",
       "to": "to",
       "of": "of",
       "results": "results"
-    }
+    },
+    "pro_badge": "PRO",
+    "new_badge": "NEW"
   }
 }
+

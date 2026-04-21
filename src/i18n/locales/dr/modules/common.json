@@ -8,18 +8,27 @@
     "settings": "تنظیمات",
     "profile": "پروفایل",
     "logout": "خروج",
+    "logout_all": "خروج از همه",
+    "logout_other": "خروج از سایر نشست‌ها",
+    "logout_other_success": "سایر نشست‌ها خارج شدند",
     "search": "جستجو...",
+    "select": "انتخاب کنید...",
     "notifications": "اعلان‌ها",
     "edit_profile": "ویرایش پروفایل",
     "account_settings": "تنظیمات حساب",
     "support": "پشتیبانی",
+    "toggle_sidebar": "تغییر وضعیت منو",
     "required": "الزامی است",
     "no_data": "هیچ داده‌ای در دسترس نیست",
+    "years": "سال",
     "pagination": {
       "showing": "نمایش",
       "to": "تا",
       "of": "از",
       "results": "نتایج"
-    }
+    },
+    "pro_badge": "ویژه",
+    "new_badge": "جدید"
   }
 }
+

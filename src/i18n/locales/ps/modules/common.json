@@ -8,18 +8,27 @@
     "settings": "ترتیبات",
     "profile": "پروفایل",
     "logout": "وتل",
+    "logout_all": "له ټولو وتل",
+    "logout_other": "له نورو ناستو وتل",
+    "logout_other_success": "نورې ناستې وتلې دي",
     "search": "لټون...",
+    "select": "انتخاب کړئ...",
     "notifications": "خبرتیاوې",
-    "edit_profile": "پروفایل ایډیټ کړئ",
-    "account_settings": "د حساب ترتیبات",
+    "edit_profile": "پروفایل سم کړئ",
+    "account_settings": "د حساب تنظیمات",
     "support": "ملاتړ",
+    "toggle_sidebar": "مینو بدل کړئ",
     "required": "اړین دی",
-    "no_data": "هیڅ ډاټا شتون نلري",
+    "no_data": "هیڅ معلومات نشته",
+    "years": "کاله",
     "pagination": {
       "showing": "ښودل",
       "to": "تر",
       "of": "څخه",
       "results": "پایلې"
-    }
+    },
+    "pro_badge": "ځانګړی",
+    "new_badge": "نوې"
   }
 }
+
