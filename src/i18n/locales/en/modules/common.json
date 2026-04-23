@@ -29,6 +29,20 @@
     },
     "pro_badge": "PRO",
     "new_badge": "NEW"
+  },
+  "error": {
+    "404": {
+      "pageTitle": "404 Not Found | HealthCare+",
+      "pageDescription": "The requested page could not be found.",
+      "title": "Oops! Page not found",
+      "message": "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable. Let's get you back on track.",
+      "goBack": "Go Back",
+      "goHome": "Return to Home",
+      "needHelp": "Need assistance?",
+      "contactSupport": "Contact Customer Support"
+    }
+  },
+  "footer": {
+    "allRightsReserved": "All rights reserved."
   }
 }
-

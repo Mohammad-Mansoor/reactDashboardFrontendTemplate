@@ -15,7 +15,14 @@ import ItemListPage from "./pages/Demo/ItemListPage";
 import ItemDetailPage from "./pages/Demo/ItemDetailPage";
 import ModulePlaceholder from "./pages/OtherPage/ModulePlaceholder";
 
+// Forgot Password Flow
+import ForgotPassword from "./auth/pages/ForgotPassword";
+import VerifyOtp from "./auth/pages/VerifyOtp";
+import ResetPassword from "./auth/pages/ResetPassword";
+import { useInitializeApp } from "./hooks/useInitializeApp";
+
 export default function App() {
+  useInitializeApp();
   return (
     <PermissionsProvider>
       <Router>
@@ -45,6 +52,9 @@ export default function App() {
               <Route element={<PublicRoute />}>
                 <Route path="/signin" element={<Login />} />
                 <Route path="/auth/login" element={<Login />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
+                <Route path="/verify-otp" element={<VerifyOtp />} />
+                <Route path="/reset-password" element={<ResetPassword />} />
               </Route>
               <Route path="*" element={<NotFound />} />
             </Routes>

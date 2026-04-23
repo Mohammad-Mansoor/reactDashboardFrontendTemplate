@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import { encryptData, decryptData } from "../../utils/crypto";
 import {
   Mail,
   Lock,
@@ -128,10 +129,26 @@ export default function SignInForm() {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm({
     defaultValues: { email: "", password: "" },
   });
+
+  useEffect(() => {
+    const encryptedData = localStorage.getItem("rememberMe");
+    if (encryptedData) {
+      const decrypted = decryptData(encryptedData);
+      if (decrypted) {
+        const { email, password, rememberMe: isRemember } = decrypted;
+        setRememberMe(isRemember);
+        if (isRemember) {
+          setValue("email", email);
+          setValue("password", password);
+        }
+      }
+    }
+  }, [setValue]);
 
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
@@ -139,7 +156,19 @@ export default function SignInForm() {
 
   const onSubmit = async (data: any) => {
     const resultAction = await dispatch(login({ email: data.email, password: data.password }));
-    if (login.fulfilled.match(resultAction)) navigate("/");
+    if (login.fulfilled.match(resultAction)) {
+      if (rememberMe) {
+        const encrypted = encryptData({ 
+          email: data.email, 
+          password: data.password, 
+          rememberMe 
+        });
+        localStorage.setItem("rememberMe", encrypted);
+      } else {
+        localStorage.removeItem("rememberMe");
+      }
+      navigate("/");
+    }
   };
 
   return (

@@ -8,6 +8,13 @@ interface LoginCredentials {
 
 const initialState = {
   accessToken: localStorage.getItem("accessToken") || null,
+  user: null as any,
+  isAuthenticated: !!localStorage.getItem("accessToken"),
+  notificationOptions: {
+    email: false,
+    whatsapp: false,
+    telegram: false,
+  },
   loading: false,
   error: null as string | null,
 };
@@ -76,7 +83,21 @@ const authSlice = createSlice({
   reducers: {
     logout: (state) => {
       state.accessToken = null;
+      state.user = null;
+      state.isAuthenticated = false;
+      state.notificationOptions = {
+        email: false,
+        whatsapp: false,
+        telegram: false,
+      };
       localStorage.removeItem("accessToken");
+    },
+    setAuthData: (state, action) => {
+      state.user = action.payload.user;
+      state.isAuthenticated = true;
+    },
+    setNotificationOptions: (state, action) => {
+      state.notificationOptions = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -96,5 +117,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { logout } = authSlice.actions;
+export const { logout, setAuthData, setNotificationOptions } = authSlice.actions;
 export default authSlice.reducer;
