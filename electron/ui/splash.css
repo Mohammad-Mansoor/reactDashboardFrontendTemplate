@@ -1,0 +1,180 @@
+body {
+    margin: 0;
+    background: #0f172a;
+    color: white;
+    font-family: sans-serif;
+  }
+  
+  .container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 1s ease;
+  }
+  
+  .logo {
+    width: 100px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px #38bdf8);
+  }
+  
+  .title {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .loader {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #334155;
+    border-top: 4px solid #38bdf8;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  .bar {
+    width: 200px;
+    height: 6px;
+    background: #1e293b;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  #progress {
+    height: 100%;
+    width: 0%;
+    background: #38bdf8;
+    transition: width 0.2s;
+  }
+  
+  #percent {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+  @keyframes spin {
+    100% { transform: rotate(360deg); }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .drag {
+    -webkit-app-region: drag;
+  }
+  
+  .no-drag {
+    -webkit-app-region: no-drag;
+  }
+
+  .brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    animation: fadeIn 0.8s ease;
+  }
+  
+  .logo-box {
+    width: 72px;
+    height: 72px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #6366f1, #38bdf8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
+    transition: transform 0.5s ease;
+  }
+  
+  .logo-box:hover {
+    transform: rotate(12deg);
+  }
+  
+  .logo-img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .brand-text {
+    margin-top: 12px;
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 18px;
+    font-weight: 800;
+    color: white;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  
+  .subtitle {
+    font-size: 9px;
+    font-weight: 700;
+    color: #60a5fa;
+    letter-spacing: 0.2em;
+    margin-top: 4px;
+    text-transform: uppercase;
+  }
+  
+  /* optional fade animation */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .logo-box {
+    width: 90px;
+    height: 90px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #6366f1, #38bdf8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    box-shadow: 
+      0 0 30px rgba(56, 189, 248, 0.4),
+      inset 0 0 15px rgba(255, 255, 255, 0.1);
+  
+    animation: pulse 2.5s infinite ease-in-out;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* glowing animated shine */
+  .logo-box::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 60%);
+    animation: rotate 6s linear infinite;
+  }
+  
+  /* main logo text */
+  .logo-text {
+    font-size: 26px;
+    font-weight: 900;
+    color: white;
+    letter-spacing: 2px;
+    z-index: 2;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* animations */
+  @keyframes pulse {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.08); }
+    100% { transform: scale(1); }
+  }
+  
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }

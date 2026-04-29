@@ -903,3 +903,10 @@ span.flatpickr-weekday,
   scrollbar-color: var(--color-blue-light-400) transparent;
 }
 
+.drag {
+  -webkit-app-region: drag;
+}
+
+.no-drag {
+  -webkit-app-region: no-drag;
+}

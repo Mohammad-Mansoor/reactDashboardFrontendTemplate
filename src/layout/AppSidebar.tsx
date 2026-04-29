@@ -108,7 +108,7 @@ const AppSidebar: React.FC = () => {
             <div className={`w-9 h-9 rounded-xl bg-gradient-to-br from-primary1 to-primary2 flex items-center justify-center shadow-lg shadow-primary1/20 transition-transform duration-500 group-hover:rotate-12 shrink-0`}>
                <LayoutGrid className="text-white" size={20} />
             </div>
-            {isActuallyExpanded && (
+            {/* {isActuallyExpanded && (
               <motion.div
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -117,7 +117,7 @@ const AppSidebar: React.FC = () => {
                 <span className="text-base font-black tracking-tight text-slate-900 dark:text-white uppercase leading-tight">{t("sidebar.brand.name")}</span>
                 <span className="text-[9px] font-bold text-blue-light-600 dark:text-blue-light-400 uppercase tracking-[0.2em] leading-tight">{t("sidebar.brand.subtitle")}</span>
               </motion.div>
-            )}
+            )} */}
           </Link>
         </div>
 
