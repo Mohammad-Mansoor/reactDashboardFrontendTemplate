@@ -28,7 +28,9 @@ export const login = createAsyncThunk<
   async (credentials, { rejectWithValue }) => {
     try {
       const response = await agent.post("/auth/login", credentials);
-      const { accessToken } = response.data.data;
+      console.log("response inside the redux slice: ", response)
+      const { access_token : accessToken } = response.data;
+      // const { accessToken } = response.data.data;
       localStorage.setItem("accessToken", accessToken);
       return accessToken;
     } catch (error: any) {

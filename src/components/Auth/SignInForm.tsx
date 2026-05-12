@@ -156,6 +156,7 @@ export default function SignInForm() {
 
   const onSubmit = async (data: any) => {
     const resultAction = await dispatch(login({ email: data.email, password: data.password }));
+    console.log("this is login response: ", resultAction)
     if (login.fulfilled.match(resultAction)) {
       if (rememberMe) {
         const encrypted = encryptData({ 

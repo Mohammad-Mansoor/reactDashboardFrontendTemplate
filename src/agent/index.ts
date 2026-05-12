@@ -45,6 +45,7 @@ agent.interceptors.request.use(
         config.headers['x-os'] = metrics.os;
         config.headers['x-browser'] = metrics.browser;
         config.headers['x-client-id'] = 'advanced-saas-agent';
+        config.headers['x-source'] = "web"
       }
     } catch (e) {
       console.warn('[Telemetry] Intelligence bridge failure:', e);
