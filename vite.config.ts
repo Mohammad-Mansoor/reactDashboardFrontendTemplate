@@ -14,6 +14,6 @@ export default defineConfig({
   ],
   server: {
     port: 3000,
-    allowedHosts: ["lorretta-shotten-carolynn.ngrok-free.dev"],
+    allowedHosts: ["*"],
   },
 });

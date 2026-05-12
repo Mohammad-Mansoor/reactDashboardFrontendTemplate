@@ -9,18 +9,34 @@
     "thisYear": "امسال",
     "lastYear": "سال گذشته",
     "allTime": "تمام زمان",
+    "select_date": "انتخاب تاریخ",
+    "select_range": "انتخاب بازه",
+    "clear_range": "پاک کردن بازه",
     "cancel": "لغو",
-    "apply": "اعمال"
+    "apply": "اعمال",
+    "select_placeholder": "انتخاب..."
   },
-  "advanceFilter": {
-    "title": "فیلتر پیشرفته",
-    "resetAll": "بازنشانی همه",
+  "filters": {
+    "title": "فیلترهای پیشرفته",
+    "reset": "بازنشانی",
     "cancel": "لغو",
-    "applyFilters": "اعمال فیلترها",
+    "apply": "اعمال فیلترها",
     "min": "حداقل",
     "max": "حداکثر",
-    "selectOption": "یک گزینه انتخاب کنید",
-    "selectOptions": "گزینه‌ها را انتخاب کنید",
+    "from": "از",
+    "to": "الی",
+    "enable_label": "فعال سازی {{name}}",
+    "today": "امروز",
+    "last_7_days": "۷ روز گذشته",
+    "last_month": "ماه گذشته",
+    "age_range": "رنج سنی",
+    "admission_range": "دوره پذیرش",
+    "period": "دوره",
+    "custom_range_info": "یک بازه سفارشی برای پذیرش انتخاب کنید",
+    "vip_info": "برای نمایش فقط بیماران ویژه تغییر دهید",
+    "custom_range_active": "بازه سفارشی فعال",
+    "select_option": "یک گزینه انتخاب کنید",
+    "select_options": "گزینه‌ها را انتخاب کنید",
     "selected": "انتخاب شده"
   }
 }

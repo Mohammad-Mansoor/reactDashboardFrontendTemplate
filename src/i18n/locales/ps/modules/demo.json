@@ -1,0 +1,76 @@
+{
+  "patients": {
+    "directory": "د ناروغانو فهرست",
+    "directory_desc": "د پرمختللي فلټرونو په کارولو سره د ناروغانو ریکارډونه مدیریت او وڅارئ.",
+    "search_placeholder": "د نوم له مخې لټون...",
+    "active_filters": "فعال فلټرونه:",
+    "clear_all": "ټول پاک کړئ",
+    "no_results": "ستاسو د فلټرونو سره سم هیڅ ناروغ ونه موندل شو",
+    "clear_filters": "ټول فلټرونه پاک کړئ",
+    "vip_patient": "ځانګړی ناروغ (VIP)",
+    "details": "جزیات",
+    "department": "څانګه",
+    "admission": "داخلېدل",
+    "directory_test_title": "د فیلټر پرمختللي ازموینه | HCMS",
+    "directory_test_desc": "د جدول لید سره د نوي ډیزاین شوي پرمختللي فیلټر ماډل ازموینې لپاره پاڼه.",
+    "status": {
+      "label": "حالت",
+      "active": "فعال",
+      "discharged": "رخصت شوی",
+      "pending": "په تمه",
+      "suspended": "ځنډول شوی"
+    },
+    "fields": {
+       "patient": "ناروغ",
+       "details": "جزیات",
+       "department": "څانګه",
+       "admission": "د داخلېدو نېټه",
+       "action": "کړنه",
+       "gender": "جنسیت"
+    },
+    "mock": {
+      "departments": {
+        "cardiology": "د زړه څانګه",
+        "neurology": "د عصابو څانګه",
+        "pediatrics": "د ماشومانو څانګه",
+        "oncology": "د تومورونو څانګه",
+        "emergency": "بېړنۍ څانګه"
+      },
+      "genders": {
+        "male": "نارینه",
+        "female": "ښځینه",
+        "other": "نور"
+      }
+    }
+  },
+  "orders": {
+    "title": "د SaaS ډشبورډ",
+    "subtitle": "د پریمیم اجزاو کتابتون نسخه ۲.۰",
+    "recent_orders": "وروستي فرمایشونه",
+    "manage_transactions": "خپلې معاملې مدیریت کړئ او راپورونه ترلاسه کړئ",
+    "create_invoice": "بلجوړول",
+    "title_demo": "د ارقامو جدول ډیمو | FTTH UI",
+    "title_demo_desc": "د لوړ کیفیت لرونکي تصدۍ ارقامو جدول جز ښودنه.",
+    "order_id": "د فرمایش آی‌ډي",
+    "customer": "پېرودونکی",
+    "amount": "اندازه",
+    "category": "کټګوري",
+    "date": "نېټه",
+    "status": "حالت",
+    "ready_for_prod": "تولید لپاره چمتو دی",
+    "ready_desc": "دا برخه د ۸ پکسل ګریډ سیسټم باندې جوړه شوې، په بشپړ ډول ځواب ویونکې ده او په اصلي ډول د RTL او ډارک موډ څخه ملاتړ کوي.",
+    "simulate_loading": "د بارولو سمول",
+    "advanced_filters": "پرمختللي فلټرونه",
+    "categories": {
+      "hardware": "هارډویر",
+      "software": "سافټویر",
+      "subscription": "ګډون",
+      "logistics": "لوژستیک",
+      "chemicals": "کیمیاوي توکي",
+      "lab_gear": "لابراتواري وسایل",
+      "consulting": "مشوره ورکول",
+      "entertainment": "ساتیري",
+      "electronics": "الکترونیک"
+    }
+  }
+}

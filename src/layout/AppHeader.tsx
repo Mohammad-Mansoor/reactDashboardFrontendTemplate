@@ -41,14 +41,15 @@ const AppHeader = () => {
   }, []);
 
   return (
-    <header className='app-header sticky top-0 flex w-full bg-white/80 backdrop-blur-xl border-b border-gray-100 z-[990] dark:border-slate-800 dark:bg-gray-900/80 transition-colors duration-300'>
+    <header className='app-header sticky top-0 flex w-full bg-slate-50/80 dark:bg-[#070b14]/90 backdrop-blur-xl border-b border-slate-200/60 z-[990] dark:border-white/5 transition-colors duration-300'>
       <div className='flex flex-col items-center justify-between grow lg:flex-row px-4 lg:px-6 mx-auto w-full max-w-screen-2xl'>
         <div className='flex items-center justify-between w-full gap-2 py-3 lg:justify-normal lg:w-auto lg:py-4'>
           <button
             className='flex items-center justify-center w-10 h-10 text-gray-500 border-gray-200 rounded-lg z-99999 dark:border-gray-800 lg:flex dark:text-gray-400 lg:h-11 lg:w-11 lg:border'
             onClick={handleToggle}
-            aria-label='Toggle Sidebar'
+            aria-label={t("common.toggle_sidebar")}
           >
+
             {isMobileOpen ? (
               <svg
                 width='24'

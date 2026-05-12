@@ -8,18 +8,42 @@
     "settings": "تنظیمات",
     "profile": "پروفایل",
     "logout": "خروج",
+    "logout_all": "خروج از همه",
+    "logout_other": "خروج از سایر نشست‌ها",
+    "logout_other_success": "سایر نشست‌ها خارج شدند",
     "search": "جستجو...",
+    "select": "انتخاب کنید...",
     "notifications": "اعلان‌ها",
     "edit_profile": "ویرایش پروفایل",
     "account_settings": "تنظیمات حساب",
     "support": "پشتیبانی",
+    "toggle_sidebar": "تغییر وضعیت منو",
     "required": "الزامی است",
     "no_data": "هیچ داده‌ای در دسترس نیست",
+    "years": "سال",
     "pagination": {
       "showing": "نمایش",
       "to": "تا",
       "of": "از",
       "results": "نتایج"
+    },
+    "pro_badge": "ویژه",
+    "new_badge": "جدید"
+  },
+  "error": {
+    "404": {
+      "pageTitle": "404 پیدا نشد | HealthCare+",
+      "pageDescription": "صفحه مورد نظر پیدا نشد.",
+      "title": "اوه! صفحه پیدا نشد",
+      "message": "ممکن است صفحه‌ای که به دنبال آن هستید حذف شده باشد، نام آن تغییر کرده باشد، یا به طور موقت در دسترس نباشد. بیایید شما را به مسیر درست برگردانیم.",
+      "goBack": "بازگشت",
+      "goHome": "بازگشت به خانه",
+      "needHelp": "به کمک نیاز دارید؟",
+      "contactSupport": "تماس با پشتیبانی مشتریان"
     }
+  },
+  "footer": {
+    "allRightsReserved": "تمامی حقوق محفوظ است."
   }
 }
+

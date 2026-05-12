@@ -1,0 +1,76 @@
+{
+  "patients": {
+    "directory": "Patient Directory",
+    "directory_desc": "Manage and monitor patient records with advanced filtering.",
+    "search_placeholder": "Search by name...",
+    "active_filters": "Active Filters:",
+    "clear_all": "Clear All",
+    "no_results": "No patients match your filters",
+    "clear_filters": "Clear all filters",
+    "directory_test_title": "Advanced Filter Test | HCMS",
+    "directory_test_desc": "A page to test the newly redesigned advanced filter modal with a table view.",
+    "vip_patient": "VIP Patient",
+    "details": "Details",
+    "department": "Department",
+    "admission": "Admission",
+    "status": {
+      "label": "Status",
+      "active": "Active",
+      "discharged": "Discharged",
+      "pending": "Pending",
+      "suspended": "Suspended"
+    },
+    "fields": {
+       "patient": "Patient",
+       "details": "Details",
+       "department": "Department",
+       "admission": "Admission",
+       "action": "Action",
+       "gender": "Gender"
+    },
+    "mock": {
+      "departments": {
+        "cardiology": "Cardiology",
+        "neurology": "Neurology",
+        "pediatrics": "Pediatrics",
+        "oncology": "Oncology",
+        "emergency": "Emergency"
+      },
+      "genders": {
+        "male": "Male",
+        "female": "Female",
+        "other": "Other"
+      }
+    }
+  },
+  "orders": {
+    "title": "SaaS Dashboard",
+    "subtitle": "Premium Components Library v2.0",
+    "recent_orders": "Recent Orders",
+    "manage_transactions": "Manage your transactions and export reports",
+    "create_invoice": "Create Invoice",
+    "title_demo": "Premium DataTable Demo | FTTH UI",
+    "title_demo_desc": "A demonstration of the high-fidelity enterprise data table component.",
+    "order_id": "Order ID",
+    "customer": "Customer",
+    "amount": "Amount",
+    "category": "Category",
+    "date": "Date",
+    "status": "Status",
+    "ready_for_prod": "Ready for Production",
+    "ready_desc": "This component is built on an 8px grid system, fully responsive, and supports both RTL and Dark Mode natively.",
+    "simulate_loading": "Simulate Loading",
+    "advanced_filters": "Advanced Filters",
+    "categories": {
+      "hardware": "Hardware",
+      "software": "Software",
+      "subscription": "Subscription",
+      "logistics": "Logistics",
+      "chemicals": "Chemicals",
+      "lab_gear": "Lab Gear",
+      "consulting": "Consulting",
+      "entertainment": "Entertainment",
+      "electronics": "Electronics"
+    }
+  }
+}

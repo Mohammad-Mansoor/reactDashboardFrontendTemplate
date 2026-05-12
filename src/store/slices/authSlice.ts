@@ -8,6 +8,13 @@ interface LoginCredentials {
 
 const initialState = {
   accessToken: localStorage.getItem("accessToken") || null,
+  user: null as any,
+  isAuthenticated: !!localStorage.getItem("accessToken"),
+  notificationOptions: {
+    email: false,
+    whatsapp: false,
+    telegram: false,
+  },
   loading: false,
   error: null as string | null,
 };
@@ -21,7 +28,9 @@ export const login = createAsyncThunk<
   async (credentials, { rejectWithValue }) => {
     try {
       const response = await agent.post("/auth/login", credentials);
-      const { accessToken } = response.data.data;
+      console.log("response inside the redux slice: ", response)
+      const { access_token : accessToken } = response.data;
+      // const { accessToken } = response.data.data;
       localStorage.setItem("accessToken", accessToken);
       return accessToken;
     } catch (error: any) {
@@ -76,7 +85,21 @@ const authSlice = createSlice({
   reducers: {
     logout: (state) => {
       state.accessToken = null;
+      state.user = null;
+      state.isAuthenticated = false;
+      state.notificationOptions = {
+        email: false,
+        whatsapp: false,
+        telegram: false,
+      };
       localStorage.removeItem("accessToken");
+    },
+    setAuthData: (state, action) => {
+      state.user = action.payload.user;
+      state.isAuthenticated = true;
+    },
+    setNotificationOptions: (state, action) => {
+      state.notificationOptions = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -96,5 +119,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { logout } = authSlice.actions;
+export const { logout, setAuthData, setNotificationOptions } = authSlice.actions;
 export default authSlice.reducer;

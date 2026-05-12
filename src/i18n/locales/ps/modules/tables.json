@@ -1,0 +1,39 @@
+{
+  "actions": {
+    "add_new": "نوی اضافه کړئ",
+    "edit": "سمون",
+    "delete": "پاکول",
+    "view": "کتل",
+    "export": "خارجول",
+    "configure": "تنظیمات",
+    "apply": "تطبیق کړئ",
+    "reset": "بیا تنظیم کړئ",
+    "cancel": "لغوه کول",
+    "save": "خوندي کول",
+    "search": "په لست کې لټون...",
+    "clear_all": "ټول فیلټرونه پاک کړئ",
+    "actions_label": "عملیات"
+  },
+  "columns": {
+    "display": "د ښودلو کالمونه",
+    "manager": "د ښودلو مدیریت"
+  },
+  "export": {
+    "title": "د راپور جوړول",
+    "pdf": "د PDF سند",
+    "excel": "د Excel پاڼه",
+    "csv": "د CSV فایلونه"
+  },
+  "pagination": {
+    "limit": "د ښودلو شمېر:",
+    "showing": "ښودل",
+    "to": "تر",
+    "of": "څخه",
+    "page_suffix": "پاڼه"
+  },
+  "empty": {
+    "no_results": "هیڅ پایله ونه موندل شوه",
+    "try_adjusting": "خپل فلټرونه یا د لټون ټکي تنظیم کړئ",
+    "no_matches": "میچ شتون نلري"
+  }
+}

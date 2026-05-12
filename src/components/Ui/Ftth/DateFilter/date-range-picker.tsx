@@ -8,6 +8,7 @@ import { Button } from "./button";
 import { DateInput } from "./date-input";
 import { RangeCalendar } from "./range-calendar";
 import { RangePresetButton } from "./range-preset";
+import { useTranslation } from "react-i18next";
 
 const now = today(getLocalTimeZone());
 const highlightedDates = [today(getLocalTimeZone())];
@@ -29,6 +30,7 @@ export const DateRangePicker = ({
     onCancel, 
     ...props 
 }: DateRangePickerProps) => {
+    const { t } = useTranslation();
     const { locale } = useLocale();
     const formatter = useDateFormatter({
         month: "short",
@@ -38,46 +40,46 @@ export const DateRangePicker = ({
     const [value, setValue] = useControlledState(valueProp, defaultValue || null, onChange);
     const [focusedValue, setFocusedValue] = useState(null);
 
-    const formattedStartDate = value?.start ? formatter.format(value.start.toDate(getLocalTimeZone())) : "Select date";
-    const formattedEndDate = value?.end ? formatter.format(value.end.toDate(getLocalTimeZone())) : "Select date";
-
+    const formattedStartDate = value?.start ? formatter.format(value.start.toDate(getLocalTimeZone())) : t("dateFilter.select_date");
+    const formattedEndDate = value?.end ? formatter.format(value.end.toDate(getLocalTimeZone())) : t("dateFilter.select_date");
+ 
     const presets = useMemo(
         () => ({
-            today: { label: "Today", value: { start: now, end: now } },
-            yesterday: { label: "Yesterday", value: { start: now.subtract({ days: 1 }), end: now.subtract({ days: 1 }) } },
-            thisWeek: { label: "This week", value: { start: startOfWeek(now, locale), end: endOfWeek(now, locale) } },
+            today: { label: t("dateFilter.today"), value: { start: now, end: now } },
+            yesterday: { label: t("dateFilter.yesterday"), value: { start: now.subtract({ days: 1 }), end: now.subtract({ days: 1 }) } },
+            thisWeek: { label: t("dateFilter.thisWeek"), value: { start: startOfWeek(now, locale), end: endOfWeek(now, locale) } },
             lastWeek: {
-                label: "Last week",
+                label: t("dateFilter.lastWeek"),
                 value: {
                     start: startOfWeek(now, locale).subtract({ weeks: 1 }),
                     end: endOfWeek(now, locale).subtract({ weeks: 1 }),
                 },
             },
-            thisMonth: { label: "This month", value: { start: startOfMonth(now), end: endOfMonth(now) } },
+            thisMonth: { label: t("dateFilter.thisMonth"), value: { start: startOfMonth(now), end: endOfMonth(now) } },
             lastMonth: {
-                label: "Last month",
+                label: t("dateFilter.lastMonth"),
                 value: {
                     start: startOfMonth(now).subtract({ months: 1 }),
                     end: endOfMonth(now).subtract({ months: 1 }),
                 },
             },
-            thisYear: { label: "This year", value: { start: startOfMonth(now.set({ month: 1 })), end: endOfMonth(now.set({ month: 12 })) } },
+            thisYear: { label: t("dateFilter.thisYear"), value: { start: startOfMonth(now.set({ month: 1 })), end: endOfMonth(now.set({ month: 12 })) } },
             lastYear: {
-                label: "Last year",
+                label: t("dateFilter.lastYear"),
                 value: {
                     start: startOfMonth(now.set({ month: 1 }).subtract({ years: 1 })),
                     end: endOfMonth(now.set({ month: 12 }).subtract({ years: 1 })),
                 },
             },
             allTime: {
-                label: "All time",
+                label: t("dateFilter.allTime"),
                 value: {
                     start: now.set({ year: 2000, month: 1, day: 1 }),
                     end: now,
                 },
             },
         }),
-        [locale]
+        [locale, t]
     );
 
     return (
@@ -96,7 +98,7 @@ export const DateRangePicker = ({
             className="border border-slate-200 dark:border-white/10 dark:bg-white/5 text-slate-700 dark:text-white/80 hover:border-primary1 !rounded-xl !h-10 px-4 transition-all"
           >
             {!value ? (
-              <span className="text-slate-400 font-bold uppercase tracking-widest text-[11px]">Select Range</span>
+              <span className="text-slate-400 font-bold uppercase tracking-widest text-[11px]">{t("dateFilter.select_range")}</span>
             ) : (
               <div className="flex items-center gap-2">
                 <span className="text-slate-700 dark:text-white/90 font-black uppercase tracking-widest text-[11px]">
@@ -179,7 +181,7 @@ export const DateRangePicker = ({
                           close();
                         }}
                       >
-                        Clear Range
+                        {t("dateFilter.clear_range")}
                       </Button>
                       <Button
                         size="md"
@@ -190,7 +192,7 @@ export const DateRangePicker = ({
                           close();
                         }}
                       >
-                        Cancel
+                        {t("dateFilter.cancel")}
                       </Button>
                       <Button
                         size="md"
@@ -201,7 +203,7 @@ export const DateRangePicker = ({
                           close();
                         }}
                       >
-                        Apply
+                        {t("dateFilter.apply")}
                       </Button>
                     </div>
                   </div>

@@ -1,12 +1,29 @@
 {
   "sidebar": {
-    "menu": "MENU",
-    "main_menu": "Main Menu",
-    "others": "Others",
-    "ecommerce": "Ecommerce",
-    "form_elements": "Form Elements",
-    "blank_page": "Blank Page",
-    "error_404": "404 Error",
-    "sign_in": "Sign In"
+    "menu": "Menu",
+    "back_to_menu": "Back to Menu",
+    "account": "Account",
+    "administrator": "Administrator",
+    "user_name": "Musharof",
+    "dashboard": "Dashboard",
+    "user_management": "User Management",
+    "patients": "Patients",
+    "roles_permissions": "Roles & Permissions",
+    "premium_demos": "Premium Demos",
+    "saas_table": "SaaS Table",
+    "view_transitions": "View Transitions",
+    "ui_components": "UI Components",
+    "filter_logic": "Filter Logic",
+    "settings": "Settings",
+    "account_settings": "Account Settings",
+    "security": "Security",
+    "active_sessions": "Active Sessions",
+    "general_config": "General Config",
+    "reports": "Reports",
+    "documentation": "Documentation",
+    "brand": {
+      "name": "Qalam",
+      "subtitle": "Healthcare"
+    }
   }
 }

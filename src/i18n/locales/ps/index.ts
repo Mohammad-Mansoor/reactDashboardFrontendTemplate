@@ -5,6 +5,10 @@ import roles from './modules/roles.json';
 import auth from './modules/auth.json';
 import locations from './modules/locations.json';
 import sidebar from './modules/sidebar.json';
+import dashboard from './modules/dashboard.json';
+import demo from './modules/demo.json';
+import tables from './modules/tables.json';
+import components from './modules/components.json';
 
 const ps = {
   ...common,
@@ -14,6 +18,12 @@ const ps = {
   ...auth,
   ...locations,
   ...sidebar,
+  ...dashboard,
+  ...demo,
+  ...tables,
+  ...components,
 };
 
 export default ps;
+
+

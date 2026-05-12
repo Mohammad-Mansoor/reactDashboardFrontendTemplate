@@ -169,7 +169,7 @@ const FTTHAdvanceFilterModal: React.FC<FTTHAdvanceFilterModalProps> = ({
                   </div>
                   <div>
                     <h2 className="text-lg font-bold text-slate-800 dark:text-white tracking-tight">
-                      {title || t("advanceFilter.title", "Filters")}
+                      {title || t("filters.title")}
                     </h2>
                   </div>
                 </div>
@@ -240,7 +240,7 @@ const FTTHAdvanceFilterModal: React.FC<FTTHAdvanceFilterModalProps> = ({
                       {config.type === "range" && (
                         <div className="grid grid-cols-2 gap-3">
                           <InputElement
-                            label="Min"
+                            label={t("filters.min")}
                             type="number"
                             placeholder="0"
                             value={filterValues[config.key]?.min}
@@ -249,7 +249,7 @@ const FTTHAdvanceFilterModal: React.FC<FTTHAdvanceFilterModalProps> = ({
                             className="!h-9"
                           />
                           <InputElement
-                            label="Max"
+                            label={t("filters.max")}
                             type="number"
                             placeholder="100"
                             value={filterValues[config.key]?.max}
@@ -276,7 +276,7 @@ const FTTHAdvanceFilterModal: React.FC<FTTHAdvanceFilterModalProps> = ({
                               <>
                                 <InputElement
                                   type="date"
-                                  label="From"
+                                  label={t("filters.from")}
                                   value={filterValues[config.key]?.start}
                                   onChange={(e) => handleValueChange(config.key, { ...filterValues[config.key], start: e.target.value })}
                                   leftIcon={<CalendarDays size={14} className="text-slate-400" />}
@@ -284,7 +284,7 @@ const FTTHAdvanceFilterModal: React.FC<FTTHAdvanceFilterModalProps> = ({
                                 />
                                 <InputElement
                                   type="date"
-                                  label="To"
+                                  label={t("filters.to")}
                                   value={filterValues[config.key]?.end}
                                   onChange={(e) => handleValueChange(config.key, { ...filterValues[config.key], end: e.target.value })}
                                   leftIcon={<CalendarDays size={14} className="text-slate-400" />}
@@ -296,34 +296,34 @@ const FTTHAdvanceFilterModal: React.FC<FTTHAdvanceFilterModalProps> = ({
                           
                            {config.type === "date-range" && (
                             <div className="flex flex-wrap gap-2 pt-1 border-t border-slate-50 dark:border-white/5 pt-2">
-                               {['Today', 'Last 7 Days', 'Last Month'].map((rangeName) => (
-                                 <button
-                                   key={rangeName}
-                                   type="button"
-                                   onClick={() => {
-                                      const now = new Date();
-                                      // Using locales 'en-CA' gives us YYYY-MM-DD reliably
-                                      const end = now.toLocaleDateString('en-CA');
-                                      let start = end;
+                                {['today', 'last_7_days', 'last_month'].map((rangeKey) => (
+                                  <button
+                                    key={rangeKey}
+                                    type="button"
+                                    onClick={() => {
+                                       const now = new Date();
+                                       // Using locales 'en-CA' gives us YYYY-MM-DD reliably
+                                       const end = now.toLocaleDateString('en-CA');
+                                       let start = end;
 
-                                      if (rangeName === 'Last 7 Days') {
-                                        const d = new Date();
-                                        d.setDate(d.getDate() - 7);
-                                        start = d.toLocaleDateString('en-CA');
-                                      } else if (rangeName === 'Last Month') {
-                                        const d = new Date();
-                                        d.setMonth(d.getMonth() - 1);
-                                        start = d.toLocaleDateString('en-CA');
-                                      }
-                                      
-                                      console.log(`Setting range ${rangeName}:`, { start, end });
-                                      handleValueChange(config.key, { start, end });
-                                   }}
-                                   className="px-2.5 py-1 text-[10px] font-black uppercase tracking-widest rounded-md bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-white/40 hover:bg-primary1/10 hover:text-primary1 transition-all active:scale-95"
-                                 >
-                                   {rangeName}
-                                 </button>
-                               ))}
+                                       if (rangeKey === 'last_7_days') {
+                                         const d = new Date();
+                                         d.setDate(d.getDate() - 7);
+                                         start = d.toLocaleDateString('en-CA');
+                                       } else if (rangeKey === 'last_month') {
+                                         const d = new Date();
+                                         d.setMonth(d.getMonth() - 1);
+                                         start = d.toLocaleDateString('en-CA');
+                                       }
+                                       
+                                       console.log(`Setting range ${rangeKey}:`, { start, end });
+                                       handleValueChange(config.key, { start, end });
+                                    }}
+                                    className="px-2.5 py-1 text-[10px] font-black uppercase tracking-widest rounded-md bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-white/40 hover:bg-primary1/10 hover:text-primary1 transition-all active:scale-95"
+                                  >
+                                    {t(`filters.${rangeKey}`)}
+                                  </button>
+                                ))}
                             </div>
                           )}
                         </div>
@@ -332,12 +332,12 @@ const FTTHAdvanceFilterModal: React.FC<FTTHAdvanceFilterModalProps> = ({
                       {/* Toggle Type */}
                       {config.type === "toggle" && (
                          <div className="flex items-center justify-between p-2 rounded-lg bg-slate-50 dark:bg-white/5">
-                            <span className="text-[13px] font-medium text-slate-600 dark:text-white/70">Enable {config.label}</span>
-                            <Switch 
-                              value={filterValues[config.key]} 
-                              onChange={(val) => handleValueChange(config.key, val)}
-                              size="sm"
-                            />
+                             <span className="text-[13px] font-medium text-slate-600 dark:text-white/70">{t("filters.enable_label", { name: config.label })}</span>
+                             <Switch 
+                               value={filterValues[config.key]} 
+                               onChange={(val) => handleValueChange(config.key, val)}
+                               size="sm"
+                             />
                          </div>
                       )}
                     </div>
@@ -354,7 +354,7 @@ const FTTHAdvanceFilterModal: React.FC<FTTHAdvanceFilterModalProps> = ({
                   label={
                     <div className="flex items-center gap-1.5 px-1">
                        <RotateCcw size={14} />
-                       <span className="text-xs font-semibold tracking-wide">Reset</span>
+                       <span className="text-xs font-semibold tracking-wide">{t("filters.reset")}</span>
                     </div>
                   }
                 />
@@ -365,7 +365,7 @@ const FTTHAdvanceFilterModal: React.FC<FTTHAdvanceFilterModalProps> = ({
                   <Button
                     onClick={onClose}
                     className="flex-1 sm:flex-none border border-transparent bg-slate-100 hover:bg-slate-200 text-slate-600 dark:bg-white/5 dark:hover:bg-white/10 dark:text-slate-200"
-                    label={<span className="text-xs font-semibold tracking-wide">Cancel</span>}
+                    label={<span className="text-xs font-semibold tracking-wide">{t("filters.cancel")}</span>}
                   />
                   <Button
                     onClick={handleApply}
@@ -373,7 +373,7 @@ const FTTHAdvanceFilterModal: React.FC<FTTHAdvanceFilterModalProps> = ({
                     className="flex-1 sm:flex-none !rounded-lg bg-primary2 text-white hover:bg-primary1 px-6 shadow-none"
                     label={
                       <div className="flex items-center gap-1.5">
-                         <span className="text-xs font-semibold tracking-wide">Apply Filters</span>
+                         <span className="text-xs font-semibold tracking-wide">{t("filters.apply")}</span>
                          <CheckCircle2 size={14} />
                       </div>
                     }

@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import NetworkErrorModal from "../components/modals/NetworkErrorModal";
 import { useTranslation } from "react-i18next";
 import RouteLoader from "../components/Common/RouteLoader";
+import WindowControls from "../components/Header/desktopControlBar"
 
 const LayoutContent = () => {
   const { isExpanded } = useSidebar();
@@ -95,6 +96,18 @@ const AppLayout = () => {
 
   return (
     <div className={`m-0 p-0 w-full ${!isOnline ? "border-2 border-red-500" : ""}`}>
+        <div className="drag flex justify-between items-center h-10 px-4 bg-white shadow">
+    
+    {/* Left side */}
+    <div className="no-drag">HCMS</div>
+
+    {/* Right side */}
+    <div className="no-drag">
+      <WindowControls />
+    </div>
+
+  </div>
+      
       <SidebarProvider>
         <LayoutContent />
       </SidebarProvider>

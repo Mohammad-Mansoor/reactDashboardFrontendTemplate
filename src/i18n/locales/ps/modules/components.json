@@ -1,0 +1,48 @@
+{
+  "showcase": {
+    "title": "د برخو ننداره | HCMS",
+    "description": "د بیا کارونې وړ UI برخو ننداره",
+    "sections": {
+      "modals": "موډالونه (Modals)",
+      "buttons": "تڼۍ",
+      "inputs": "داخلول او فورمې (Enterprise UI)",
+      "standard_inputs": "کره داخلول",
+      "state_inputs": "حالت او آیکون داخلول",
+      "textarea_states": "ټیکسټ ایریا او غیر فعال حالتونه",
+      "selects": "راښکته کیدونکي لستونه",
+      "toggles": "چک باکسونه او سویچونه",
+      "avatars": "آوټارونه (Avatars)"
+    },
+    "items": {
+      "success_modal": "د بریا موډال",
+      "error_modal": "د تېروتنې موډال",
+      "confirm_modal": "د تایید موډال",
+      "success_desc": "دا د بیا کارونې وړ بریا موډال برخه ده.",
+      "error_desc": "دا د بیا کارونې وړ تېروتنې موډال برخه ده.",
+      "confirm_title": "کړنه تایید کړئ",
+      "confirm_desc": "ایا تاسو ډاډه یاست چې غواړئ دوام ورکړئ؟",
+      "confirm_yes": "هو، دوام ورکړه",
+      "cancel": "لغوه کول",
+      "primary_btn": "اصلي تڼۍ",
+      "success_btn": "د بریا تڼۍ",
+      "error_btn": "د تېروتنې تڼۍ",
+      "disabled_btn": "غیر فعاله تڼۍ",
+      "outline_hover": "اصلي هور تڼۍ",
+      "loading_btn": "د بارولو تڼۍ",
+      "first_name": "لومړی نوم",
+      "email": "بریښنالیک پته",
+      "password": "پټنوم",
+      "username": "کارن نوم",
+      "domain": "ډومین",
+      "search_patients": "د ناروغانو لټون",
+      "clinical_notes": "کلینیکي یادښتونه",
+      "system_id": "د سیسټم آیدی (یوازې لوستل)",
+      "select_role": "رول غوره کړئ",
+      "assign_tags": "ټګونه وټاکئ",
+      "team_members": "د ټیم غړي (له آوټارونو سره)",
+      "async_dropdown": "نامتقارن لست (د بافت ماندګاري)",
+      "checkboxes": "چک باکسونه",
+      "switches": "سویچونه"
+    }
+  }
+}

@@ -1,19 +1,29 @@
 {
   "sidebar": {
-    "others": "سایر",
-    "ecommerce": "ای‌کامرس",
-    "form_elements": "اجزای فرم",
-    "blank_page": "صفحه خالی",
-    "error_404": "خطای 404",
-    "sign_in": "ورود",
     "menu": "منو",
-    "main_menu": "منوی اصلی"
-  },
-  "form": {
-    "select_users": "کاربران را انتخاب کنید...",
-    "select_single_user": "یک کاربر را انتخاب کنید",
-    "select_users_async": "کاربران را به‌صورت همزمان انتخاب کنید...",
-    "select_users_async_multi": "انتخاب همزمان کاربران...",
-    "input_error": "این یک پیام خطا است"
+    "back_to_menu": "بازگشت به منو",
+    "account": "حساب کاربری",
+    "administrator": "مدیر سیستم",
+    "user_name": "مشرف",
+    "dashboard": "داشبورد",
+    "user_management": "مدیریت کاربران",
+    "patients": "بیماران",
+    "roles_permissions": "نقش‌ها و دسترسی‌ها",
+    "premium_demos": "دموهای ویژه",
+    "saas_table": "جدول SaaS",
+    "view_transitions": "انتقالات نما",
+    "ui_components": "اجزای رابط کاربری",
+    "filter_logic": "منطق فیلتر",
+    "settings": "تنظیمات",
+    "account_settings": "تنظیمات حساب",
+    "security": "امنیت",
+    "active_sessions": "نشست‌های فعال",
+    "general_config": "پیکربندی عمومی",
+    "reports": "گزارش‌ها",
+    "documentation": "مستندات",
+    "brand": {
+      "name": "قلم",
+      "subtitle": "مراقبت‌های بهداشتی"
+    }
   }
 }
