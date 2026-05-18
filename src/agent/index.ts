@@ -31,6 +31,7 @@ agent.interceptors.request.use(
     try {
       // Prioritize synchronous cached data for zero-latency
       let metrics = DeviceIntelligence.getCachedMetadata();
+      console.log("this is device cache data: ❤️❤️❤️", metrics)
       
       // JIT Fallback (if app startup init hasn't completed yet)
       if (!metrics) {
@@ -38,6 +39,7 @@ agent.interceptors.request.use(
       }
 
       if (metrics) {
+        console.log("this is latest metrics: 💕💕💕", metrics)
         // Essential Headers only (Reduced Size)
         config.headers['x-fingerprint'] = metrics.fingerprint;
         config.headers['x-device-name'] = metrics.deviceName;

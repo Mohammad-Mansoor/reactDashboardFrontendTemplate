@@ -1,33 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self';" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HCMS — Starting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./splash.css" />
 </head>
 <body>
 
-  <div class="container">
+  <!-- Particle field -->
+  <div class="particles" id="particles"></div>
 
-    <!-- 🔥 NEW BRAND LOGO (from your sidebar UI) -->
-    <div class="brand">
+  <!-- Grid overlay -->
+  <div class="grid-overlay"></div>
 
-      <div class="logo-box">
-        <span class="logo-text">HC</span>
+  <!-- Main stage -->
+  <div class="stage">
+
+    <!-- Glowing orb backdrop -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <!-- Logo assembly -->
+    <div class="logo-assembly">
+      <div class="logo-ring">
+        <div class="logo-ring-inner"></div>
+        <div class="logo-box">
+          <div class="logo-shine"></div>
+          <span class="logo-text">HC</span>
+        </div>
       </div>
-
-      <div class="brand-text">
-        <div class="title">HCMS</div>
-        <div class="subtitle">Healthcare Management System</div>
-      </div>
-
     </div>
 
-    <!-- Loader -->
-    <div class="loader"></div>
+    <!-- Brand text -->
+    <div class="brand">
+      <div class="brand-title">HCMS</div>
+      <div class="brand-sub">Healthcare Management System</div>
+    </div>
 
-    <div id="percent">0%</div>
+    <!-- EKG heartbeat line -->
+    <div class="ekg-wrap">
+      <svg class="ekg-svg" viewBox="0 0 500 60" preserveAspectRatio="none">
+        <path class="ekg-path"
+          d="M0,30 L60,30 L75,30 L85,5 L95,55 L105,10 L115,50 L125,30 L180,30
+             L195,30 L205,5 L215,55 L225,10 L235,50 L245,30 L300,30
+             L315,30 L325,5 L335,55 L345,10 L355,50 L365,30 L500,30"
+        />
+      </svg>
+      <div class="ekg-glow"></div>
+    </div>
 
-    <div class="bar">
-      <div id="progress"></div>
+    <!-- Status message -->
+    <div class="status-text" id="status-text">Initialising system…</div>
+
+    <!-- Progress section -->
+    <div class="progress-section">
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progress"></div>
+        <div class="progress-glow" id="progress-glow"></div>
+      </div>
+      <div class="progress-meta">
+        <span class="progress-label">Loading</span>
+        <span class="progress-percent" id="percent">0%</span>
+      </div>
     </div>
 
   </div>

@@ -1,5 +1,5 @@
 {
-  "name": "tailadmin-react",
+  "name": "hcms",
   "private": true,
   "version": "2.0.2",
   "type": "module",
@@ -8,8 +8,11 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "dev:electron": "concurrently \"npm run dev\" \"wait-on http://localhost:3000 && electron .\"",
-    "dist": "npm run build && electron-builder",
+    "dev:electron": "concurrently \"vite --mode electron\" \"wait-on http://localhost:3000 && electron .\"",
+    "dist": "vite build --mode electron && electron-builder",
+    "dist:win": "vite build --mode electron && electron-builder --win",
+    "dist:mac": "vite build --mode electron && electron-builder --mac",
+    "dist:linux": "vite build --mode electron && electron-builder --linux",
     "preview": "vite preview",
     "clean-install": "npm install rimraf --no-save && npx rimraf node_modules package-lock.json yarn.lock && npm install --legacy-peer-deps",
     "electron": "electron ."
@@ -37,6 +40,8 @@
     "compress.js": "^2.1.2",
     "crypto-js": "^4.2.0",
     "device-detector-js": "^3.0.3",
+    "electron-log": "^5.4.4",
+    "electron-updater": "^6.8.3",
     "flatpickr": "^4.6.13",
     "framer-motion": "^12.34.3",
     "i18next": "^25.7.4",
@@ -71,6 +76,7 @@
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
     "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
     "electron": "^41.3.0",
     "electron-builder": "^26.8.1",
     "eslint": "^9.19.0",
@@ -96,6 +102,59 @@
     "@react-jvectormap/world": {
       "react": "^16.8.0 || ^17 || ^18 || ^19",
       "react-dom": "^16.8.0 || ^17 || ^18 || ^19"
+    }
+  },
+  "build": {
+    "appId": "com.hcms.app",
+    "productName": "HCMS",
+    "copyright": "Copyright © 2025 HCMS",
+    "asar": true,
+    "directories": {
+      "output": "release",
+      "buildResources": "electron/assets"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json",
+      "node_modules/**/*",
+      "!electron/assets/icon.ico",
+      "!electron/assets/icon.icns"
+    ],
+    "extraMetadata": {
+      "main": "electron/main.cjs"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "electron/assets/icon.ico",
+      "executableName": "HCMS"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "electron/assets/icon.icns",
+      "category": "public.app-category.medical"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "electron/assets/icon.png",
+      "category": "Office"
+    },
+    "publish": {
+      "provider": "github",
+      "releaseType": "release"
     }
   }
 }

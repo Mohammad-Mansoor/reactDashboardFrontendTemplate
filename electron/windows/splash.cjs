@@ -9,11 +9,16 @@ function createSplash() {
     transparent: true,
     alwaysOnTop: true,
     resizable: false,
+    center: true,
+    skipTaskbar: true,
+
     webPreferences: {
-      preload: path.join(__dirname, "../preload.cjs"),
+      // Use the dedicated minimal splash preload — NOT the full app preload
+      preload: path.join(__dirname, "../preload-splash.cjs"),
       contextIsolation: true,
       nodeIntegration: false,
-    }
+      sandbox: true,
+    },
   });
 
   splash.loadFile(path.join(__dirname, "../ui/splash.html"));

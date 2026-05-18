@@ -8,8 +8,9 @@ import { useEffect, useState, useRef } from "react";
 import { toast } from "react-toastify";
 import NetworkErrorModal from "../components/modals/NetworkErrorModal";
 import { useTranslation } from "react-i18next";
-import RouteLoader from "../components/Common/RouteLoader";
-import WindowControls from "../components/Header/desktopControlBar"
+import { isElectron } from "../utils/isElectron";
+import ElectronTitleBar from "../components/Header/ElectronTitleBar";
+
 
 const LayoutContent = () => {
   const { isExpanded } = useSidebar();
@@ -29,21 +30,16 @@ const LayoutContent = () => {
     if (isInitialLoad) return;
 
     if (!isOnline) {
-      // Network disconnected - show modal
       wasOfflineRef.current = true;
       setShowNetworkModal(true);
     } else if (wasOfflineRef.current && isOnline) {
-      // Network reconnected after being offline - show toast
       wasOfflineRef.current = false;
       setShowNetworkModal(false);
       toast.success("You are back online.");
     }
   }, [isOnline, isInitialLoad]);
 
-  // Close modal handler
-  const handleCloseNetworkModal = () => {
-    setShowNetworkModal(false);
-  };
+  const handleCloseNetworkModal = () => setShowNetworkModal(false);
 
   // RTL / LTR Direction
   useEffect(() => {
@@ -60,11 +56,7 @@ const LayoutContent = () => {
 
   return (
     <div className="min-h-screen w-full flex flex-col lg:flex-row overflow-x-hidden m-0 p-0">
-      {/* <RouteLoader show={isRouteLoading} /> */}
-      <NetworkErrorModal
-        isOpen={showNetworkModal}
-        onClose={handleCloseNetworkModal}
-      />
+      <NetworkErrorModal isOpen={showNetworkModal} onClose={handleCloseNetworkModal} />
 
       {/* Sidebar */}
       <>
@@ -80,7 +72,7 @@ const LayoutContent = () => {
       >
         <AppHeader />
 
-        {/* Page Content Wrapper */}
+        {/* Page Content */}
         <div className="flex-1 flex flex-col min-h-0 min-w-0 mx-auto w-full max-w-screen-2xl">
           <div className="flex-1 w-full min-w-0">
             <Outlet />
@@ -91,23 +83,20 @@ const LayoutContent = () => {
   );
 };
 
+// ─── Root Layout ──────────────────────────────────────────────────────────────
 const AppLayout = () => {
   const { isOnline } = useOnlineStatus();
+  const electron = isElectron();
 
   return (
-    <div className={`m-0 p-0 w-full ${!isOnline ? "border-2 border-red-500" : ""}`}>
-        <div className="drag flex justify-between items-center h-10 px-4 bg-white shadow">
-    
-    {/* Left side */}
-    <div className="no-drag">HCMS</div>
+    <div
+      className={`m-0 p-0 w-full flex flex-col min-h-screen ${
+        !isOnline ? "border-2 border-red-500" : ""
+      }`}
+    >
+      {/* Electron-only title bar — invisible in web/browser mode */}
+      {electron && <ElectronTitleBar />}
 
-    {/* Right side */}
-    <div className="no-drag">
-      <WindowControls />
-    </div>
-
-  </div>
-      
       <SidebarProvider>
         <LayoutContent />
       </SidebarProvider>
